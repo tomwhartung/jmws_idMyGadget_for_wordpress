@@ -33,7 +33,7 @@ $gadgetString = getIdMyGadgetStringAllDevices( $deviceData );
 	<?php
 		print "<div class='output'>";
 		print "<h4>detectorUsed:" . "</h4>";
-		print "<p>" . $idMyGadget->detectorUsed . "</p>";
+		print "<p class='detector-used'>" . $idMyGadget->detectorUsed . "</p>";
 		print "<h4>deviceData:</h4>";
 		print "<ul class='no-bullets'>" . $idMyGadget->displayDeviceData() . "</ul>";
 		print "</div> <!-- .output -->";

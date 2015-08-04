@@ -98,7 +98,7 @@ else if ( isset($displaySortedCapabilities) )
 else // if ( isset($displayDeviceData) ) // display device data by default
 {
 	$output .= "<h4>detectorUsed:" . "</h4>";
-	$output .= "<p>" . $idMyGadget->detectorUsed . "</p>";
+	$output .= "<p class='detector-used'>" . $idMyGadget->detectorUsed . "</p>";
 	$idMyGadget->getDeviceData();
 	$output .= "<h4>deviceData</h4>";
 	$output .= "<ul class='no-bullets'>" . $idMyGadget->displayDeviceData() . "</ul>";
