@@ -8,7 +8,7 @@ tmp/
 #
 # Ignore third-party device detection code
 #
-## /wp-content/plugins/jmws_idMyGadget_for_wordpress/gadget_detectors/detect_mobile_browsers/php/detectmobilebrowser.php.txt
-## /wp-content/plugins/jmws_idMyGadget_for_wordpress/gadget_detectors/mobile_detect/Mobile-Detect/
-## /wp-content/plugins/jmws_idMyGadget_for_wordpress/gadget_detectors/tera_wurfl/Tera-Wurfl/wurfl-dbapi*
+/wp-content/plugins/jmws_idMyGadget_for_wordpress/gadget_detectors/detect_mobile_browsers/php/detectmobilebrowser.php.txt
+/wp-content/plugins/jmws_idMyGadget_for_wordpress/gadget_detectors/mobile_detect/Mobile-Detect/
+/wp-content/plugins/jmws_idMyGadget_for_wordpress/gadget_detectors/tera_wurfl/Tera-Wurfl/wurfl-dbapi*
 
