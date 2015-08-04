@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
 <?php
-$pageTitle = 'jmws_idMyGadget_for_joomla';
+$pageTitle = 'jmws_idMyGadget_for_wordpress';
 ?>
 
 <head>
