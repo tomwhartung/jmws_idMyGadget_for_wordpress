@@ -34,6 +34,9 @@ p, a, li, dt, dd, td, blockquote {
 	margin: 0.1em 0.1em 0em 0.1em;
 	padding: 0.1em 0.1em 0em 0.1em;
 }
+p.detector-used {
+	margin-left: 1.1em;
+}
 dl, ul {
 	margin: 0;
 	padding: 0;
