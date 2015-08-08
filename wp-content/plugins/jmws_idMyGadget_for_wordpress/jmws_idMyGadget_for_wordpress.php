@@ -23,16 +23,16 @@ function jmws_idMyGadget_for_wordpress()
 //	print 'Hello World from jmws_idMyGadget_for_wordpress.php .';
 //	$gadgetDetector = $this->params->get('gadgetDetector');
 //	$gadgetDetector = 'detect_mobile_browsers';
-//	$gadgetDetector = 'mobile_detect';
-	$gadgetDetector = 'tera_wurfl';
+	$gadgetDetector = 'mobile_detect';
+//	$gadgetDetector = 'tera_wurfl';
 	global $jmwsIdMyGadget;
-	global $gadgetDetectorClass;
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetector);
 
 	$jmwsIdMyGadget->usingJQueryMobile = FALSE;
 
 
-	$gadgetDetectorClass = get_class( $jmwsIdMyGadget->getGadgetDetector() );
+	global $idMyGadgetClass;
+	$idMyGadgetClass = get_class( $jmwsIdMyGadget->getIdMyGadget() );
 
 }
 

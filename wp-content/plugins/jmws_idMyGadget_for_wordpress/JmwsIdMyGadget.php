@@ -112,9 +112,9 @@ class JmwsIdMyGadget
 		return $this->idMyGadget->getLinkToReadme();
 	}
 	/**
-	 * The gadgetDetector object is read-only!
+	 * The gadgetDetectorString is read-only!
 	 */
-	public function getGadgetDetector()
+	public function getGadgetDetectorString()
 	{
 		return $this->gadgetDetector;
 	}
