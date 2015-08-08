@@ -36,6 +36,9 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	//	$this->idMyGadgetDir = JPATH_LIBRARIES . DS . 'vendor' . DS . 'jmws_idMyGadget_for_joomla';
 	//	set_include_path( get_include_path() . PATH_SEPARATOR . $this->idMyGadgetDir );
 
+		$this->idMyGadgetDir = IDMYGADGET__PLUGIN_DIR;
+	//	set_include_path( get_include_path() . PATH_SEPARATOR . $this->idMyGadgetDir );
+
 		parent::__construct( $gadgetDetector, $debugging, $allowOverridesInUrl );
 	}
 }
