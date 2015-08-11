@@ -33,9 +33,16 @@ function jmws_idMyGadget_for_wordpress()
 	global $gadget_detectors_array;
 //	print 'Hello World from jmws_idMyGadget_for_wordpress.php .';
 //	$gadgetDetector = $this->params->get('gadgetDetector');
-	$gadgetDetector = $gadget_detectors_array[0];
+//	$gadgetDetector = $gadget_detectors_array[0];
 //	$gadgetDetector = $gadget_detectors_array[1];
 //	$gadgetDetector = $gadget_detectors_array[2];
+
+	global $gadgetDetectorIndex;
+	global $gadgetDetectorString;
+//	$gadgetDetectorIndex = get_theme_mod('gadget_detector_select');
+	$gadgetDetectorIndex = get_theme_mod('gadget_detector_radio');
+	$gadgetDetectorString = $gadget_detectors_array[$gadgetDetectorIndex];
+
 	global $jmwsIdMyGadget;
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetector);
 
