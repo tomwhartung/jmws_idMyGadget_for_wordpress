@@ -65,9 +65,9 @@ function jmws_idmygadget_customize_register( $wp_customize )
 	// radio buttons that allow the admin to set the device detector.
 	//
 	$wp_customize->add_section( 'gadget_detector' , array(
-		'title'      => __( 'Gadget Detector Final', 'jmws_wp_vqsg_fs_idMyGadget' ),
+		'title'      => __( 'IdMyGadget', 'jmws_wp_vqsg_fs_idMyGadget' ),
 		'description' => __( 'Select the 3rd party device detector to use for this theme.' ),
-		'priority'   => 100,
+		'priority'   => 9999,
 	) );
 
 	$wp_customize->add_setting( 'gadget_detector' , array(
@@ -80,7 +80,7 @@ function jmws_idmygadget_customize_register( $wp_customize )
 		'section'  => 'gadget_detector',
 		'type'     => 'radio',
 		'choices'  => $gadget_detectors_array,
-		'priority' => 60,
+		'priority' => 100,
 	) );
 }
 
