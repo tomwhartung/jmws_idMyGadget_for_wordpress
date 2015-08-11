@@ -40,7 +40,8 @@ function jmws_idMyGadget_for_wordpress()
 	global $gadgetDetectorIndex;
 	global $gadgetDetectorString;
 //	$gadgetDetectorIndex = get_theme_mod('gadget_detector_select');
-	$gadgetDetectorIndex = get_theme_mod('gadget_detector_radio');
+//	$gadgetDetectorIndex = get_theme_mod('gadget_detector_radio');
+	$gadgetDetectorIndex = get_theme_mod('gadget_detector');
 	$gadgetDetectorString = $gadget_detectors_array[$gadgetDetectorIndex];
 
 	global $jmwsIdMyGadget;
@@ -55,4 +56,36 @@ function jmws_idMyGadget_for_wordpress()
 }
 
 add_action( 'wp', 'jmws_idMyGadget_for_wordpress' );
+
+function jmws_idmygadget_customize_register( $wp_customize )
+{
+	global $gadget_detectors_array;
+	//
+	// Add a section to the theme's Customize side bar that contains
+	// radio buttons that allow the admin to set the device detector.
+	//
+	$wp_customize->add_section( 'gadget_detector' , array(
+		'title'      => __( 'Gadget Detector Final', 'jmws_wp_vqsg_fs_idMyGadget' ),
+		'description' => __( 'Select the 3rd party device detector to use for this theme.' ),
+		'priority'   => 100,
+	) );
+
+	$wp_customize->add_setting( 'gadget_detector' , array(
+		'default'     => $gadget_detectors_array[0],
+		'transport'   => 'refresh',
+	) );
+
+	$wp_customize->add_control( 'gadget_detector', array(
+		'label'    => __( 'Gadget Detector', 'jmws_wp_vqsg_fs_idMyGadget' ),
+		'section'  => 'gadget_detector',
+		'type'     => 'radio',
+		'choices'  => $gadget_detectors_array,
+		'priority' => 60,
+	) );
+}
+
+$theme_object = wp_get_theme();
+$theme_object_stylesheet = $theme_object->stylesheet;
+
+add_action( 'customize_register', 'jmws_idmygadget_customize_register' );
 
