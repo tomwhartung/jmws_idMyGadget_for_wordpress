@@ -10,6 +10,21 @@ require_once 'JmwsIdMyGadget.php';
 class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 {
 	/**
+	 * Array of idMyGadget gadget detectors
+	 */
+	public $supportedGadgetDetectors = array(
+		'detect_mobile_browsers',   // note that this is used as the default throughout
+		'mobile_detect',
+		'tera_wurfl'
+	);
+	/**
+	 * Array of themes that know how to use idMyGadget
+	 */
+	public $supportedThemes = array(
+		'jmws_wp_vqsg_ot_idMyGadget',
+		''
+	);
+	/**
 	 * Boolean: Using jQuery Mobile changes everything, so we need to know when we are using it.
 	 * Although we always use it on phones, we do not always use it on tablets.
 	 */
