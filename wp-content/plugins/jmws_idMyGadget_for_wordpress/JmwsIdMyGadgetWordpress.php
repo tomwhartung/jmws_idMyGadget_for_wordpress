@@ -29,9 +29,9 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	/**
 	 * Constructor: for best results, install and use a gadgetDetector other than the default
 	 */
-	public function __construct( $gadgetDetector=null, $debugging=FALSE, $allowOverridesInUrl=TRUE )
+	public function __construct( $gadgetDetectorString=null, $debugging=FALSE, $allowOverridesInUrl=TRUE )
 	{
 		$this->idMyGadgetDir = IDMYGADGET__PLUGIN_DIR;
-		parent::__construct( $gadgetDetector, $debugging, $allowOverridesInUrl );
+		parent::__construct( $gadgetDetectorString, $debugging, $allowOverridesInUrl );
 	}
 }

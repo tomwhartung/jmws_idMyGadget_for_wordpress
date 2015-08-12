@@ -32,10 +32,9 @@ function jmws_idMyGadget_for_wordpress()
 {
 	global $gadget_detectors_array;
 //	print 'Hello World from jmws_idMyGadget_for_wordpress.php .';
-//	$gadgetDetector = $this->params->get('gadgetDetector');
-//	$gadgetDetector = $gadget_detectors_array[0];
-//	$gadgetDetector = $gadget_detectors_array[1];
-//	$gadgetDetector = $gadget_detectors_array[2];
+//	$gadgetDetectorString = $gadget_detectors_array[0];
+//	$gadgetDetectorString = $gadget_detectors_array[1];
+//	$gadgetDetectorString = $gadget_detectors_array[2];
 
 	global $gadgetDetectorIndex;
 	global $gadgetDetectorString;
@@ -45,7 +44,7 @@ function jmws_idMyGadget_for_wordpress()
 	$gadgetDetectorString = $gadget_detectors_array[$gadgetDetectorIndex];
 
 	global $jmwsIdMyGadget;
-	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetector);
+	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetectorString);
 
 	$jmwsIdMyGadget->usingJQueryMobile = FALSE;
 
@@ -84,6 +83,9 @@ function jmws_idmygadget_customize_register( $wp_customize )
 	) );
 }
 
+/*
+ * Check the theme name and add the idMyGadget options to it only if it knows how to use it.
+ */
 $theme_object = wp_get_theme();
 $theme_object_stylesheet = $theme_object->stylesheet;
 
