@@ -13,19 +13,10 @@ define( 'IDMYGADGET__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 require_once( IDMYGADGET__PLUGIN_DIR . '/JmwsIdMyGadgetWordpress.php' );
 // require_once 'jmws_idMyGadget_for_joomla/PhoneBurgerMenuIcon.php';
 
-/*
- * Array of Gadget Detectors
- */
-$gadget_detectors_array = array(
-	'detect_mobile_browsers',   // note that this is used as the default throughout
-	'mobile_detect',
-	'tera_wurfl'
-);
-
 $jmwsIdMyGadget = null;
 
 /**
- * @global array $gadget_detectors_array
+ *
  * @global object $jmwsIdMyGadget
  */
 function jmws_idMyGadget_for_wordpress()
@@ -44,15 +35,11 @@ function jmws_idMyGadget_for_wordpress()
 	$jmwsIdMyGadget->usingJQueryMobile = FALSE;
 
 	$idMyGadgetClass = get_class( $jmwsIdMyGadget->getIdMyGadget() );
-
 }
-
 add_action( 'wp', 'jmws_idMyGadget_for_wordpress' );
 
 function jmws_idmygadget_customize_register( $wp_customize )
 {
-
-	global $gadget_detectors_array;
 	//
 	// Add a section to the theme's Customize side bar that contains
 	// radio buttons that allow the admin to set the device detector.
