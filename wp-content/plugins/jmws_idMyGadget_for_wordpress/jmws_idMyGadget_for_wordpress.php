@@ -30,26 +30,19 @@ $jmwsIdMyGadget = null;
  */
 function jmws_idMyGadget_for_wordpress()
 {
-	global $gadget_detectors_array;
-//	print 'Hello World from jmws_idMyGadget_for_wordpress.php .';
-//	$gadgetDetectorString = $gadget_detectors_array[0];
-//	$gadgetDetectorString = $gadget_detectors_array[1];
-//	$gadgetDetectorString = $gadget_detectors_array[2];
+	global $gadgetDetectorIndex;    // global for debugging purposes, consider "locking it down?"
+	global $gadgetDetectorString;   // global for debugging purposes, consider "locking it down?"
+	global $idMyGadgetClass;        // global for debugging purposes, consider "locking it down?"
 
-	global $gadgetDetectorIndex;
-	global $gadgetDetectorString;
-//	$gadgetDetectorIndex = get_theme_mod('gadget_detector_select');
-//	$gadgetDetectorIndex = get_theme_mod('gadget_detector_radio');
 	$gadgetDetectorIndex = get_theme_mod('gadget_detector');
-	$gadgetDetectorString = $gadget_detectors_array[$gadgetDetectorIndex];
+	$supportedGadgetDetectors = JmwsIdMyGadgetWordpress::$supportedGadgetDetectors;
+	$gadgetDetectorString = $supportedGadgetDetectors[$gadgetDetectorIndex];
 
 	global $jmwsIdMyGadget;
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetectorString);
 
 	$jmwsIdMyGadget->usingJQueryMobile = FALSE;
 
-
-	global $idMyGadgetClass;
 	$idMyGadgetClass = get_class( $jmwsIdMyGadget->getIdMyGadget() );
 
 }
@@ -58,6 +51,7 @@ add_action( 'wp', 'jmws_idMyGadget_for_wordpress' );
 
 function jmws_idmygadget_customize_register( $wp_customize )
 {
+
 	global $gadget_detectors_array;
 	//
 	// Add a section to the theme's Customize side bar that contains
@@ -70,7 +64,7 @@ function jmws_idmygadget_customize_register( $wp_customize )
 	) );
 
 	$wp_customize->add_setting( 'gadget_detector' , array(
-		'default'     => $gadget_detectors_array[0],
+		'default'     => JmwsIdMyGadgetWordpress::$supportedGadgetDetectors[0],
 		'transport'   => 'refresh',
 	) );
 
@@ -78,7 +72,7 @@ function jmws_idmygadget_customize_register( $wp_customize )
 		'label'    => __( 'Gadget Detector', 'jmws_wp_vqsg_fs_idMyGadget' ),
 		'section'  => 'gadget_detector',
 		'type'     => 'radio',
-		'choices'  => $gadget_detectors_array,
+		'choices'  => JmwsIdMyGadgetWordpress::$supportedGadgetDetectors,
 		'priority' => 100,
 	) );
 }
