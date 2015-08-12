@@ -12,7 +12,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	/**
 	 * Array of idMyGadget gadget detectors
 	 */
-	public $supportedGadgetDetectors = array(
+	public static $supportedGadgetDetectors = array(
 		'detect_mobile_browsers',   // note that this is used as the default throughout
 		'mobile_detect',
 		'tera_wurfl'
