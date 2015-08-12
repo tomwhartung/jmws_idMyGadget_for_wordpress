@@ -47,6 +47,14 @@ class JmwsIdMyGadget
 	 * A string that represents the gadget being used
 	 */
 	protected $gadgetString = '';
+	/**
+	 * First character of the gadgetDetectorString
+	 */
+	protected $gadgetDetectorStringChar = '?';
+	/**
+	 * First character of the gadgetString
+	 */
+	protected $gadgetStringChar = '?';
 
 	/**
 	 * Constructor: for best results, specify a different gadgetDetector
@@ -95,6 +103,9 @@ class JmwsIdMyGadget
 				$this->gadgetString = self::GADGET_STRING_DETECTOR_NOT_INSTALLED;
 			}
 		}
+
+		$this->gadgetDetectorStringChar = substr( $this->gadgetDetectorString, 0, 1 );
+		$this->gadgetStringChar = substr( $this->gadgetString, 0, 1 );
 	}
 
 	/**
@@ -106,20 +117,33 @@ class JmwsIdMyGadget
 	}
 	/**
 	 * Returns a link to the appropriate README.md file on github
+	 * TODO: Change this class to use the PHP magic get feature
 	 */
 	public function getLinkToReadme()
 	{
 		return $this->idMyGadget->getLinkToReadme();
 	}
+
 	/**
 	 * The gadgetDetectorString is read-only!
+	 * TODO: Change this class to use the PHP magic get feature
 	 */
 	public function getGadgetDetectorString()
 	{
 		return $this->gadgetDetectorString;
 	}
 	/**
+	 * The first character of the gadgetDetectorString is read-only!
+	 * TODO: Change this class to use the PHP magic get feature
+	 */
+	public function getGadgetDetectorStringChar()
+	{
+		return $this->gadgetDetectorStringChar;
+	}
+
+	/**
 	 * The idMyGadget object is read-only!
+	 * TODO: Change this class to use the PHP magic get feature
 	 */
 	public function getIdMyGadget()
 	{
@@ -127,18 +151,30 @@ class JmwsIdMyGadget
 	}
 	/**
 	 * The device data is read-only!
+	 * TODO: Change this class to use the PHP magic get feature
 	 */
 	public function getDeviceData()
 	{
 		return $this->deviceData;
 	}
+
 	/**
 	 * The gadget string is read-only!
+	 * TODO: Change this class to use the PHP magic get feature
 	 */
 	public function getGadgetString()
 	{
 		return $this->gadgetString;   // set in constructor
 	}
+	/**
+	 * The first character of the gadget string is read-only!
+	 * TODO: Change this class to use the PHP magic get feature
+	 */
+	public function getGadgetStringChar()
+	{
+		return $this->gadgetStringChar;   // set in constructor
+	}
+
 	/**
 	 * Display the device data
 	 * @return string of <li> tags listing the device data
