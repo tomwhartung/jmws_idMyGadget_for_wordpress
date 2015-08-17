@@ -36,11 +36,9 @@ else
  <div id='content'>
  <h3>Standard Demos:</h3>
  <dl>
-	<dt><a href="README.md" target="_blank">README.md</a></dt>
-	<dd>The idMyGadget Mobile-Detect README file contains instructions on how to set up Mobile-Detect.
-		<a href="https://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/mobile_detect/README.md"
-			target="_blank">The formatted version on github</a>
-		is more readable.</dd>
+	<dt><a href="https://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/mobile_detect/README.md"
+	  target="_blank">README.md</a></dt>
+	<dd>The idMyGadget Mobile-Detect README file contains instructions on how to set up Mobile-Detect.</dd>
 	<?php
 		if ( ! $detectorInstalled )
 		{

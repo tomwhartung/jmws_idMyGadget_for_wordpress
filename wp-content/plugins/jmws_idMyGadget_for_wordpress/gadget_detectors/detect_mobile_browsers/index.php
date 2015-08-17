@@ -36,11 +36,9 @@ else
  <div id='content'>
  <h3>Standard Demos:</h3>
  <dl>
-	<dt><a href="README.md" target="_blank">README.md</a></dt>
-	<dd>Contains instructions on how to enable this option.
-		<a href="https://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/detect_mobile_browsers/README.md"
-			target="_blank">The formatted version on github</a>
-		is more readable.</dd>
+	<dt><a href="https://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/detect_mobile_browsers/README.md"
+	  target="_blank">README.md</a></dt>
+	<dd>Contains instructions on how to enable this option.</dd>
 	<?php
 		if ( ! $detectorInstalled )
 		{

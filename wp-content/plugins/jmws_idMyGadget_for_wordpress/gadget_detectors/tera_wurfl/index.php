@@ -35,11 +35,9 @@ print "<h1>$detectorName</h1>";
 <div id='content'>
 	<h3>Installation and Administration:</h3>
 	<dl>
-		<dt><a href="README.md" target="_blank">README.md</a></dt>
-		<dd>The idMyGadget Tera-Wurfl README file contains instructions on how to set up Tera-Wurfl.
-			<a href="https://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/tera_wurfl/README.md"
-			target="_blank">The formatted version on github</a>
-			is more readable.</dd>
+		<dt><a href="https://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/tera_wurfl/README.md"
+		  target="_blank">README.md</a></dt>
+		<dd>The idMyGadget Tera-Wurfl README file contains instructions on how to set up Tera-Wurfl.</dd>
 		<dt><a href="Tera-Wurfl/wurfl-dbapi/README.txt">Tera-Wurfl/wurfl-dbapi/README.txt</a></dt>
 		<dd>The Tera-Wurfl README file contains detailed installation instructions.</dd>
 		<dt><a href="Tera-Wurfl/wurfl-dbapi/admin/install.php">
