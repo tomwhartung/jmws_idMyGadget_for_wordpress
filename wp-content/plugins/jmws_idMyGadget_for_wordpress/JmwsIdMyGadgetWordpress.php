@@ -25,6 +25,11 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		''
 	);
 	/**
+	 * Used by when this plugin is not installed,
+	 * This should probably be the empty string, unless ...
+	 */
+	public $errorMessage = '';
+	/**
 	 * Boolean: Using jQuery Mobile changes everything, so we need to know when we are using it.
 	 * Although we always use it on phones, we do not always use it on tablets.
 	 */
