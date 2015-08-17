@@ -55,12 +55,12 @@ else
 			print '<dl>';
 		}
 	 ?>
-	<dt><a href="Mobile-Detect/examples/demo.php" <?php print $demoDisabledClass; ?> target="_blank">
-		Mobile-Detect/examples/demo.php</a></dt>
-	<dd>The Mobile-Detect example demo program</dd>
 	<dt><a href="rawDemo.php" <?php print $demoDisabledClass; ?> >rawDemo.php</a></dt>
 	<dd>Demonstrates <?php print $detectorName; ?>
 		device detection, <strong>without</strong> using the IdMyGadget Adapter API.</dd>
+	<dt><a href="Mobile-Detect/examples/demo.php" <?php print $demoDisabledClass; ?> target="_blank">
+		Mobile-Detect/examples/demo.php</a></dt>
+	<dd>The Mobile-Detect example demo program</dd>
 	<dt><a href="idMyGadgetDemo.php" <?php print $demoDisabledClass; ?> >idMyGadgetDemo.php</a></dt>
 	<dd>Demonstrates <?php print $detectorName; ?>
 		device detection, using the IdMyGadget Adapter API.</dd>
