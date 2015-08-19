@@ -14,6 +14,11 @@ require_once( IDMYGADGET__PLUGIN_DIR . '/JmwsIdMyGadgetWordpress.php' );
 // require_once 'jmws_idMyGadget_for_joomla/PhoneBurgerMenuIcon.php';
 
 $jmwsIdMyGadget = null;
+/*
+ * Get the theme name (aka. "stylesheet" in Wordpress speak)
+ */
+$theme_object = wp_get_theme();
+$theme_object_stylesheet = $theme_object->stylesheet;
 
 /**
  *
@@ -41,12 +46,13 @@ add_action( 'wp', 'jmws_idMyGadget_for_wordpress' );
 function jmws_idmygadget_customize_register( $wp_customize )
 {
 	global $theme_object_stylesheet;   // aka. the theme "name"
+
 	//
 	// Add a section to the theme's Customize side bar that contains
 	// radio buttons that allow the admin to set the device detector.
 	//
 	$wp_customize->add_section( 'gadget_detector' , array(
-		'title'      => __( 'IdMyGadget', 'jmws_wp_vqsg_fs_idMyGadget' ),
+		'title'      => __( 'IdMyGadget', $theme_object_stylesheet ),
 		'description' => __( 'Select the 3rd party device detector to use for this theme.' ),
 		'priority'   => 9999,
 	) );
@@ -57,7 +63,7 @@ function jmws_idmygadget_customize_register( $wp_customize )
 	) );
 
 	$wp_customize->add_control( 'gadget_detector', array(
-		'label'    => __( 'Gadget Detector', 'jmws_wp_vqsg_fs_idMyGadget' ),
+		'label'    => __( 'Gadget Detector', $theme_object_stylesheet ),
 		'section'  => 'gadget_detector',
 		'type'     => 'radio',
 		'choices'  => JmwsIdMyGadgetWordpress::$supportedGadgetDetectors,
@@ -69,11 +75,7 @@ function jmws_idmygadget_customize_register( $wp_customize )
  * Check the theme name (aka. "stylesheet") and add the idMyGadget options to it only
  *   if the theme actually "knows" how to use it.
  */
-$theme_object = wp_get_theme();
-$theme_object_stylesheet = $theme_object->stylesheet;
-
 if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes) )
 {
 	add_action( 'customize_register', 'jmws_idmygadget_customize_register' );
 }
-
