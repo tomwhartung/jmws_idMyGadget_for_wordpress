@@ -1,6 +1,7 @@
 <?php
 /**
  * Creates an object of the desired idMyGadget subclass and uses it for device detection.
+ * Ideally this should exactly match the class with the same name in jmws_idMyGadget_for_joomla.
  */
 if( !defined('DS') )
 {

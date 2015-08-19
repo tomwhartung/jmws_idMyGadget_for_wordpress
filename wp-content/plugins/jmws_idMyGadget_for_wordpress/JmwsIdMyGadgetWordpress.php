@@ -10,7 +10,7 @@ require_once 'JmwsIdMyGadget.php';
 class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 {
 	/**
-	 * Array of idMyGadget gadget detectors
+	 * Array of gadget detectors currently supported by idMyGadget
 	 */
 	public static $supportedGadgetDetectors = array(
 		'detect_mobile_browsers',   // note that this is used as the default throughout
@@ -20,9 +20,9 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	/**
 	 * Array of themes that know how to use idMyGadget
 	 */
-	public $supportedThemes = array(
+	public static $supportedThemes = array(
 		'jmws_wp_vqsg_ot_idMyGadget',
-		''
+		'jmws_twentyfifteen_idMyGadget'
 	);
 	/**
 	 * Used by when this plugin is not installed or active, etc.
