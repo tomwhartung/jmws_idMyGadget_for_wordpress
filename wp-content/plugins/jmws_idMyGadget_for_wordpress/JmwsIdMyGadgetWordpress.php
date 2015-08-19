@@ -25,8 +25,8 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		''
 	);
 	/**
-	 * Used by when this plugin is not installed,
-	 * This should probably be the empty string, unless ...
+	 * Used by when this plugin is not installed or active, etc.
+	 * Set only when there's an error.
 	 */
 	public $errorMessage = '';
 	/**
