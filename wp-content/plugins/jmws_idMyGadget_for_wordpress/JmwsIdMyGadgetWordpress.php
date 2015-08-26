@@ -22,7 +22,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 */
 	public static $supportedThemes = array(
 		'jmws_wp_vqsg_ot_idMyGadget',
-		'jmws_twentyfifteen_idMyGadget'
+		'jmws_wp_twentyfifteen_idMyGadget'
 	);
 	/**
 	 * Used by when this plugin is not installed or active, etc.
