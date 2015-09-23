@@ -13,18 +13,14 @@ global $jmwsIdMyGadget;
  */
 function idMyGadget_options_page()
 {
-?>
-<div>
-<h2>IdMyGadget Options</h2>
-Device-specific options for use by themes that know what to do with them.
-<form action="options.php" method="post">
-<?php settings_fields('plugin_options'); ?>
-<?php do_settings_sections('plugin'); ?>
- 
-<input name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" />
-</form></div>
- 
-<?php
-}
-?>
+	print '<div>';
+	print '<h2>IdMyGadget Options</h2>';
+	print '<p>Device-specific options for use by themes that know what to do with them.</p>';
+	print '<form action="options.php" method="post">';
 
+	settings_fields('plugin_options');
+	do_settings_sections('plugin');
+ 
+	print '<input name="Submit" type="submit" value="' . esc_attr_e('Save Changes') . '" />';
+	print '</form></div>';
+}

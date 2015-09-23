@@ -88,26 +88,7 @@ require_once 'idMyGadgetOptions.php';
 
 function idMyGadget_admin_add_page()
 {
-//	add_options_page('IdMyGadget Options Page', 'IdMyGadget', 'manage_options', 'idMyGadget', 'idMyGadget_options_page');
 	add_plugins_page('IdMyGadget Plugins Page', 'IdMyGadget', 'manage_options', 'idMyGadget', 'idMyGadget_options_page');
 }
 add_action('admin_menu', 'idMyGadget_admin_add_page');
 
-/**
- */
-function idMyGadget_options_page_OLD()
-{
-?>
-<div>
-<h2>IdMyGadget Options</h2>
-Options relating to the Custom Plugin.
-<form action="options.php" method="post">
-<?php settings_fields('plugin_options'); ?>
-<?php do_settings_sections('plugin'); ?>
- 
-<input name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" />
-</form></div>
- 
-<?php
-}
-?>
