@@ -1,8 +1,8 @@
 <?php
 /*
- * @package jmws_idMyGadget_for_wordpress
+ * @package idMyGadget
  *
- * Plugin Name: jmws_idMyGadget_for_wordpress
+ * Plugin Name: idMyGadget
  * Plugin URI: 
  * Description: Integrate idMyGadget with a couple of wordpress themes (to start).
  * Author: Tom Hartung
@@ -24,7 +24,7 @@ $theme_object_stylesheet = $theme_object->stylesheet;
  *
  * @global object $jmwsIdMyGadget
  */
-function jmws_idMyGadget_for_wordpress()
+function idMyGadget()
 {
 	global $gadgetDetectorIndex;    // global for debugging purposes, consider "locking it down?"
 	global $gadgetDetectorString;   // global for debugging purposes, consider "locking it down?"
@@ -41,7 +41,7 @@ function jmws_idMyGadget_for_wordpress()
 
 	$idMyGadgetClass = get_class( $jmwsIdMyGadget->getIdMyGadget() );
 }
-add_action( 'wp', 'jmws_idMyGadget_for_wordpress' );
+add_action( 'wp', 'idMyGadget' );
 
 function jmws_idmygadget_customize_register( $wp_customize )
 {
