@@ -84,7 +84,7 @@ if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes
  * Add the plugin's admin option page
  */
 function plugin_admin_add_page() {
-	add_options_page('IdMyGadget Options', 'IdMyGadget Options Plugin Menu', 'manage_options', 'plugin', 'plugin_options_page');
+	add_options_page('IdMyGadget Options', 'IdMyGadget', 'manage_options', 'jmws_IdMyGadget_for_wordpress', 'plugin_options_page');
 }
 add_action('admin_menu', 'plugin_admin_add_page');
 
@@ -95,7 +95,7 @@ function plugin_options_page()
 {
 ?>
 <div>
-<h2>My custom plugin</h2>
+<h2>IdMyGadget Options</h2>
 Options relating to the Custom Plugin.
 <form action="options.php" method="post">
 <?php settings_fields('plugin_options'); ?>
