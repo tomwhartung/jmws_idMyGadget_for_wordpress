@@ -18,11 +18,9 @@ function idMyGadget_options_page()
 	print '<p>Device-specific options for use by themes that know what to do with them.</p>';
 	print '<form action="options.php" method="post">';
 
-	settings_fields('plugin_options');
-	do_settings_sections('plugin');
+	settings_fields( 'idMyGadget_options' );
+	do_settings_sections( 'idMyGadget_options' );
  
-	print '<input name="Submit" type="submit" value="' . esc_attr_e('Save Changes') . '" />';
-
-	print '<input name="Submit" type="submit" value="' . esc_attr_e('Save Changes') . '" />';
+	submit_button();
 	print '</form></div>';
 }

@@ -11,7 +11,7 @@
  */
 define( 'IDMYGADGET__PLUGIN_DIR', plugin_dir_path( __FILE__ ) . DIRECTORY_SEPARATOR . 'idMyGadget' );
 require_once( IDMYGADGET__PLUGIN_DIR . DIRECTORY_SEPARATOR . 'JmwsIdMyGadgetWordpress.php' );
-// require_once 'jmws_idMyGadget_for_joomla/PhoneBurgerMenuIcon.php';
+// require_once 'idMyGadget/PhoneBurgerMenuIcon.php';
 
 $jmwsIdMyGadget = null;
 /*
@@ -43,7 +43,7 @@ function idMyGadget()
 }
 add_action( 'wp', 'idMyGadget' );
 
-function jmws_idmygadget_customize_register( $wp_customize )
+function idmygadget_customize_register( $wp_customize )
 {
 	global $theme_object_stylesheet;   // aka. the theme "name"
 
@@ -77,8 +77,16 @@ function jmws_idmygadget_customize_register( $wp_customize )
  */
 if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes) )
 {
-	add_action( 'customize_register', 'jmws_idmygadget_customize_register' );
+	add_action( 'customize_register', 'idmygadget_customize_register' );
 }
+
+/**
+ * Add the idMyGadget admin options
+ */
+function idMyGadget_admin_init()
+{
+}
+add_action( 'admin_init', 'idMyGadget_admin_init' );
 
 /**
  * Add the admin option page to display the idMyGadget options
@@ -88,7 +96,7 @@ require_once 'idMyGadgetOptionsPage.php';
 
 function idMyGadget_admin_add_page()
 {
-	add_plugins_page('IdMyGadget Plugins Page', 'IdMyGadget', 'manage_options', 'idMyGadget', 'idMyGadget_options_page');
+	add_plugins_page('IdMyGadget Options', 'IdMyGadget', 'manage_options', 'idMyGadget', 'idMyGadget_options_page');
 }
 add_action('admin_menu', 'idMyGadget_admin_add_page');
 
