@@ -81,8 +81,11 @@ if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes
 }
 
 /**
- * Add the plugin's admin option page
+ * Add the admin option page to display the idMyGadget options
+ * Markup for the form is in idMyGadgetOptions.php
  */
+require_once 'idMyGadgetOptions.php';
+
 function idMyGadget_admin_add_page()
 {
 //	add_options_page('IdMyGadget Options Page', 'IdMyGadget', 'manage_options', 'idMyGadget', 'idMyGadget_options_page');
@@ -91,9 +94,8 @@ function idMyGadget_admin_add_page()
 add_action('admin_menu', 'idMyGadget_admin_add_page');
 
 /**
- * Display the idMyGadget admin options page
  */
-function idMyGadget_options_page()
+function idMyGadget_options_page_OLD()
 {
 ?>
 <div>
