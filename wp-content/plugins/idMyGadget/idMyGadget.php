@@ -9,8 +9,8 @@
  * Version: 1.0
  * Author URI: http://tomwhartung.com/
  */
-define( 'IDMYGADGET__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-require_once( IDMYGADGET__PLUGIN_DIR . '/JmwsIdMyGadgetWordpress.php' );
+define( 'IDMYGADGET__PLUGIN_DIR', plugin_dir_path( __FILE__ ) . DIRECTORY_SEPARATOR . 'idMyGadget' );
+require_once( IDMYGADGET__PLUGIN_DIR . DIRECTORY_SEPARATOR . 'JmwsIdMyGadgetWordpress.php' );
 // require_once 'jmws_idMyGadget_for_joomla/PhoneBurgerMenuIcon.php';
 
 $jmwsIdMyGadget = null;
