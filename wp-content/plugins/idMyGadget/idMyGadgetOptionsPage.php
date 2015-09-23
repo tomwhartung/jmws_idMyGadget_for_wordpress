@@ -22,5 +22,7 @@ function idMyGadget_options_page()
 	do_settings_sections('plugin');
  
 	print '<input name="Submit" type="submit" value="' . esc_attr_e('Save Changes') . '" />';
+
+	print '<input name="Submit" type="submit" value="' . esc_attr_e('Save Changes') . '" />';
 	print '</form></div>';
 }
