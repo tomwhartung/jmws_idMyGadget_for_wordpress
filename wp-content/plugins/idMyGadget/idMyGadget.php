@@ -21,7 +21,7 @@ $theme_object = wp_get_theme();
 $theme_object_stylesheet = $theme_object->stylesheet;
 
 /**
- *
+ * Instantiate the IdMyGadget Device Detection object
  * @global object $jmwsIdMyGadget
  */
 function idMyGadget()
@@ -43,6 +43,15 @@ function idMyGadget()
 }
 add_action( 'wp', 'idMyGadget' );
 
+//
+// ------------------------------------------------
+// Adding options to the theme's Customization page
+// ------------------------------------------------
+//
+/**
+ * Add some options to the theme customization page's menu
+ * (Others get added to a separate page containing the plugin's options.)
+ */
 function idmygadget_customize_register( $wp_customize )
 {
 	global $theme_object_stylesheet;   // aka. the theme "name"
@@ -80,14 +89,18 @@ if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes
 	add_action( 'customize_register', 'idmygadget_customize_register' );
 }
 
+//
+// ---------------------------------------------------
+// Adding options to the plugin's special Options page
+// ---------------------------------------------------
+//
 /**
  * Add the idMyGadget admin options
  */
 function idMyGadget_admin_init()
 {
+	register_setting( 'idMyGadget_options', 'showSiteNameDesktop' );
 }
-add_action( 'admin_init', 'idMyGadget_admin_init' );
-
 /**
  * Add the admin option page to display the idMyGadget options
  * Markup for the form is in idMyGadgetOptions.php
@@ -98,5 +111,12 @@ function idMyGadget_admin_add_page()
 {
 	add_plugins_page('IdMyGadget Options', 'IdMyGadget', 'manage_options', 'idMyGadget', 'idMyGadget_options_page');
 }
-add_action('admin_menu', 'idMyGadget_admin_add_page');
+/*
+ * Add the options only when we are logged in as an admin
+ */
+if ( is_admin() )
+{
+	add_action('admin_menu', 'idMyGadget_admin_add_page');
+	add_action( 'admin_init', 'idMyGadget_admin_init' );
+}
 
