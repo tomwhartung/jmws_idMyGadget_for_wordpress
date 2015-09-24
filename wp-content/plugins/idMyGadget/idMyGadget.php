@@ -84,7 +84,7 @@ function idmygadget_customize_register( $wp_customize )
  * Check the theme name (aka. "stylesheet") and add the idMyGadget options to it only
  *   if the theme actually "knows" how to use it.
  */
-if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes) )
+if ( is_admin() && in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes) )
 {
 	add_action( 'customize_register', 'idmygadget_customize_register' );
 }
@@ -99,7 +99,9 @@ if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes
  */
 function idMyGadget_admin_init()
 {
-	register_setting( 'idMyGadget_options', 'showSiteNameDesktop' );
+	register_setting( 'idMyGadget_options', 'show_site_name_phone' );
+	register_setting( 'idMyGadget_options', 'show_site_name_tablet' );
+	register_setting( 'idMyGadget_options', 'show_site_name_desktop' );
 }
 /**
  * Add the admin option page to display the idMyGadget options

@@ -23,7 +23,23 @@ function idMyGadget_options_page()
 
 	settings_fields( 'idMyGadget_options' );
 	do_settings_sections( 'idMyGadget_options' );
- 
+?>
+   <table class="form-table">
+      <tr valign="top">
+         <th scope="row">Header Options for Phones</th>
+         <td><input type="text" name="show_site_name_phone" value="<?php echo esc_attr( get_option('show_site_name_phone') ); ?>" /></td>
+      </tr>
+      <tr valign="top">
+        <th scope="row">Header Options for Tablets</th>
+        <td><input type="text" name="show_site_name_tablet" value="<?php echo esc_attr( get_option('show_site_name_tablet') ); ?>" /></td>
+      </tr>
+      <tr valign="top">
+        <th scope="row">Header Options for Desktops</th>
+        <td><input type="text" name="show_site_name_desktop" value="<?php echo esc_attr( get_option('show_site_name_desktop') ); ?>" /></td>
+        </tr>
+    </table>
+
+<?php
 	submit_button();
 	print '</form></div>';
 }
