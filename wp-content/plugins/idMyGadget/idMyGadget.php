@@ -84,7 +84,7 @@ function idmygadget_customize_register( $wp_customize )
  * Check the theme name (aka. "stylesheet") and add the idMyGadget options to it only
  *   if the theme actually "knows" how to use it.
  */
-if ( is_admin() && in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes) )
+if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes) )
 {
 	add_action( 'customize_register', 'idmygadget_customize_register' );
 }
@@ -95,30 +95,67 @@ if ( is_admin() && in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$s
 // ---------------------------------------------------
 //
 /**
- * Add the idMyGadget admin options
- */
-function idMyGadget_admin_init()
-{
-	register_setting( 'idMyGadget_options', 'show_site_name_phone' );
-	register_setting( 'idMyGadget_options', 'show_site_name_tablet' );
-	register_setting( 'idMyGadget_options', 'show_site_name_desktop' );
-}
-/**
  * Add the admin option page to display the idMyGadget options
  * Markup for the form is in idMyGadgetOptions.php
  */
 require_once 'idMyGadgetOptionsPage.php';
-
 function idMyGadget_admin_add_page()
 {
-	add_plugins_page('IdMyGadget Options', 'IdMyGadget', 'manage_options', 'idMyGadget', 'idMyGadget_options_page');
-}
-/*
- * Add the options only when we are logged in as an admin
- */
-if ( is_admin() )
-{
-	add_action('admin_menu', 'idMyGadget_admin_add_page');
-	add_action( 'admin_init', 'idMyGadget_admin_init' );
+	add_plugins_page('IdMyGadget Options', 'IdMyGadget', 'manage_options', 'idMyGadget_options_page', 'idMyGadget_options_page');
+//	add_submenu_page('plugins.php', 'SubMenu Page', 'SubMenu Title', 'manage_options', 'idMyGadget_options_page');
 }
 
+if ( is_admin() )  // Add the options only when we are logged in as an admin
+{
+	add_action( 'admin_menu', 'idMyGadget_admin_add_page' );
+}
+
+/**
+ * Add the idMyGadget admin options
+ */
+function idMyGadget_admin_init()
+{
+	register_setting( 'idMyGadget_options', 'logo_file_phone', 'idMyGadget_sanitize_image_file' );
+	register_setting( 'idMyGadget_options', 'show_site_name_phone', 'idMyGadget_sanitize_boolean' );
+	register_setting( 'idMyGadget_options', 'site_name_element_phone', 'idMyGadget_sanitize_element' );
+	register_setting( 'idMyGadget_options', 'site_title_phone', 'idMyGadget_sanitize_string' );
+	register_setting( 'idMyGadget_options', 'site_title_element_phone', 'idMyGadget_sanitize_element' );
+	register_setting( 'idMyGadget_options', 'site_description_phone', 'idMyGadget_sanitize_string' );
+	register_setting( 'idMyGadget_options', 'site_description_element_phone', 'idMyGadget_sanitize_element' );
+
+	add_settings_section( 'phone_options',
+		'Phone Options',
+		'idMyGadget_section_html',
+		'idMyGadget_options_page' );
+
+	add_settings_field( 'show_site_name_phone',
+		'Show Site Name Phone',
+		'show_site_name_phone_html',
+		'idMyGadget_options_page',
+		'phone_options',
+		array( 'label_for' => 'show_site_name_phone' ) );
+
+	// ...
+	register_setting( 'idMyGadget_options', 'logo_file_tablet', 'idMyGadget_sanitize_image_file' );
+	register_setting( 'idMyGadget_options', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean' );
+
+	register_setting( 'idMyGadget_options', 'logo_file_desktop', 'idMyGadget_sanitize_image_file' );
+	register_setting( 'idMyGadget_options', 'show_site_name_desktop', 'idMyGadget_sanitize_boolean' );
+}
+
+// if ( is_admin() )  // Add the options only when we are logged in as an admin
+// {
+	add_action( 'admin_init', 'idMyGadget_admin_init' );
+// }
+
+function idMyGadget_section_html( $section_data )
+{
+	echo '<h3>Section Title:' . $section_data['title'] . '</h3>';
+	
+}
+
+function show_site_name_phone_html( $field_data )
+{
+	echo '<p>Field Title:' . $field_data['title'] . '</p>';
+	
+}
