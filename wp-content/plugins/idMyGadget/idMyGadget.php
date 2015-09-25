@@ -170,7 +170,7 @@ function idMyGadget_admin_init()
 	register_setting( 'idMyGadget_option_settings', 'site_title_phone', 'idMyGadget_sanitize_string_fcn' );
 	add_settings_field( 'site_title_phone',
 		'Site Title Phone',
-		'site_name_text_box_html_fcn',
+		'header_text_box_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
 		array(
@@ -195,7 +195,7 @@ function idMyGadget_admin_init()
 	register_setting( 'idMyGadget_option_settings', 'site_description_phone', 'idMyGadget_sanitize_string_fcn' );
 	add_settings_field( 'site_description_phone',
 		'Tag Line Phone',
-		'site_name_text_box_html_fcn',
+		'header_text_box_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
 		array(
@@ -311,7 +311,7 @@ function header_element_select_html_fcn( $field_data )
 
 	echo '</select>';
 }
-function site_name_text_box_html_fcn( $field_data )
+function header_text_box_html_fcn( $field_data )
 {
 	$name = $field_data['name'];
 	$value = $field_data['value'];
