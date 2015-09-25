@@ -123,15 +123,15 @@ function idMyGadget_admin_init()
 	register_setting( 'idMyGadget_options', 'site_description_phone', 'idMyGadget_sanitize_string' );
 	register_setting( 'idMyGadget_options', 'site_description_element_phone', 'idMyGadget_sanitize_element' );
 
-	add_settings_section( 'phone_options',
-		'Phone Options',
+	add_settings_section( 'idMyGadget_phone_options',
+		'Phones',
 		'idMyGadget_section_html',
-		'idMyGadget_options_page' );
+		'idMyGadget_options' );
 
 	add_settings_field( 'show_site_name_phone',
 		'Show Site Name Phone',
 		'show_site_name_phone_html',
-		'idMyGadget_options_page',
+		'idMyGadget_options',
 		'phone_options',
 		array( 'label_for' => 'show_site_name_phone' ) );
 
@@ -150,8 +150,7 @@ function idMyGadget_admin_init()
 
 function idMyGadget_section_html( $section_data )
 {
-	echo '<h3>Section Title:' . $section_data['title'] . '</h3>';
-	
+	echo '<p>Device-specific options for ' . $section_data['title'] . '</p>';
 }
 
 function show_site_name_phone_html( $field_data )
