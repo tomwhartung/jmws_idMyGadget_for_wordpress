@@ -105,7 +105,7 @@ function idMyGadget_admin_menu_add_options_page()
 		'IdMyGadget',
 		'manage_options',
 		__FILE__,
-		'idMyGadget_options_page_html_fn'    // Form markup is in idMyGadgetOptions.php
+		'idMyGadget_options_page_html_fn'    // Form markup is in idMyGadgetOptionsPage.php
 	);
 }
 
@@ -122,39 +122,39 @@ function idMyGadget_admin_init()
 	add_settings_section( 'idMyGadget_phone_options',
 		'Phones',
 		'idMyGadget_section_html_fn',
-		'idMyGadget_options' );
+		'idMyGadget_option_settings' );
 
 	add_settings_section( 'idMyGadget_tablet_options',
 		'Tablets',
 		'idMyGadget_section_html_fn',
-		'idMyGadget_options' );
+		'idMyGadget_option_settings' );
 
 	add_settings_section( 'idMyGadget_desktop_options',
 		'Desktops',
 		'idMyGadget_section_html_fn',
-		'idMyGadget_options' );
+		'idMyGadget_option_settings' );
 
-	register_setting( 'idMyGadget_options', 'logo_file_phone', 'idMyGadget_sanitize_image_file_fn' );
-	register_setting( 'idMyGadget_options', 'show_site_name_phone', 'idMyGadget_sanitize_boolean_fn' );
-	register_setting( 'idMyGadget_options', 'site_name_element_phone', 'idMyGadget_sanitize_element_fn' );
-	register_setting( 'idMyGadget_options', 'site_title_phone', 'idMyGadget_sanitize_string_fn' );
-	register_setting( 'idMyGadget_options', 'site_title_element_phone', 'idMyGadget_sanitize_element_fn' );
-	register_setting( 'idMyGadget_options', 'site_description_phone', 'idMyGadget_sanitize_string_fn' );
-	register_setting( 'idMyGadget_options', 'site_description_element_phone', 'idMyGadget_sanitize_element_fn' );
+	register_setting( 'idMyGadget_option_settings', 'logo_file_phone', 'idMyGadget_sanitize_image_file_fn' );
+	register_setting( 'idMyGadget_option_settings', 'show_site_name_phone', 'idMyGadget_sanitize_boolean_fn' );
+	register_setting( 'idMyGadget_option_settings', 'site_name_element_phone', 'idMyGadget_sanitize_element_fn' );
+	register_setting( 'idMyGadget_option_settings', 'site_title_phone', 'idMyGadget_sanitize_string_fn' );
+	register_setting( 'idMyGadget_option_settings', 'site_title_element_phone', 'idMyGadget_sanitize_element_fn' );
+	register_setting( 'idMyGadget_option_settings', 'site_description_phone', 'idMyGadget_sanitize_string_fn' );
+	register_setting( 'idMyGadget_option_settings', 'site_description_element_phone', 'idMyGadget_sanitize_element_fn' );
 
 	add_settings_field( 'show_site_name_phone',
 		'Show Site Name Phone',
 		'show_site_name_radio_buttons_fn',
-		'idMyGadget_options',
+		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
 		array( 'label_for' => 'show_site_name_phone' ) );
 
 	// ...
-	register_setting( 'idMyGadget_options', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fn' );
-	register_setting( 'idMyGadget_options', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean_fn' );
+	register_setting( 'idMyGadget_option_settings', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fn' );
+	register_setting( 'idMyGadget_option_settings', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean_fn' );
 
-	register_setting( 'idMyGadget_options', 'logo_file_desktop', 'idMyGadget_sanitize_image_file_fn' );
-	register_setting( 'idMyGadget_options', 'show_site_name_desktop', 'idMyGadget_sanitize_boolean_fn' );
+	register_setting( 'idMyGadget_option_settings', 'logo_file_desktop', 'idMyGadget_sanitize_image_file_fn' );
+	register_setting( 'idMyGadget_option_settings', 'show_site_name_desktop', 'idMyGadget_sanitize_boolean_fn' );
 }
 
 // if ( is_admin() )  // Add the options only when we are logged in as an admin

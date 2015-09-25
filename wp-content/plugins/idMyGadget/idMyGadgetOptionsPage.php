@@ -21,8 +21,8 @@ function idMyGadget_options_page_html_fn()
 	print '<p>Device-specific options for use by themes that know what to do with them.</p>';
 	print '<form action="options.php" method="post">';
 
-	settings_fields( 'idMyGadget_options' );
-	do_settings_sections( 'idMyGadget_options' );
+	settings_fields( 'idMyGadget_option_settings' );
+	do_settings_sections( 'idMyGadget_option_settings' );
 ?>
    <table class="form-table">
       <tr valign="top">
