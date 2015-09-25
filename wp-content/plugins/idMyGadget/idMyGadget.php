@@ -151,7 +151,7 @@ function idMyGadget_admin_init()
 		'site_name_element_select_html_fn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
-		array( 'label_for' => 'show_site_name_phone' ) );
+		array( 'label_for' => 'site_name_element_phone' ) );
 
 	register_setting( 'idMyGadget_option_settings', 'site_title_phone', 'idMyGadget_sanitize_string_fn' );
 	add_settings_field( 'site_title_phone',
@@ -159,7 +159,7 @@ function idMyGadget_admin_init()
 		'site_name_text_box_html_fn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
-		array( 'label_for' => 'show_site_name_phone' ) );
+		array( 'label_for' => 'site_title_phone' ) );
 
 	register_setting( 'idMyGadget_option_settings', 'site_title_element_phone', 'idMyGadget_sanitize_element_fn' );
 	register_setting( 'idMyGadget_option_settings', 'site_description_phone', 'idMyGadget_sanitize_string_fn' );
@@ -207,13 +207,24 @@ function show_site_name_radio_buttons_html_fn( $field_data )
  *
  * @param type $field_data
  */
+$validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
 function site_name_element_select_html_fn( $field_data )
 {
+	global $validElements;
+	echo '<select>';
 
+	foreach( $validElements as $elt )
+	{
+		echo '<option value="' . $elt . '">' . $elt;
+		echo '</option>';
+	}
+
+	echo '</select>';
 }
 function site_name_text_box_html_fn( $field_data )
 {
-
+	echo '<label><input type="text" value="' . esc_attr(get_option('show_site_name_tablet')) . '" />';
+	echo '</label>';
 }
 //
 // Functions to sanitize user input
