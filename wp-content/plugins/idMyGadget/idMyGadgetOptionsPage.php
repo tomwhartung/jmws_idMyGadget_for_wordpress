@@ -43,29 +43,6 @@ function idMyGadget_options_page()
 	submit_button();
 	print '</form></div>';
 }
-//
-// Code to sanitize user input
-//
-function idMyGadget_sanitize_boolean( $input )
-{
-	error_log( 'ToDo: implement function idMyGadget_sanitize_boolean()' );
-	return $input;
-}
-function idMyGadget_sanitize_element( $input )
-{
-	error_log( 'ToDo: implement function idMyGadget_sanitize_element()' );
-	return $input;
-}
-function idMyGadget_sanitize_radio( $input )
-{
-	error_log( 'ToDo: implement function idMyGadget_sanitize_radio()' );
-	return $input;
-}
-function idMyGadget_sanitize_string( $input )
-{
-	error_log( 'ToDo: implement function idMyGadget_sanitize_string()' );
-	return $input;
-}
 
 //
 // DEBUG CODE - remove when everything is working just exactly perfect

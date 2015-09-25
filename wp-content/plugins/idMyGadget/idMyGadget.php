@@ -117,26 +117,26 @@ function idMyGadget_admin_init()
 {
 	add_settings_section( 'idMyGadget_phone_options',
 		'Phones',
-		'idMyGadget_section_html',
+		'idMyGadget_section_html_fn',
 		'idMyGadget_options' );
 
 	add_settings_section( 'idMyGadget_tablet_options',
 		'Tablets',
-		'idMyGadget_section_html',
+		'idMyGadget_section_html_fn',
 		'idMyGadget_options' );
 
 	add_settings_section( 'idMyGadget_desktop_options',
 		'Desktops',
-		'idMyGadget_section_html',
+		'idMyGadget_section_html_fn',
 		'idMyGadget_options' );
 
-	register_setting( 'idMyGadget_options', 'logo_file_phone', 'idMyGadget_sanitize_image_file' );
-	register_setting( 'idMyGadget_options', 'show_site_name_phone', 'idMyGadget_sanitize_boolean' );
-	register_setting( 'idMyGadget_options', 'site_name_element_phone', 'idMyGadget_sanitize_element' );
-	register_setting( 'idMyGadget_options', 'site_title_phone', 'idMyGadget_sanitize_string' );
-	register_setting( 'idMyGadget_options', 'site_title_element_phone', 'idMyGadget_sanitize_element' );
-	register_setting( 'idMyGadget_options', 'site_description_phone', 'idMyGadget_sanitize_string' );
-	register_setting( 'idMyGadget_options', 'site_description_element_phone', 'idMyGadget_sanitize_element' );
+	register_setting( 'idMyGadget_options', 'logo_file_phone', 'idMyGadget_sanitize_image_file_fn' );
+	register_setting( 'idMyGadget_options', 'show_site_name_phone', 'idMyGadget_sanitize_boolean_fn' );
+	register_setting( 'idMyGadget_options', 'site_name_element_phone', 'idMyGadget_sanitize_element_fn' );
+	register_setting( 'idMyGadget_options', 'site_title_phone', 'idMyGadget_sanitize_string_fn' );
+	register_setting( 'idMyGadget_options', 'site_title_element_phone', 'idMyGadget_sanitize_element_fn' );
+	register_setting( 'idMyGadget_options', 'site_description_phone', 'idMyGadget_sanitize_string_fn' );
+	register_setting( 'idMyGadget_options', 'site_description_element_phone', 'idMyGadget_sanitize_element_fn' );
 
 	add_settings_field( 'show_site_name_phone',
 		'Show Site Name Phone',
@@ -146,11 +146,11 @@ function idMyGadget_admin_init()
 		array( 'label_for' => 'show_site_name_phone' ) );
 
 	// ...
-	register_setting( 'idMyGadget_options', 'logo_file_tablet', 'idMyGadget_sanitize_image_file' );
-	register_setting( 'idMyGadget_options', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean' );
+	register_setting( 'idMyGadget_options', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fn' );
+	register_setting( 'idMyGadget_options', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean_fn' );
 
-	register_setting( 'idMyGadget_options', 'logo_file_desktop', 'idMyGadget_sanitize_image_file' );
-	register_setting( 'idMyGadget_options', 'show_site_name_desktop', 'idMyGadget_sanitize_boolean' );
+	register_setting( 'idMyGadget_options', 'logo_file_desktop', 'idMyGadget_sanitize_image_file_fn' );
+	register_setting( 'idMyGadget_options', 'show_site_name_desktop', 'idMyGadget_sanitize_boolean_fn' );
 }
 
 // if ( is_admin() )  // Add the options only when we are logged in as an admin
@@ -158,7 +158,7 @@ function idMyGadget_admin_init()
 	add_action( 'admin_init', 'idMyGadget_admin_init' );
 // }
 
-function idMyGadget_section_html( $section_data )
+function idMyGadget_section_html_fn( $section_data )
 {
 	echo '<p>Device-specific options for ' . $section_data['title'] . '</p>';
 }
@@ -175,3 +175,28 @@ function show_site_name_radio_buttons_fn( $field_data )
 		echo '</label>';
 	}
 }
+
+//
+// Functions to sanitize user input
+//
+function idMyGadget_sanitize_boolean_fn( $input )
+{
+	error_log( 'ToDo: implement function idMyGadget_sanitize_boolean_fn()' );
+	return $input;
+}
+function idMyGadget_sanitize_element_fn( $input )
+{
+	error_log( 'ToDo: implement function idMyGadget_sanitize_element_fn()' );
+	return $input;
+}
+function idMyGadget_sanitize_radio_fn( $input )
+{
+	error_log( 'ToDo: implement function idMyGadget_sanitize_radio_fn()' );
+	return $input;
+}
+function idMyGadget_sanitize_string_fn( $input )
+{
+	error_log( 'ToDo: implement function idMyGadget_sanitize_string_fn()' );
+	return $input;
+}
+
