@@ -126,10 +126,44 @@ function idMyGadget_admin_init()
 {
 	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
 
+	// TODO: use this array for the radio buttons?
+	//
+	$radioChoices = array( 'Yes', 'No' );
+
 	add_settings_section( 'idMyGadget_phone_options',
 		'Phones',
 		'idMyGadget_section_html_fn',
 		'idMyGadget_option_settings' );
+
+	register_setting( 'idMyGadget_option_settings', 'logo_file_phone', 'idMyGadget_sanitize_image_file_fn' );
+
+	register_setting( 'idMyGadget_option_settings', 'show_site_name_phone', 'idMyGadget_sanitize_boolean_fn' );
+	add_settings_field( 'show_site_name_phone',
+		'Show Site Name Phone',
+		'show_site_name_radio_buttons_html_fn',
+		'idMyGadget_option_settings',
+		'idMyGadget_phone_options',
+		array( 'label_for' => 'show_site_name_phone' ) );
+
+	register_setting( 'idMyGadget_option_settings', 'site_name_element_phone', 'idMyGadget_sanitize_element_fn' );
+	add_settings_field( 'site_name_element_phone',
+		'Site Name Element Phone',
+		'site_name_element_select_html_fn',
+		'idMyGadget_option_settings',
+		'idMyGadget_phone_options',
+		array( 'label_for' => 'show_site_name_phone' ) );
+
+	register_setting( 'idMyGadget_option_settings', 'site_title_phone', 'idMyGadget_sanitize_string_fn' );
+	add_settings_field( 'site_title_phone',
+		'Site Title Phone',
+		'site_name_text_box_html_fn',
+		'idMyGadget_option_settings',
+		'idMyGadget_phone_options',
+		array( 'label_for' => 'show_site_name_phone' ) );
+
+	register_setting( 'idMyGadget_option_settings', 'site_title_element_phone', 'idMyGadget_sanitize_element_fn' );
+	register_setting( 'idMyGadget_option_settings', 'site_description_phone', 'idMyGadget_sanitize_string_fn' );
+	register_setting( 'idMyGadget_option_settings', 'site_description_element_phone', 'idMyGadget_sanitize_element_fn' );
 
 	add_settings_section( 'idMyGadget_tablet_options',
 		'Tablets',
@@ -140,21 +174,6 @@ function idMyGadget_admin_init()
 		'Desktops',
 		'idMyGadget_section_html_fn',
 		'idMyGadget_option_settings' );
-
-	register_setting( 'idMyGadget_option_settings', 'logo_file_phone', 'idMyGadget_sanitize_image_file_fn' );
-	register_setting( 'idMyGadget_option_settings', 'show_site_name_phone', 'idMyGadget_sanitize_boolean_fn' );
-	register_setting( 'idMyGadget_option_settings', 'site_name_element_phone', 'idMyGadget_sanitize_element_fn' );
-	register_setting( 'idMyGadget_option_settings', 'site_title_phone', 'idMyGadget_sanitize_string_fn' );
-	register_setting( 'idMyGadget_option_settings', 'site_title_element_phone', 'idMyGadget_sanitize_element_fn' );
-	register_setting( 'idMyGadget_option_settings', 'site_description_phone', 'idMyGadget_sanitize_string_fn' );
-	register_setting( 'idMyGadget_option_settings', 'site_description_element_phone', 'idMyGadget_sanitize_element_fn' );
-
-	add_settings_field( 'show_site_name_phone',
-		'Show Site Name Phone',
-		'show_site_name_radio_buttons_fn',
-		'idMyGadget_option_settings',
-		'idMyGadget_phone_options',
-		array( 'label_for' => 'show_site_name_phone' ) );
 
 	// ...
 	register_setting( 'idMyGadget_option_settings', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fn' );
@@ -174,10 +193,8 @@ function idMyGadget_section_html_fn( $section_data )
 	echo '<p>Device-specific options for ' . $section_data['title'] . '</p>';
 }
 
-function show_site_name_radio_buttons_fn( $field_data )
+function show_site_name_radio_buttons_html_fn( $field_data )
 {
-//	echo '<p>print_r($field_data):</p>';
-//	print_r( $field_data );
 	$choices = array( 'Yes', 'No' );
 	foreach( $choices as $choice )
 	{
@@ -186,7 +203,18 @@ function show_site_name_radio_buttons_fn( $field_data )
 		echo '</label>';
 	}
 }
+/**
+ *
+ * @param type $field_data
+ */
+function site_name_element_select_html_fn( $field_data )
+{
 
+}
+function site_name_text_box_html_fn( $field_data )
+{
+
+}
 //
 // Functions to sanitize user input
 //
