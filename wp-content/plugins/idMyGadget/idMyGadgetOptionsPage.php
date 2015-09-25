@@ -11,7 +11,7 @@ global $jmwsIdMyGadget;
 /**
  * Display the idMyGadget admin options page
  */
-function idMyGadget_options_page_html_fn()
+function idMyGadget_options_page_html_fcn()
 {
 	print '<div class="dump-options">';
 	idMyGadget_dump_options();

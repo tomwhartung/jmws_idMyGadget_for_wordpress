@@ -105,7 +105,7 @@ function idMyGadget_admin_menu_add_options_page()
 		'IdMyGadget',
 		'manage_options',
 		__FILE__,
-		'idMyGadget_options_page_html_fn'    // Form markup is in idMyGadgetOptionsPage.php
+		'idMyGadget_options_page_html_fcn'    // Form markup is in idMyGadgetOptionsPage.php
 	);
 	add_action( 'admin_print_styles-' . $page, 'idMyGadget_include_admin_styles' );
 }
@@ -132,55 +132,55 @@ function idMyGadget_admin_init()
 
 	add_settings_section( 'idMyGadget_phone_options',
 		'Phones',
-		'idMyGadget_section_html_fn',
+		'idMyGadget_section_html_fcn',
 		'idMyGadget_option_settings' );
 
-	register_setting( 'idMyGadget_option_settings', 'logo_file_phone', 'idMyGadget_sanitize_image_file_fn' );
+	register_setting( 'idMyGadget_option_settings', 'logo_file_phone', 'idMyGadget_sanitize_image_file_fcn' );
 
-	register_setting( 'idMyGadget_option_settings', 'show_site_name_phone', 'idMyGadget_sanitize_boolean_fn' );
+	register_setting( 'idMyGadget_option_settings', 'show_site_name_phone', 'idMyGadget_sanitize_boolean_fcn' );
 	add_settings_field( 'show_site_name_phone',
 		'Show Site Name Phone',
-		'show_site_name_radio_buttons_html_fn',
+		'show_site_name_radio_buttons_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
 		array( 'label_for' => 'show_site_name_phone' ) );
 
-	register_setting( 'idMyGadget_option_settings', 'site_name_element_phone', 'idMyGadget_sanitize_element_fn' );
+	register_setting( 'idMyGadget_option_settings', 'site_name_element_phone', 'idMyGadget_sanitize_element_fcn' );
 	add_settings_field( 'site_name_element_phone',
 		'Site Name Element Phone',
-		'site_name_element_select_html_fn',
+		'site_name_element_select_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
 		array( 'label_for' => 'site_name_element_phone' ) );
 
-	register_setting( 'idMyGadget_option_settings', 'site_title_phone', 'idMyGadget_sanitize_string_fn' );
+	register_setting( 'idMyGadget_option_settings', 'site_title_phone', 'idMyGadget_sanitize_string_fcn' );
 	add_settings_field( 'site_title_phone',
 		'Site Title Phone',
-		'site_name_text_box_html_fn',
+		'site_name_text_box_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
 		array( 'label_for' => 'site_title_phone' ) );
 
-	register_setting( 'idMyGadget_option_settings', 'site_title_element_phone', 'idMyGadget_sanitize_element_fn' );
-	register_setting( 'idMyGadget_option_settings', 'site_description_phone', 'idMyGadget_sanitize_string_fn' );
-	register_setting( 'idMyGadget_option_settings', 'site_description_element_phone', 'idMyGadget_sanitize_element_fn' );
+	register_setting( 'idMyGadget_option_settings', 'site_title_element_phone', 'idMyGadget_sanitize_element_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'site_description_phone', 'idMyGadget_sanitize_string_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'site_description_element_phone', 'idMyGadget_sanitize_element_fcn' );
 
 	add_settings_section( 'idMyGadget_tablet_options',
 		'Tablets',
-		'idMyGadget_section_html_fn',
+		'idMyGadget_section_html_fcn',
 		'idMyGadget_option_settings' );
 
 	add_settings_section( 'idMyGadget_desktop_options',
 		'Desktops',
-		'idMyGadget_section_html_fn',
+		'idMyGadget_section_html_fcn',
 		'idMyGadget_option_settings' );
 
 	// ...
-	register_setting( 'idMyGadget_option_settings', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fn' );
-	register_setting( 'idMyGadget_option_settings', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean_fn' );
+	register_setting( 'idMyGadget_option_settings', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean_fcn' );
 
-	register_setting( 'idMyGadget_option_settings', 'logo_file_desktop', 'idMyGadget_sanitize_image_file_fn' );
-	register_setting( 'idMyGadget_option_settings', 'show_site_name_desktop', 'idMyGadget_sanitize_boolean_fn' );
+	register_setting( 'idMyGadget_option_settings', 'logo_file_desktop', 'idMyGadget_sanitize_image_file_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'show_site_name_desktop', 'idMyGadget_sanitize_boolean_fcn' );
 }
 
 // if ( is_admin() )  // Add the options only when we are logged in as an admin
@@ -188,12 +188,12 @@ function idMyGadget_admin_init()
 	add_action( 'admin_init', 'idMyGadget_admin_init' );
 // }
 
-function idMyGadget_section_html_fn( $section_data )
+function idMyGadget_section_html_fcn( $section_data )
 {
 	echo '<p>Device-specific options for ' . $section_data['title'] . '</p>';
 }
 
-function show_site_name_radio_buttons_html_fn( $field_data )
+function show_site_name_radio_buttons_html_fcn( $field_data )
 {
 	$choices = array( 'Yes', 'No' );
 	foreach( $choices as $choice )
@@ -208,7 +208,7 @@ function show_site_name_radio_buttons_html_fn( $field_data )
  * @param type $field_data
  */
 $validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
-function site_name_element_select_html_fn( $field_data )
+function site_name_element_select_html_fcn( $field_data )
 {
 	global $validElements;
 	echo '<select>';
@@ -221,7 +221,7 @@ function site_name_element_select_html_fn( $field_data )
 
 	echo '</select>';
 }
-function site_name_text_box_html_fn( $field_data )
+function site_name_text_box_html_fcn( $field_data )
 {
 	echo '<label><input type="text" value="' . esc_attr(get_option('show_site_name_tablet')) . '" />';
 	echo '</label>';
@@ -229,24 +229,29 @@ function site_name_text_box_html_fn( $field_data )
 //
 // Functions to sanitize user input
 //
-function idMyGadget_sanitize_boolean_fn( $input )
+function idMyGadget_sanitize_boolean_fcn( $input )
 {
-	error_log( 'ToDo: implement function idMyGadget_sanitize_boolean_fn()' );
+	error_log( 'ToDo: implement function idMyGadget_sanitize_boolean_fcn()' );
 	return $input;
 }
-function idMyGadget_sanitize_element_fn( $input )
+function idMyGadget_sanitize_element_fcn( $input )
 {
-	error_log( 'ToDo: implement function idMyGadget_sanitize_element_fn()' );
+	error_log( 'ToDo: implement function idMyGadget_sanitize_element_fcn()' );
 	return $input;
 }
-function idMyGadget_sanitize_radio_fn( $input )
+function idMyGadget_sanitize_image_file_fcn( $input )
 {
-	error_log( 'ToDo: implement function idMyGadget_sanitize_radio_fn()' );
+	error_log( 'ToDo: implement function idMyGadget_sanitize_image_file_fcn()' );
 	return $input;
 }
-function idMyGadget_sanitize_string_fn( $input )
+function idMyGadget_sanitize_radio_fcn( $input )
 {
-	error_log( 'ToDo: implement function idMyGadget_sanitize_string_fn()' );
+	error_log( 'ToDo: implement function idMyGadget_sanitize_radio_fcn()' );
+	return $input;
+}
+function idMyGadget_sanitize_string_fcn( $input )
+{
+	error_log( 'ToDo: implement function idMyGadget_sanitize_string_fcn()' );
 	return $input;
 }
 
