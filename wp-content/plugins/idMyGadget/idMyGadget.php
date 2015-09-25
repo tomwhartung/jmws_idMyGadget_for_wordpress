@@ -100,13 +100,18 @@ if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes
 require_once 'idMyGadgetOptionsPage.php';
 function idMyGadget_admin_menu_add_options_page()
 {
-	add_plugins_page(
+	$page = add_plugins_page(
 		'IdMyGadget Options',
 		'IdMyGadget',
 		'manage_options',
 		__FILE__,
 		'idMyGadget_options_page_html_fn'    // Form markup is in idMyGadgetOptionsPage.php
 	);
+	add_action( 'admin_print_styles-' . $page, 'idMyGadget_include_admin_styles' );
+}
+function idMyGadget_include_admin_styles()
+{
+	wp_enqueue_style( 'idMyGadgetStylesheet' );
 }
 
 if ( is_admin() )  // Add the options only when we are logged in as an admin
@@ -119,6 +124,8 @@ if ( is_admin() )  // Add the options only when we are logged in as an admin
  */
 function idMyGadget_admin_init()
 {
+	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
+
 	add_settings_section( 'idMyGadget_phone_options',
 		'Phones',
 		'idMyGadget_section_html_fn',
@@ -175,7 +182,7 @@ function show_site_name_radio_buttons_fn( $field_data )
 	foreach( $choices as $choice )
 	{
 		$checked = '';
-		echo '<label><input ' . $checked . ' type="radio" value="' . $choice . '" />' . $choice;
+		echo '<label class="idMyGadget-radio"><input ' . $checked . ' type="radio" value="' . strtolower($choice) . '" />' . $choice;
 		echo '</label>';
 	}
 }
