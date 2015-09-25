@@ -244,8 +244,8 @@ function show_site_name_radio_buttons_html_fcn( $field_data )
 	foreach( $choices as $choice )
 	{
 		$checked =  $value == strtolower($choice) ? 'checked' : '';
-		echo '<label class="idMyGadget-radio" for="' . $name . '">';
-		echo '<input name="' . $name . '" id="' . $name . '" ' .
+		echo '<label class="idMyGadget-radio" for="' . $name . '-' . $choice . '">';
+		echo '<input name="' . $name . '" id="' . $name . '-' . $choice . '" ' .
 			$checked . ' type="radio" value="' . strtolower($choice) . '">' . $choice;
 		echo '</input></label>';
 	}
