@@ -129,6 +129,9 @@ function idMyGadget_admin_init()
 
 	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
 
+	//
+	// Phone option settings
+	//
 	add_settings_section( 'idMyGadget_phone_options',
 		'Phones',
 		'idMyGadget_section_html_fcn',
@@ -178,22 +181,49 @@ function idMyGadget_admin_init()
 	register_setting( 'idMyGadget_option_settings', 'site_description_phone', 'idMyGadget_sanitize_string_fcn' );
 	register_setting( 'idMyGadget_option_settings', 'site_description_element_phone', 'idMyGadget_sanitize_element_fcn' );
 
+	//
+	// Tablet option settings
+	//
 	add_settings_section( 'idMyGadget_tablet_options',
 		'Tablets',
 		'idMyGadget_section_html_fcn',
 		'idMyGadget_option_settings' );
 
+	register_setting( 'idMyGadget_option_settings', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean_fcn' );
+	add_settings_field( 'show_site_name_tablet',
+		'Show Site Name Tablet',
+		'show_site_name_radio_buttons_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_tablet_options',
+		array(
+			'name' => 'show_site_name_tablet',
+			'value' => get_option('show_site_name_tablet'),
+			'choices' => $radioChoices
+		)
+	);
+
+	//
+	// Desktop option settings
+	//
 	add_settings_section( 'idMyGadget_desktop_options',
 		'Desktops',
 		'idMyGadget_section_html_fcn',
 		'idMyGadget_option_settings' );
 
-	// ...
-	register_setting( 'idMyGadget_option_settings', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fcn' );
-	register_setting( 'idMyGadget_option_settings', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean_fcn' );
-
 	register_setting( 'idMyGadget_option_settings', 'logo_file_desktop', 'idMyGadget_sanitize_image_file_fcn' );
 	register_setting( 'idMyGadget_option_settings', 'show_site_name_desktop', 'idMyGadget_sanitize_boolean_fcn' );
+	add_settings_field( 'show_site_name_desktop',
+		'Show Site Name Desktop',
+		'show_site_name_radio_buttons_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_desktop_options',
+		array(
+			'name' => 'show_site_name_desktop',
+			'value' => get_option('show_site_name_desktop'),
+			'choices' => $radioChoices
+		)
+	);
 }
 
 // if ( is_admin() )  // Add the options only when we are logged in as an admin
@@ -216,8 +246,8 @@ function show_site_name_radio_buttons_html_fcn( $field_data )
 		$checked =  $value == strtolower($choice) ? 'checked' : '';
 		echo '<label class="idMyGadget-radio" for="' . $name . '">';
 		echo '<input name="' . $name . '" id="' . $name . '" ' .
-			$checked . ' type="radio" value="' . strtolower($choice) . '" />' . $choice;
-		echo '</label>';
+			$checked . ' type="radio" value="' . strtolower($choice) . '">' . $choice;
+		echo '</input></label>';
 	}
 }
 /**
