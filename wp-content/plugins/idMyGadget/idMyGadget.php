@@ -328,6 +328,70 @@ function idMyGadget_admin_init()
 			'choices' => $radioChoices
 		)
 	);
+
+	register_setting( 'idMyGadget_option_settings', 'site_name_element_desktop', 'idMyGadget_sanitize_element_fcn' );
+	add_settings_field( 'site_name_element_desktop',
+		'Site Name Element Desktop',
+		'header_element_select_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_desktop_options',
+		array(
+			'name' => 'site_name_element_desktop',
+			'value' => get_option('site_name_element_desktop'),
+			'choices' => $validElements
+		)
+	);
+
+	register_setting( 'idMyGadget_option_settings', 'site_title_desktop', 'idMyGadget_sanitize_string_fcn' );
+	add_settings_field( 'site_title_desktop',
+		'Site Title Desktop',
+		'header_text_box_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_desktop_options',
+		array(
+			'name' => 'site_title_desktop',
+			'value' => get_option('site_title_desktop'),
+		)
+	);
+
+	register_setting( 'idMyGadget_option_settings', 'site_title_element_desktop', 'idMyGadget_sanitize_element_fcn' );
+	add_settings_field( 'site_title_element_desktop',
+		'Site Title Element Desktop',
+		'header_element_select_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_desktop_options',
+		array(
+			'name' => 'site_title_element_desktop',
+			'value' => get_option('site_title_element_desktop'),
+			'choices' => $validElements
+		)
+	);
+
+	register_setting( 'idMyGadget_option_settings', 'site_description_desktop', 'idMyGadget_sanitize_string_fcn' );
+	add_settings_field( 'site_description_desktop',
+		'Tag Line Desktop',
+		'header_text_box_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_desktop_options',
+		array(
+			'name' => 'site_description_desktop',
+			'value' => get_option('site_description_desktop'),
+		)
+	);
+
+	register_setting( 'idMyGadget_option_settings', 'site_description_element_desktop', 'idMyGadget_sanitize_element_fcn' );
+	add_settings_field( 'site_description_element_desktop',
+		'Tag Line Element Desktop',
+		'header_element_select_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_desktop_options',
+		array(
+			'name' => 'site_description_element_desktop',
+			'value' => get_option('site_description_element_desktop'),
+			'choices' => $validElements
+		)
+	);
+
 }
 
 // if ( is_admin() )  // Add the options only when we are logged in as an admin
