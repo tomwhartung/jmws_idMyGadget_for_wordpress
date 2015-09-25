@@ -115,6 +115,21 @@ if ( is_admin() )  // Add the options only when we are logged in as an admin
  */
 function idMyGadget_admin_init()
 {
+	add_settings_section( 'idMyGadget_phone_options',
+		'Phones',
+		'idMyGadget_section_html',
+		'idMyGadget_options' );
+
+	add_settings_section( 'idMyGadget_tablet_options',
+		'Tablets',
+		'idMyGadget_section_html',
+		'idMyGadget_options' );
+
+	add_settings_section( 'idMyGadget_desktop_options',
+		'Desktops',
+		'idMyGadget_section_html',
+		'idMyGadget_options' );
+
 	register_setting( 'idMyGadget_options', 'logo_file_phone', 'idMyGadget_sanitize_image_file' );
 	register_setting( 'idMyGadget_options', 'show_site_name_phone', 'idMyGadget_sanitize_boolean' );
 	register_setting( 'idMyGadget_options', 'site_name_element_phone', 'idMyGadget_sanitize_element' );
@@ -123,16 +138,11 @@ function idMyGadget_admin_init()
 	register_setting( 'idMyGadget_options', 'site_description_phone', 'idMyGadget_sanitize_string' );
 	register_setting( 'idMyGadget_options', 'site_description_element_phone', 'idMyGadget_sanitize_element' );
 
-	add_settings_section( 'idMyGadget_phone_options',
-		'Phones',
-		'idMyGadget_section_html',
-		'idMyGadget_options' );
-
 	add_settings_field( 'show_site_name_phone',
 		'Show Site Name Phone',
-		'show_site_name_phone_html',
+		'show_site_name_radio_buttons_fn',
 		'idMyGadget_options',
-		'phone_options',
+		'idMyGadget_phone_options',
 		array( 'label_for' => 'show_site_name_phone' ) );
 
 	// ...
@@ -153,8 +163,15 @@ function idMyGadget_section_html( $section_data )
 	echo '<p>Device-specific options for ' . $section_data['title'] . '</p>';
 }
 
-function show_site_name_phone_html( $field_data )
+function show_site_name_radio_buttons_fn( $field_data )
 {
-	echo '<p>Field Title:' . $field_data['title'] . '</p>';
-	
+//	echo '<p>print_r($field_data):</p>';
+//	print_r( $field_data );
+	$choices = array( 'Yes', 'No' );
+	foreach( $choices as $choice )
+	{
+		$checked = '';
+		echo '<label><input ' . $checked . ' type="radio" value="' . $choice . '" />' . $choice;
+		echo '</label>';
+	}
 }
