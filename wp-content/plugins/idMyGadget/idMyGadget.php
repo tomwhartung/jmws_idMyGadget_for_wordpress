@@ -168,7 +168,11 @@ function idMyGadget_admin_init()
 		'site_name_text_box_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
-		array( 'label_for' => 'site_title_phone' ) );
+		array(
+			'name' => 'site_title_phone',
+			'value' => get_option('site_title_phone'),
+		)
+	);
 
 	register_setting( 'idMyGadget_option_settings', 'site_title_element_phone', 'idMyGadget_sanitize_element_fcn' );
 	register_setting( 'idMyGadget_option_settings', 'site_description_phone', 'idMyGadget_sanitize_string_fcn' );
@@ -239,7 +243,11 @@ function site_name_element_select_html_fcn( $field_data )
 }
 function site_name_text_box_html_fcn( $field_data )
 {
-	echo '<label><input type="text" value="' . esc_attr(get_option('show_site_name_tablet')) . '" />';
+	$name = $field_data['name'];
+	$value = $field_data['value'];
+	echo '<label for="' . $name . '">';
+	echo '<input type="text" name="' . $name . '" id="' . $name . '" ' .
+		'value="' . esc_attr($value) . '" />';
 	echo '</label>';
 }
 //
