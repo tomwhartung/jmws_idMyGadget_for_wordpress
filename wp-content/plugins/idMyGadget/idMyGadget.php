@@ -130,7 +130,9 @@ function idMyGadget_admin_init()
 	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
 
 	//
+	// ---------------------
 	// Phone option settings
+	// ---------------------
 	//
 	add_settings_section( 'idMyGadget_phone_options',
 		'Phones',
@@ -155,7 +157,7 @@ function idMyGadget_admin_init()
 	register_setting( 'idMyGadget_option_settings', 'site_name_element_phone', 'idMyGadget_sanitize_element_fcn' );
 	add_settings_field( 'site_name_element_phone',
 		'Site Name Element Phone',
-		'site_name_element_select_html_fcn',
+		'header_element_select_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
 		array(
@@ -178,11 +180,47 @@ function idMyGadget_admin_init()
 	);
 
 	register_setting( 'idMyGadget_option_settings', 'site_title_element_phone', 'idMyGadget_sanitize_element_fcn' );
+	add_settings_field( 'site_title_element_phone',
+		'Site Title Element Phone',
+		'header_element_select_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_phone_options',
+		array(
+			'name' => 'site_title_element_phone',
+			'value' => get_option('site_title_element_phone'),
+			'choices' => $validElements
+		)
+	);
+
 	register_setting( 'idMyGadget_option_settings', 'site_description_phone', 'idMyGadget_sanitize_string_fcn' );
+	add_settings_field( 'site_description_phone',
+		'Tag Line Phone',
+		'site_name_text_box_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_phone_options',
+		array(
+			'name' => 'site_description_phone',
+			'value' => get_option('site_description_phone'),
+		)
+	);
+
 	register_setting( 'idMyGadget_option_settings', 'site_description_element_phone', 'idMyGadget_sanitize_element_fcn' );
+	add_settings_field( 'site_description_element_phone',
+		'Tag Line Element Phone',
+		'header_element_select_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_phone_options',
+		array(
+			'name' => 'site_description_element_phone',
+			'value' => get_option('site_description_element_phone'),
+			'choices' => $validElements
+		)
+	);
 
 	//
+	// ----------------------
 	// Tablet option settings
+	// ----------------------
 	//
 	add_settings_section( 'idMyGadget_tablet_options',
 		'Tablets',
@@ -204,7 +242,9 @@ function idMyGadget_admin_init()
 	);
 
 	//
+	// -----------------------
 	// Desktop option settings
+	// -----------------------
 	//
 	add_settings_section( 'idMyGadget_desktop_options',
 		'Desktops',
@@ -254,7 +294,7 @@ function show_site_name_radio_buttons_html_fcn( $field_data )
  *
  * @param type $field_data
  */
-function site_name_element_select_html_fcn( $field_data )
+function header_element_select_html_fcn( $field_data )
 {
 	$name = $field_data['name'];
 	$value = $field_data['value'];
