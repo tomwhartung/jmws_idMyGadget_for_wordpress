@@ -228,6 +228,7 @@ function idMyGadget_admin_init()
 		'idMyGadget_option_settings' );
 
 	register_setting( 'idMyGadget_option_settings', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fcn' );
+
 	register_setting( 'idMyGadget_option_settings', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean_fcn' );
 	add_settings_field( 'show_site_name_tablet',
 		'Show Site Name Tablet',
@@ -238,6 +239,69 @@ function idMyGadget_admin_init()
 			'name' => 'show_site_name_tablet',
 			'value' => get_option('show_site_name_tablet'),
 			'choices' => $radioChoices
+		)
+	);
+
+	register_setting( 'idMyGadget_option_settings', 'site_name_element_tablet', 'idMyGadget_sanitize_element_fcn' );
+	add_settings_field( 'site_name_element_tablet',
+		'Site Name Element Tablet',
+		'header_element_select_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_tablet_options',
+		array(
+			'name' => 'site_name_element_tablet',
+			'value' => get_option('site_name_element_tablet'),
+			'choices' => $validElements
+		)
+	);
+
+	register_setting( 'idMyGadget_option_settings', 'site_title_tablet', 'idMyGadget_sanitize_string_fcn' );
+	add_settings_field( 'site_title_tablet',
+		'Site Title Tablet',
+		'header_text_box_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_tablet_options',
+		array(
+			'name' => 'site_title_tablet',
+			'value' => get_option('site_title_tablet'),
+		)
+	);
+
+	register_setting( 'idMyGadget_option_settings', 'site_title_element_tablet', 'idMyGadget_sanitize_element_fcn' );
+	add_settings_field( 'site_title_element_tablet',
+		'Site Title Element Tablet',
+		'header_element_select_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_tablet_options',
+		array(
+			'name' => 'site_title_element_tablet',
+			'value' => get_option('site_title_element_tablet'),
+			'choices' => $validElements
+		)
+	);
+
+	register_setting( 'idMyGadget_option_settings', 'site_description_tablet', 'idMyGadget_sanitize_string_fcn' );
+	add_settings_field( 'site_description_tablet',
+		'Tag Line Tablet',
+		'header_text_box_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_tablet_options',
+		array(
+			'name' => 'site_description_tablet',
+			'value' => get_option('site_description_tablet'),
+		)
+	);
+
+	register_setting( 'idMyGadget_option_settings', 'site_description_element_tablet', 'idMyGadget_sanitize_element_fcn' );
+	add_settings_field( 'site_description_element_tablet',
+		'Tag Line Element Tablet',
+		'header_element_select_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_tablet_options',
+		array(
+			'name' => 'site_description_element_tablet',
+			'value' => get_option('site_description_element_tablet'),
+			'choices' => $validElements
 		)
 	);
 
