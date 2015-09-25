@@ -13,9 +13,6 @@ global $jmwsIdMyGadget;
  */
 function idMyGadget_options_page_html_fcn()
 {
-	print '<div class="dump-options">';
-	idMyGadget_dump_options();
-	print '</div>';
 	print '<div class="wrap">';
 	print '<h2>IdMyGadget Options</h2>';
 	print '<p>Device-specific options for use by themes that know what to do with them.</p>';
@@ -27,35 +24,3 @@ function idMyGadget_options_page_html_fcn()
 	print '</form></div>';
 }
 
-//
-// DEBUG CODE - remove when everything is working just exactly perfect
-//
-// Dump of options, copied from https://codex.wordpress.org/Creating_Options_Pages
-// (way down at the bottom of the page).
-//
-function idMyGadget_dump_options()
-{
-	global $options;
-
-	if ( isset($options) )
-	{
-		print '<p>$options are below:</p>';
-		foreach ($options as $value)
-		{
-			if ( get_option($value['id']) === FALSE )
-			{
-				$$value['id'] = $value['std'];
-			}
-			else
-			{
-				$$value['id'] = get_option( $value['id'] );
-			 }
-		}
-		print '<p>$options are above!</p>';
-	}
-	else
-	{
-		print '<p>Oops, no $options to dump!</p>';
-	}
-}
-?>
