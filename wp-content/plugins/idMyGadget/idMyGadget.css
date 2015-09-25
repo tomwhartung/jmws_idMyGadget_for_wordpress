@@ -1,0 +1,7 @@
+/*
+ * A few styles to make the admin page look pretty, or at least half-decent
+ */
+label.idMyGadget-radio {
+	margin: 0.25em;
+	padding: 0.25em;
+}
