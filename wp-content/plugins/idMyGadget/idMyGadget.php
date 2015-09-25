@@ -155,7 +155,11 @@ function idMyGadget_admin_init()
 		'site_name_element_select_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
-		array( 'label_for' => 'site_name_element_phone' ) );
+		array(
+			'name' => 'site_name_element_phone',
+			'value' => get_option('site_name_element_phone')
+		)
+	);
 
 	register_setting( 'idMyGadget_option_settings', 'site_title_phone', 'idMyGadget_sanitize_string_fcn' );
 	add_settings_field( 'site_title_phone',
@@ -202,7 +206,6 @@ function show_site_name_radio_buttons_html_fcn( $field_data )
 	$choices = array( 'Yes', 'No' );
 	$name = $field_data['name'];
 	$value = $field_data['value'];
-	echo 'value: ' . $value;
 	foreach( $choices as $choice )
 	{
 		$checked =  $value == strtolower($choice) ? 'checked' : '';
@@ -220,11 +223,15 @@ $validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' )
 function site_name_element_select_html_fcn( $field_data )
 {
 	global $validElements;
-	echo '<select>';
+	$name = $field_data['name'];
+	$value = $field_data['value'];
+	// echo 'value: ' . $value;
+	echo '<select name="' . $name . '" id="' . $name . '">';
 
 	foreach( $validElements as $elt )
 	{
-		echo '<option value="' . $elt . '">' . $elt;
+		$selected = $value == $elt ? 'selected' : '';
+		echo '<option value="' . $elt . '" ' . $selected . '>' . $elt;
 		echo '</option>';
 	}
 
