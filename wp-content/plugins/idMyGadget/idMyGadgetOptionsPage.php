@@ -11,12 +11,12 @@ global $jmwsIdMyGadget;
 /**
  * Display the idMyGadget admin options page
  */
-function idMyGadget_options_page()
+function idMyGadget_options_page_html_fn()
 {
-	print '<div>';
+	print '<div class="dump-options">';
 	idMyGadget_dump_options();
 	print '</div>';
-	print '<div>';
+	print '<div class="wrap">';
 	print '<h2>IdMyGadget Options</h2>';
 	print '<p>Device-specific options for use by themes that know what to do with them.</p>';
 	print '<form action="options.php" method="post">';

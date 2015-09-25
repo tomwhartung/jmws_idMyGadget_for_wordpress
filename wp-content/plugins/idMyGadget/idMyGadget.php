@@ -96,18 +96,22 @@ if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes
 //
 /**
  * Add the admin option page to display the idMyGadget options
- * Markup for the form is in idMyGadgetOptions.php
  */
 require_once 'idMyGadgetOptionsPage.php';
-function idMyGadget_admin_add_page()
+function idMyGadget_admin_menu_add_options_page()
 {
-	add_plugins_page('IdMyGadget Options', 'IdMyGadget', 'manage_options', 'idMyGadget_options_page', 'idMyGadget_options_page');
-//	add_submenu_page('plugins.php', 'SubMenu Page', 'SubMenu Title', 'manage_options', 'idMyGadget_options_page');
+	add_plugins_page(
+		'IdMyGadget Options',
+		'IdMyGadget',
+		'manage_options',
+		__FILE__,
+		'idMyGadget_options_page_html_fn'    // Form markup is in idMyGadgetOptions.php
+	);
 }
 
 if ( is_admin() )  // Add the options only when we are logged in as an admin
 {
-	add_action( 'admin_menu', 'idMyGadget_admin_add_page' );
+	add_action( 'admin_menu', 'idMyGadget_admin_menu_add_options_page' );
 }
 
 /**
