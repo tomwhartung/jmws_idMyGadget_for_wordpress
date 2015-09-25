@@ -143,7 +143,11 @@ function idMyGadget_admin_init()
 		'show_site_name_radio_buttons_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
-		array( 'label_for' => 'show_site_name_phone' ) );
+		array(
+			'name' => 'show_site_name_phone',
+			'value' => get_option('show_site_name_phone')
+		)
+	);
 
 	register_setting( 'idMyGadget_option_settings', 'site_name_element_phone', 'idMyGadget_sanitize_element_fcn' );
 	add_settings_field( 'site_name_element_phone',
@@ -196,10 +200,15 @@ function idMyGadget_section_html_fcn( $section_data )
 function show_site_name_radio_buttons_html_fcn( $field_data )
 {
 	$choices = array( 'Yes', 'No' );
+	$name = $field_data['name'];
+	$value = $field_data['value'];
+	echo 'value: ' . $value;
 	foreach( $choices as $choice )
 	{
-		$checked = '';
-		echo '<label class="idMyGadget-radio"><input ' . $checked . ' type="radio" value="' . strtolower($choice) . '" />' . $choice;
+		$checked =  $value == strtolower($choice) ? 'checked' : '';
+		echo '<label class="idMyGadget-radio" for="' . $name . '">';
+		echo '<input name="' . $name . '" id="' . $name . '" ' .
+			$checked . ' type="radio" value="' . strtolower($choice) . '" />' . $choice;
 		echo '</label>';
 	}
 }

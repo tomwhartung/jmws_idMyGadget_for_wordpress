@@ -26,16 +26,12 @@ function idMyGadget_options_page_html_fcn()
 ?>
    <table class="form-table">
       <tr valign="top">
-         <th scope="row">Header Options for Phones</th>
-         <td><input type="text" name="show_site_name_phone" value="<?php echo esc_attr( get_option('show_site_name_phone') ); ?>" /></td>
-      </tr>
-      <tr valign="top">
         <th scope="row">Header Options for Tablets</th>
-        <td><input type="text" name="show_site_name_tablet" value="<?php echo esc_attr( get_option('show_site_name_tablet') ); ?>" /></td>
+        <td><input type="text" name="site_name_tablet" value="<?php echo esc_attr( get_option('show_site_name_tablet') ); ?>" /></td>
       </tr>
       <tr valign="top">
         <th scope="row">Header Options for Desktops</th>
-        <td><input type="text" name="show_site_name_desktop" value="<?php echo esc_attr( get_option('show_site_name_desktop') ); ?>" /></td>
+        <td><input type="text" name="site_name_desktop" value="<?php echo esc_attr( get_option('show_site_name_desktop') ); ?>" /></td>
         </tr>
     </table>
 
