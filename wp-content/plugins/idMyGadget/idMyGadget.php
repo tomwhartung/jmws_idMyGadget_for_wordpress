@@ -124,11 +124,10 @@ if ( is_admin() )  // Add the options only when we are logged in as an admin
  */
 function idMyGadget_admin_init()
 {
-	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
-
-	// TODO: use this array for the radio buttons?
-	//
 	$radioChoices = array( 'Yes', 'No' );
+	$validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
+
+	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
 
 	add_settings_section( 'idMyGadget_phone_options',
 		'Phones',
@@ -145,7 +144,8 @@ function idMyGadget_admin_init()
 		'idMyGadget_phone_options',
 		array(
 			'name' => 'show_site_name_phone',
-			'value' => get_option('show_site_name_phone')
+			'value' => get_option('show_site_name_phone'),
+			'choices' => $radioChoices
 		)
 	);
 
@@ -157,7 +157,8 @@ function idMyGadget_admin_init()
 		'idMyGadget_phone_options',
 		array(
 			'name' => 'site_name_element_phone',
-			'value' => get_option('site_name_element_phone')
+			'value' => get_option('site_name_element_phone'),
+			'choices' => $validElements
 		)
 	);
 
@@ -203,9 +204,9 @@ function idMyGadget_section_html_fcn( $section_data )
 
 function show_site_name_radio_buttons_html_fcn( $field_data )
 {
-	$choices = array( 'Yes', 'No' );
 	$name = $field_data['name'];
 	$value = $field_data['value'];
+	$choices = $field_data['choices'];
 	foreach( $choices as $choice )
 	{
 		$checked =  $value == strtolower($choice) ? 'checked' : '';
@@ -219,12 +220,11 @@ function show_site_name_radio_buttons_html_fcn( $field_data )
  *
  * @param type $field_data
  */
-$validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
 function site_name_element_select_html_fcn( $field_data )
 {
-	global $validElements;
 	$name = $field_data['name'];
 	$value = $field_data['value'];
+	$validElements = $field_data['choices'];
 	// echo 'value: ' . $value;
 	echo '<select name="' . $name . '" id="' . $name . '">';
 
