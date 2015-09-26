@@ -440,7 +440,7 @@ function file_picker_html_fcn( $field_data )
 {
 	$name = $field_data['name'];
 	$value = $field_data['value'];
-	echo '<p>Upload image for ' . $field_data['name'] . '</p>';
+	echo '<p>Upload image for ' . $name . '</p>';
 	//
 	// Code inspired by this article:
 	//   http://www.webmaster-source.com/2013/02/06/using-the-wordpress-3-5-media-uploader-in-your-plugin-or-theme/
@@ -451,11 +451,13 @@ function file_picker_html_fcn( $field_data )
 	//
 
 	echo '<label for="upload_image">';
-	echo '<input id="upload_image" type="text" size="36" name="ad_image" value="http://" />';
-	echo '<input id="upload_image_button" class="button" type="button" value="Upload Image" />';
-//	echo '<input name="' . $name . '" id="' . $name . '"' .
-//		'type="text" size="36" value="' . $value . '" />';
-//	echo '<input id="' . $name . '_button" class="button" type="button" value="Upload Image" />';
+//	echo '<input id="upload_image" type="text" size="36" name="ad_image" value="http://" />';
+//	echo '<input id="upload_image_button" class="button idMyGadget_upload_image" ' .
+//		'type="button" value="Upload Image" />';
+	echo '<input id="' . $name . '" name="' . $name . '" ' .
+		'type="text" size="36" value="' . $value . '" />';
+	echo '<input id="' . $name . '_button" class="button idMyGadget_upload_image" ' .
+		'type="button" value="Upload Image" />';
 	echo '<br />Enter a URL or upload an image for the logo.';
 	echo '</label>';
 }

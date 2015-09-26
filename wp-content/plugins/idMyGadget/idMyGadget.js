@@ -4,8 +4,14 @@
 jQuery(document).ready(function($) {
 	var custom_uploader;
 
-	$('#upload_image_button').click(function(e) {
+	$('.idMyGadget_upload_image').click(function(e) {
 		e.preventDefault();
+		var buttonIdLength = this.id.length;
+		var nameInputIdLength = buttonIdLength - 7;
+		var nameInputId = this.id;
+	//	alert( 'nameInputId  = ' + nameInputId );
+		nameInputId = nameInputId.substring( 0, nameInputIdLength );  // removes '_button' from end of id
+		alert( 'nameInputId  = ' + nameInputId );
 		//
 		// If the uploader object has already been created, reopen the dialog
 		//
@@ -28,7 +34,7 @@ jQuery(document).ready(function($) {
 		//
 		custom_uploader.on('select', function() {
 			attachment = custom_uploader.state().get('selection').first().toJSON();
-			$('#upload_image').val(attachment.url);
+			$('#'+nameInputId).val(attachment.url);
 		});
 		//
 		// Open the uploader dialog
