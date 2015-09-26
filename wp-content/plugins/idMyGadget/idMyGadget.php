@@ -406,7 +406,7 @@ function idMyGadget_admin_init()
 add_action( 'admin_init', 'idMyGadget_admin_init' );
 
 /**
- * Needed to upload the logo image:
+ * Add the JavaScript file we need to use to upload the logo image:
  */
 function idMyGadget_admin_enqueue_scripts()
 {
@@ -431,8 +431,6 @@ add_action( 'admin_enqueue_scripts', 'idMyGadget_admin_enqueue_scripts' );
 function idMyGadget_section_html_fcn( $section_data )
 {
 	echo '<p>Device-specific options for ' . $section_data['title'] . '</p>';
-	echo '<p>_GET["page"]: ' . $_GET['page'] . '</p>';
-
 }
 /**
  * Html fcn for the icon allowing user to choose a file (i.e., for logo image)
@@ -440,19 +438,24 @@ function idMyGadget_section_html_fcn( $section_data )
  */
 function file_picker_html_fcn( $field_data )
 {
+	$name = $field_data['name'];
+	$value = $field_data['value'];
 	echo '<p>Upload image for ' . $field_data['name'] . '</p>';
 	//
-	// First try: copy and paste Add Media button from Edit Post page (did not try very hard)
+	// Code inspired by this article:
+	//   http://www.webmaster-source.com/2013/02/06/using-the-wordpress-3-5-media-uploader-in-your-plugin-or-theme/
+	// The link to which I found at the bottom of this page:
+	//   http://www.webmaster-source.com/2010/01/08/using-the-wordpress-uploader-in-your-plugin-or-theme/
+	// Which was linked to by the first one I found here:
+	//   http://wordpress.stackexchange.com/questions/26976/wordpress-file-browser/203819#203819
 	//
-	// echo '<a href="#" id="insert-media-button" class="button insert-media add_media"' .
-	// 	'data-editor="content" title="Add Media">' .
-	// 	'<span class="wp-media-buttons-icon"></span> Add Media</a>';
-	//
-	// Trying this: http://www.webmaster-source.com/2010/01/08/using-the-wordpress-uploader-in-your-plugin-or-theme/
-	//
+
 	echo '<label for="upload_image">';
 	echo '<input id="upload_image" type="text" size="36" name="ad_image" value="http://" />';
 	echo '<input id="upload_image_button" class="button" type="button" value="Upload Image" />';
+//	echo '<input name="' . $name . '" id="' . $name . '"' .
+//		'type="text" size="36" value="' . $value . '" />';
+//	echo '<input id="' . $name . '_button" class="button" type="button" value="Upload Image" />';
 	echo '<br />Enter a URL or upload an image for the logo.';
 	echo '</label>';
 }
