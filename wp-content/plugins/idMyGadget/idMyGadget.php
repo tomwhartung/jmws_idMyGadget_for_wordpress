@@ -413,8 +413,8 @@ function idMyGadget_admin_enqueue_scripts()
 	if ( isset($_GET['page']) && $_GET['page'] == 'idMyGadget/idMyGadget.php' )
 	{
 		wp_enqueue_media();
-		wp_register_script( 'my-admin-js', WP_PLUGIN_URL . '/idMyGadget/my-admin.js', array('jquery') );
-		wp_enqueue_script( 'my-admin-js' );
+		wp_register_script( 'idMyGadget-js', WP_PLUGIN_URL . '/idMyGadget/idMyGadget.js', array('jquery') );
+		wp_enqueue_script( 'idMyGadget-js' );
 	}
 }
 add_action( 'admin_enqueue_scripts', 'idMyGadget_admin_enqueue_scripts' );
