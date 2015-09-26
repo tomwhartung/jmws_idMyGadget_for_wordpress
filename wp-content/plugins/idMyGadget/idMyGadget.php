@@ -404,6 +404,21 @@ function idMyGadget_admin_init()
 
 }
 add_action( 'admin_init', 'idMyGadget_admin_init' );
+
+/**
+ * Needed to upload the logo image:
+ */
+function idMyGadget_admin_enqueue_scripts()
+{
+	if ( isset($_GET['page']) && $_GET['page'] == 'idMyGadget/idMyGadget.php' )
+	{
+		wp_enqueue_media();
+		wp_register_script( 'my-admin-js', WP_PLUGIN_URL . '/idMyGadget/my-admin.js', array('jquery') );
+		wp_enqueue_script( 'my-admin-js' );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'idMyGadget_admin_enqueue_scripts' );
+
 //
 // -------------------------------------------------------------------
 // Html Fcns: Functions that generate the html for each of the options
@@ -416,6 +431,8 @@ add_action( 'admin_init', 'idMyGadget_admin_init' );
 function idMyGadget_section_html_fcn( $section_data )
 {
 	echo '<p>Device-specific options for ' . $section_data['title'] . '</p>';
+	echo '<p>_GET["page"]: ' . $_GET['page'] . '</p>';
+
 }
 /**
  * Html fcn for the icon allowing user to choose a file (i.e., for logo image)
@@ -423,7 +440,21 @@ function idMyGadget_section_html_fcn( $section_data )
  */
 function file_picker_html_fcn( $field_data )
 {
-	echo '<p>File picker for ' . $field_data['name'] . '</p>';
+	echo '<p>Upload image for ' . $field_data['name'] . '</p>';
+	//
+	// First try: copy and paste Add Media button from Edit Post page (did not try very hard)
+	//
+	// echo '<a href="#" id="insert-media-button" class="button insert-media add_media"' .
+	// 	'data-editor="content" title="Add Media">' .
+	// 	'<span class="wp-media-buttons-icon"></span> Add Media</a>';
+	//
+	// Trying this: http://www.webmaster-source.com/2010/01/08/using-the-wordpress-uploader-in-your-plugin-or-theme/
+	//
+	echo '<label for="upload_image">';
+	echo '<input id="upload_image" type="text" size="36" name="ad_image" value="http://" />';
+	echo '<input id="upload_image_button" class="button" type="button" value="Upload Image" />';
+	echo '<br />Enter a URL or upload an image for the logo.';
+	echo '</label>';
 }
 /**
  * Html fcn for the radio buttons
