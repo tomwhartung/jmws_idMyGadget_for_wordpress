@@ -140,6 +140,16 @@ function idMyGadget_admin_init()
 		'idMyGadget_option_settings' );
 
 	register_setting( 'idMyGadget_option_settings', 'logo_file_phone', 'idMyGadget_sanitize_image_file_fcn' );
+	add_settings_field( 'logo_file_phone',
+		'Logo Image Phone',
+		'file_picker_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_phone_options',
+		array(
+			'name' => 'logo_file_phone',
+			'value' => get_option('logo_file_phone'),
+		)
+	);
 
 	register_setting( 'idMyGadget_option_settings', 'show_site_name_phone', 'idMyGadget_sanitize_boolean_fcn' );
 	add_settings_field( 'show_site_name_phone',
@@ -393,17 +403,32 @@ function idMyGadget_admin_init()
 	);
 
 }
-
-// if ( is_admin() )  // Add the options only when we are logged in as an admin
-// {
-	add_action( 'admin_init', 'idMyGadget_admin_init' );
-// }
-
+add_action( 'admin_init', 'idMyGadget_admin_init' );
+//
+// -------------------------------------------------------------------
+// Html Fcns: Functions that generate the html for each of the options
+// -------------------------------------------------------------------
+//
+/**
+ * Html fcn for the header of each section
+ * @param type $section_data name of the section
+ */
 function idMyGadget_section_html_fcn( $section_data )
 {
 	echo '<p>Device-specific options for ' . $section_data['title'] . '</p>';
 }
-
+/**
+ * Html fcn for the icon allowing user to choose a file (i.e., for logo image)
+ * @param type $field_data name and current value of the field
+ */
+function file_picker_html_fcn( $field_data )
+{
+	echo '<p>File picker for ' . $field_data['name'] . '</p>';
+}
+/**
+ * Html fcn for the radio buttons
+ * @param type $field_data name and current value of the field, and array of valid options
+ */
 function show_site_name_radio_buttons_html_fcn( $field_data )
 {
 	$name = $field_data['name'];
@@ -419,8 +444,9 @@ function show_site_name_radio_buttons_html_fcn( $field_data )
 	}
 }
 /**
- *
- * @param type $field_data
+ * Html fcn for the drop down select for the element of a heading component
+ * (html tag e.g., allows selection of h3 element for site title)
+ * @param type $field_data name and current value of the field, and array of valid options
  */
 function header_element_select_html_fcn( $field_data )
 {
@@ -439,6 +465,10 @@ function header_element_select_html_fcn( $field_data )
 
 	echo '</select>';
 }
+/**
+ * Html fcn for the text box input (e.g., for site title)
+ * @param type $field_data name and current value of the field
+ */
 function header_text_box_html_fcn( $field_data )
 {
 	$name = $field_data['name'];
