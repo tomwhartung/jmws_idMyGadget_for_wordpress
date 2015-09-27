@@ -238,6 +238,16 @@ function idMyGadget_admin_init()
 		'idMyGadget_option_settings' );
 
 	register_setting( 'idMyGadget_option_settings', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fcn' );
+	add_settings_field( 'logo_file_tablet',
+		'Logo Image Tablet',
+		'file_picker_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_tablet_options',
+		array(
+			'name' => 'logo_file_tablet',
+			'value' => get_option('logo_file_tablet'),
+		)
+	);
 
 	register_setting( 'idMyGadget_option_settings', 'show_site_name_tablet', 'idMyGadget_sanitize_boolean_fcn' );
 	add_settings_field( 'show_site_name_tablet',
@@ -326,6 +336,17 @@ function idMyGadget_admin_init()
 		'idMyGadget_option_settings' );
 
 	register_setting( 'idMyGadget_option_settings', 'logo_file_desktop', 'idMyGadget_sanitize_image_file_fcn' );
+	add_settings_field( 'logo_file_desktop',
+		'Logo Image Desktop',
+		'file_picker_html_fcn',
+		'idMyGadget_option_settings',
+		'idMyGadget_desktop_options',
+		array(
+			'name' => 'logo_file_desktop',
+			'value' => get_option('logo_file_desktop'),
+		)
+	);
+
 	register_setting( 'idMyGadget_option_settings', 'show_site_name_desktop', 'idMyGadget_sanitize_boolean_fcn' );
 	add_settings_field( 'show_site_name_desktop',
 		'Show Site Name Desktop',
@@ -456,7 +477,7 @@ function file_picker_html_fcn( $field_data )
 	echo '<label for="' . $name . '_button">';
 	echo '<input id="' . $name . '_button" class="button idMyGadget_upload_image" ' .
 		'type="button" value="Upload and Select" />';
-	echo '<span class="idMyGadget-text">Click to upload and select an image</span>';
+	echo '<span class="idMyGadget-text">Click to select an image from the WP Media Library</span>';
 	echo '</label>';
 }
 /**
