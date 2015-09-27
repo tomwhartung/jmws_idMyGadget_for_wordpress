@@ -430,7 +430,7 @@ add_action( 'admin_enqueue_scripts', 'idMyGadget_admin_enqueue_scripts' );
  */
 function idMyGadget_section_html_fcn( $section_data )
 {
-	echo '<p>Device-specific options for ' . $section_data['title'] . '</p>';
+	echo '<p>Device-specific options for ' . $section_data['title'] . '.</p>';
 }
 /**
  * Html fcn for the icon allowing user to choose a file (i.e., for logo image)
@@ -440,7 +440,6 @@ function file_picker_html_fcn( $field_data )
 {
 	$name = $field_data['name'];
 	$value = $field_data['value'];
-	echo '<p>Upload image for ' . $name . '</p>';
 	//
 	// Code inspired by this article:
 	//   http://www.webmaster-source.com/2013/02/06/using-the-wordpress-3-5-media-uploader-in-your-plugin-or-theme/
@@ -449,16 +448,15 @@ function file_picker_html_fcn( $field_data )
 	// Which was linked to by the first one I found here:
 	//   http://wordpress.stackexchange.com/questions/26976/wordpress-file-browser/203819#203819
 	//
-
-	echo '<label for="upload_image">';
-//	echo '<input id="upload_image" type="text" size="36" name="ad_image" value="http://" />';
-//	echo '<input id="upload_image_button" class="button idMyGadget_upload_image" ' .
-//		'type="button" value="Upload Image" />';
+	echo '<label for="' . $name . '">';
 	echo '<input id="' . $name . '" name="' . $name . '" ' .
 		'type="text" size="36" value="' . $value . '" />';
+	echo '<span class="idMyGadget-text">Enter the image URL</span>';
+	echo '</label><br />';
+	echo '<label for="' . $name . '_button">';
 	echo '<input id="' . $name . '_button" class="button idMyGadget_upload_image" ' .
-		'type="button" value="Upload Image" />';
-	echo '<br />Enter a URL or upload an image for the logo.';
+		'type="button" value="Upload and Select" />';
+	echo '<span class="idMyGadget-text">Click to upload and select an image</span>';
 	echo '</label>';
 }
 /**
