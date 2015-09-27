@@ -1,5 +1,9 @@
 /**
- * From: http://www.webmaster-source.com/2013/02/06/using-the-wordpress-3-5-media-uploader-in-your-plugin-or-theme/
+ * Create event handler that displays the WP Add Media screen and allows the user to
+ * select an image, allowing them upload one if they so desire
+ * From:
+ *   http://www.webmaster-source.com/2013/02/06/using-the-wordpress-3-5-media-uploader-in-your-plugin-or-theme/
+ * Updated to work with the idMyGadget option settings form.
  */
 jQuery(document).ready(function($) {
 	var custom_uploader;
@@ -9,9 +13,8 @@ jQuery(document).ready(function($) {
 		var buttonIdLength = this.id.length;
 		var nameInputIdLength = buttonIdLength - 7;
 		var nameInputId = this.id;
-	//	alert( 'nameInputId  = ' + nameInputId );
 		nameInputId = nameInputId.substring( 0, nameInputIdLength );  // removes '_button' from end of id
-		alert( 'nameInputId  = ' + nameInputId );
+	//	alert( 'nameInputId  = ' + nameInputId );
 		//
 		// If the uploader object has already been created, reopen the dialog
 		//
@@ -40,5 +43,5 @@ jQuery(document).ready(function($) {
 		// Open the uploader dialog
 		//
 		custom_uploader.open();
-		});
+	});
 });
