@@ -142,7 +142,7 @@ function idMyGadget_admin_init()
 	register_setting( 'idMyGadget_option_settings', 'logo_file_phone', 'idMyGadget_sanitize_image_file_fcn' );
 	add_settings_field( 'logo_file_phone',
 		'Logo Image Phone',
-		'file_picker_html_fcn',
+		'image_file_picker_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_phone_options',
 		array(
@@ -240,7 +240,7 @@ function idMyGadget_admin_init()
 	register_setting( 'idMyGadget_option_settings', 'logo_file_tablet', 'idMyGadget_sanitize_image_file_fcn' );
 	add_settings_field( 'logo_file_tablet',
 		'Logo Image Tablet',
-		'file_picker_html_fcn',
+		'image_file_picker_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_tablet_options',
 		array(
@@ -338,7 +338,7 @@ function idMyGadget_admin_init()
 	register_setting( 'idMyGadget_option_settings', 'logo_file_desktop', 'idMyGadget_sanitize_image_file_fcn' );
 	add_settings_field( 'logo_file_desktop',
 		'Logo Image Desktop',
-		'file_picker_html_fcn',
+		'image_file_picker_html_fcn',
 		'idMyGadget_option_settings',
 		'idMyGadget_desktop_options',
 		array(
@@ -457,7 +457,7 @@ function idMyGadget_section_html_fcn( $section_data )
  * Html fcn for the icon allowing user to choose a file (i.e., for logo image)
  * @param type $field_data name and current value of the field
  */
-function file_picker_html_fcn( $field_data )
+function image_file_picker_html_fcn( $field_data )
 {
 	$name = $field_data['name'];
 	$value = $field_data['value'];
@@ -476,7 +476,7 @@ function file_picker_html_fcn( $field_data )
 	echo '</label><br />';
 	echo '<label for="' . $name . '_button">';
 	echo '<input id="' . $name . '_button" class="button idMyGadget_upload_image" ' .
-		'type="button" value="Upload and Select" />';
+		'type="button" value="Upload/Select" />';
 	echo '<span class="idMyGadget-text">Click to select an image from the WP Media Library</span>';
 	echo '</label>';
 }
