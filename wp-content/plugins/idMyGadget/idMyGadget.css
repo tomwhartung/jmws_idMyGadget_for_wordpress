@@ -1,7 +1,11 @@
 /*
  * A few styles to make the admin page look pretty, or at least half-decent
  */
-label.idMyGadget-radio {
+label.idMyGadget-radio,
+span.idMyGadget-text {
 	margin: 0.25em;
 	padding: 0.25em;
+}
+span.idMyGadget-text {
+	vertical-align: middle;
 }
