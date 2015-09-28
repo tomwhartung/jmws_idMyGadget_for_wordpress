@@ -124,6 +124,9 @@ if ( is_admin() )  // Add the options only when we are logged in as an admin
  */
 function idMyGadget_admin_init()
 {
+	global $radioChoices;
+	global $validElements;
+
 	$radioChoices = array( 'Yes', 'No' );
 	$validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
 
@@ -151,7 +154,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_show_site_name_phone', 'idMyGadget_sanitize_boolean_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_show_site_name_phone', 'idMyGadget_sanitize_radio_buttons_fcn' );
 	add_settings_field( 'idmg_show_site_name_phone',
 		'Show Site Name Phone',
 		'show_site_name_radio_buttons_html_fcn',
@@ -249,7 +252,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_show_site_name_tablet', 'idMyGadget_sanitize_boolean_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_show_site_name_tablet', 'idMyGadget_sanitize_radio_buttons_fcn' );
 	add_settings_field( 'idmg_show_site_name_tablet',
 		'Show Site Name Tablet',
 		'show_site_name_radio_buttons_html_fcn',
@@ -347,7 +350,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_show_site_name_desktop', 'idMyGadget_sanitize_boolean_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_show_site_name_desktop', 'idMyGadget_sanitize_radio_buttons_fcn' );
 	add_settings_field( 'idmg_show_site_name_desktop',
 		'Show Site Name Desktop',
 		'show_site_name_radio_buttons_html_fcn',
@@ -536,13 +539,16 @@ function header_text_box_html_fcn( $field_data )
 //
 // Functions to sanitize user input
 //
-function idMyGadget_sanitize_boolean_fcn( $input )
+function idMyGadget_sanitize_radio_buttons_fcn( $input )
 {
-	error_log( 'ToDo: implement function idMyGadget_sanitize_boolean_fcn()' );
+	global $radioChoices;
+
+	error_log( 'ToDo: implement function idMyGadget_sanitize_radio_buttons_fcn()' );
 	return $input;
 }
 function idMyGadget_sanitize_element_fcn( $input )
 {
+	global $validElements;
 	error_log( 'ToDo: implement function idMyGadget_sanitize_element_fcn()' );
 	return $input;
 }
