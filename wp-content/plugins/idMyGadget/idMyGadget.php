@@ -119,7 +119,6 @@ if ( is_admin() )  // Add the options only when we are logged in as an admin
 	add_action( 'admin_menu', 'idMyGadget_admin_menu_add_options_page' );
 }
 
-// $radioChoices = array( 'Yes', 'No' );
 $validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
 
 /**
@@ -492,6 +491,7 @@ function show_site_name_radio_buttons_html_fcn( $field_data )
 	$name = $field_data['name'];
 	$value = $field_data['value'];
 	$choices = $field_data['choices'];
+
 	foreach( $choices as $choice )
 	{
 		$checked =  $value == strtolower($choice) ? 'checked' : '';
@@ -539,12 +539,17 @@ function header_text_box_html_fcn( $field_data )
 //
 // Functions to sanitize user input
 //
-function idMyGadget_sanitize_radio_buttons_fcn( $input )
+function idMyGadget_sanitize_radio_buttons_fcn( $suspicious_input )
 {
 	global $jmwsIdMyGadget;
+	$sanitized_input = strtolower( JmwsIdMyGadgetWordpress::$radioChoices[0] );
 
-	error_log( 'ToDo: implement function idMyGadget_sanitize_radio_buttons_fcn()' );
-	return $input;
+	if ( in_array(ucfirst($suspicious_input), JmwsIdMyGadgetWordpress::$radioChoices) )
+	{
+		$sanitized_input = $suspicious_input;
+	}
+
+	return $sanitized_input;
 }
 function idMyGadget_sanitize_element_fcn( $input )
 {
