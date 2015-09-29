@@ -119,15 +119,12 @@ if ( is_admin() )  // Add the options only when we are logged in as an admin
 	add_action( 'admin_menu', 'idMyGadget_admin_menu_add_options_page' );
 }
 
-$validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
-
 /**
  * Add the idMyGadget admin options
  */
 function idMyGadget_admin_init()
 {
 	global $jmwsIdMyGadget;
-	global $validElements;
 
 	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
 
@@ -175,7 +172,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_site_name_element_phone',
 			'value' => get_option('idmg_site_name_element_phone'),
-			'choices' => $validElements
+			'choices' => JmwsIdMyGadgetWordpress::$validElements
 		)
 	);
 
@@ -200,7 +197,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_site_title_element_phone',
 			'value' => get_option('idmg_site_title_element_phone'),
-			'choices' => $validElements
+			'choices' => JmwsIdMyGadgetWordpress::$validElements
 		)
 	);
 
@@ -225,7 +222,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_site_description_element_phone',
 			'value' => get_option('idmg_site_description_element_phone'),
-			'choices' => $validElements
+			'choices' => JmwsIdMyGadgetWordpress::$validElements
 		)
 	);
 
@@ -273,7 +270,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_site_name_element_tablet',
 			'value' => get_option('idmg_site_name_element_tablet'),
-			'choices' => $validElements
+			'choices' => JmwsIdMyGadgetWordpress::$validElements
 		)
 	);
 
@@ -298,7 +295,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_site_title_element_tablet',
 			'value' => get_option('idmg_site_title_element_tablet'),
-			'choices' => $validElements
+			'choices' => JmwsIdMyGadgetWordpress::$validElements
 		)
 	);
 
@@ -323,7 +320,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_site_description_element_tablet',
 			'value' => get_option('idmg_site_description_element_tablet'),
-			'choices' => $validElements
+			'choices' => JmwsIdMyGadgetWordpress::$validElements
 		)
 	);
 
@@ -371,7 +368,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_site_name_element_desktop',
 			'value' => get_option('idmg_site_name_element_desktop'),
-			'choices' => $validElements
+			'choices' => JmwsIdMyGadgetWordpress::$validElements
 		)
 	);
 
@@ -396,7 +393,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_site_title_element_desktop',
 			'value' => get_option('idmg_site_title_element_desktop'),
-			'choices' => $validElements
+			'choices' => JmwsIdMyGadgetWordpress::$validElements
 		)
 	);
 
@@ -421,7 +418,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_site_description_element_desktop',
 			'value' => get_option('idmg_site_description_element_desktop'),
-			'choices' => $validElements
+			'choices' => JmwsIdMyGadgetWordpress::$validElements
 		)
 	);
 
@@ -510,7 +507,8 @@ function header_element_select_html_fcn( $field_data )
 {
 	$name = $field_data['name'];
 	$value = $field_data['value'];
-	$validElements = $field_data['choices'];
+	$validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span', 'img' );
+//	$validElements = $field_data['choices'];
 	// echo 'value: ' . $value;
 	echo '<select name="' . $name . '" id="' . $name . '">';
 
@@ -551,11 +549,19 @@ function idMyGadget_sanitize_radio_buttons_fcn( $suspicious_input )
 
 	return $sanitized_input;
 }
-function idMyGadget_sanitize_element_fcn( $input )
+function idMyGadget_sanitize_element_fcn( $suspicious_input )
 {
-	global $validElements;
+//	global $validElements;
+	global $jmwsIdMyGadget;
+	$sanitized_input = strtolower( JmwsIdMyGadgetWordpress::$validElements[0] );
+
+	if ( in_array($suspicious_input, JmwsIdMyGadgetWordpress::$validElements) )
+	{
+		$sanitized_input = $suspicious_input;
+	}
+
 	error_log( 'ToDo: implement function idMyGadget_sanitize_element_fcn()' );
-	return $input;
+	return $sanitized_input;
 }
 function idMyGadget_sanitize_image_file_fcn( $input )
 {

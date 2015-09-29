@@ -21,10 +21,15 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 */
 	public static $radioChoices = array( 'Yes', 'No' );
 	/**
+	 * Array of choices for yes/no radio buttons (e.g., show site name)
+	 */
+	public static $validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
+	/**
 	 * Used by when this plugin is not installed or active, etc.
 	 * Set only when there's an error.
 	 */
 	public $errorMessage = '';
+
 	/**
 	 * Boolean: Using jQuery Mobile changes everything, so we need to know when we are using it.
 	 * Although we always use it on phones, we do not always use it on tablets.
