@@ -17,6 +17,10 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		'jmws_wp_twentyfifteen_idMyGadget'
 	);
 	/**
+	 * Array of choices for yes/no radio buttons (e.g., show site name)
+	 */
+	public static $radioChoices = array( 'Yes', 'No' );
+	/**
 	 * Used by when this plugin is not installed or active, etc.
 	 * Set only when there's an error.
 	 */

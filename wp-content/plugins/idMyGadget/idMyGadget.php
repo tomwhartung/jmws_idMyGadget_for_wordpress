@@ -119,16 +119,16 @@ if ( is_admin() )  // Add the options only when we are logged in as an admin
 	add_action( 'admin_menu', 'idMyGadget_admin_menu_add_options_page' );
 }
 
+// $radioChoices = array( 'Yes', 'No' );
+$validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
+
 /**
  * Add the idMyGadget admin options
  */
 function idMyGadget_admin_init()
 {
-	global $radioChoices;
+	global $jmwsIdMyGadget;
 	global $validElements;
-
-	$radioChoices = array( 'Yes', 'No' );
-	$validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
 
 	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
 
@@ -163,7 +163,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_show_site_name_phone',
 			'value' => get_option('idmg_show_site_name_phone'),
-			'choices' => $radioChoices
+			'choices' => JmwsIdMyGadgetWordpress::$radioChoices
 		)
 	);
 
@@ -261,7 +261,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_show_site_name_tablet',
 			'value' => get_option('idmg_show_site_name_tablet'),
-			'choices' => $radioChoices
+			'choices' => JmwsIdMyGadgetWordpress::$radioChoices
 		)
 	);
 
@@ -359,7 +359,7 @@ function idMyGadget_admin_init()
 		array(
 			'name' => 'idmg_show_site_name_desktop',
 			'value' => get_option('idmg_show_site_name_desktop'),
-			'choices' => $radioChoices
+			'choices' => JmwsIdMyGadgetWordpress::$radioChoices
 		)
 	);
 
@@ -541,7 +541,7 @@ function header_text_box_html_fcn( $field_data )
 //
 function idMyGadget_sanitize_radio_buttons_fcn( $input )
 {
-	global $radioChoices;
+	global $jmwsIdMyGadget;
 
 	error_log( 'ToDo: implement function idMyGadget_sanitize_radio_buttons_fcn()' );
 	return $input;
