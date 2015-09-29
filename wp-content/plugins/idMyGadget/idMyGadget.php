@@ -507,8 +507,8 @@ function header_element_select_html_fcn( $field_data )
 {
 	$name = $field_data['name'];
 	$value = $field_data['value'];
-	$validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span', 'img' );
-//	$validElements = $field_data['choices'];
+//	$validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span', 'img' );  // for testing sanitize fcn
+	$validElements = $field_data['choices'];
 	// echo 'value: ' . $value;
 	echo '<select name="' . $name . '" id="' . $name . '">';
 
@@ -551,7 +551,6 @@ function idMyGadget_sanitize_radio_buttons_fcn( $suspicious_input )
 }
 function idMyGadget_sanitize_element_fcn( $suspicious_input )
 {
-//	global $validElements;
 	global $jmwsIdMyGadget;
 	$sanitized_input = strtolower( JmwsIdMyGadgetWordpress::$validElements[0] );
 
