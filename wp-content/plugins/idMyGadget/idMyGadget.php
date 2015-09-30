@@ -487,6 +487,7 @@ function show_site_name_radio_buttons_html_fcn( $field_data )
 {
 	$name = $field_data['name'];
 	$value = $field_data['value'];
+//	$choices = array( 'Yes', 'No', 'Maybe' );   // for testing sanitize fcn
 	$choices = $field_data['choices'];
 
 	foreach( $choices as $choice )
@@ -565,16 +566,11 @@ function idMyGadget_sanitize_element_fcn( $suspicious_input )
 function idMyGadget_sanitize_image_file_fcn( $input )
 {
 	error_log( 'ToDo: implement function idMyGadget_sanitize_image_file_fcn()' );
+//	error_log( 'input: ' . $input );
 	return $input;
 }
-function idMyGadget_sanitize_radio_fcn( $input )
+function idMyGadget_sanitize_string_fcn( $suspicious_input )
 {
-	error_log( 'ToDo: implement function idMyGadget_sanitize_radio_fcn()' );
-	return $input;
+	$sanitized_input = sanitize_text_field( $suspicious_input );
+	return $sanitized_input;
 }
-function idMyGadget_sanitize_string_fcn( $input )
-{
-	error_log( 'ToDo: implement function idMyGadget_sanitize_string_fcn()' );
-	return $input;
-}
-
