@@ -560,7 +560,7 @@ function idMyGadget_sanitize_element_fcn( $suspicious_input )
 }
 function idMyGadget_sanitize_image_file_fcn( $suspicious_input )
 {
-	error_log( 'ToDo: implement function idMyGadget_sanitize_image_file_fcn()' );
+//	error_log( 'ToDo: implement function idMyGadget_sanitize_image_file_fcn()' );
 //	error_log( 'input: ' . $input );
 	$sanitized_input = sanitize_text_field( $suspicious_input );
 	return $sanitized_input;
