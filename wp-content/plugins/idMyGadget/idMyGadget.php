@@ -124,8 +124,6 @@ if ( is_admin() )  // Add the options only when we are logged in as an admin
  */
 function idMyGadget_admin_init()
 {
-	global $jmwsIdMyGadget;
-
 	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
 
 	//
@@ -540,7 +538,6 @@ function header_text_box_html_fcn( $field_data )
 //
 function idMyGadget_sanitize_radio_buttons_fcn( $suspicious_input )
 {
-	global $jmwsIdMyGadget;
 	$sanitized_input = strtolower( JmwsIdMyGadgetWordpress::$radioChoices[0] );
 
 	if ( in_array(ucfirst($suspicious_input), JmwsIdMyGadgetWordpress::$radioChoices) )
@@ -552,7 +549,6 @@ function idMyGadget_sanitize_radio_buttons_fcn( $suspicious_input )
 }
 function idMyGadget_sanitize_element_fcn( $suspicious_input )
 {
-	global $jmwsIdMyGadget;
 	$sanitized_input = strtolower( JmwsIdMyGadgetWordpress::$validElements[0] );
 
 	if ( in_array($suspicious_input, JmwsIdMyGadgetWordpress::$validElements) )
@@ -560,7 +556,6 @@ function idMyGadget_sanitize_element_fcn( $suspicious_input )
 		$sanitized_input = $suspicious_input;
 	}
 
-	error_log( 'ToDo: implement function idMyGadget_sanitize_element_fcn()' );
 	return $sanitized_input;
 }
 function idMyGadget_sanitize_image_file_fcn( $input )
