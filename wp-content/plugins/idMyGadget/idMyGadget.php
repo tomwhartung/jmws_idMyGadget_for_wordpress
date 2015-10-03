@@ -136,7 +136,9 @@ function idMyGadget_admin_init()
 		'idMyGadget_section_html_fcn',
 		'idMyGadget_option_settings' );
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_logo_file_phone', 'idMyGadget_sanitize_image_file_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_logo_file_phone',
+		'idMyGadget_sanitize_image_file_fcn' );
 	add_settings_field( 'idmg_logo_file_phone',
 		'Logo Image Phone',
 		'image_file_picker_html_fcn',
@@ -148,7 +150,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_show_site_name_phone', 'idMyGadget_sanitize_radio_buttons_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_show_site_name_phone',
+		'idMyGadget_sanitize_radio_buttons_fcn' );
 	add_settings_field( 'idmg_show_site_name_phone',
 		'Show Site Name Phone',
 		'show_site_name_radio_buttons_html_fcn',
@@ -161,7 +165,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_name_element_phone', 'idMyGadget_sanitize_html_element_tag_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_name_element_phone',
+		'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_name_element_phone',
 		'Site Name Element Phone',
 		'header_element_select_html_fcn',
@@ -174,7 +180,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_phone', 'idMyGadget_sanitize_string_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_title_phone',
+		'idMyGadget_sanitize_string_fcn' );
 	add_settings_field( 'idmg_site_title_phone',
 		'Site Title Phone',
 		'header_text_box_html_fcn',
@@ -186,7 +194,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_element_phone', 'idMyGadget_sanitize_html_element_tag_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_title_element_phone',
+		'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_title_element_phone',
 		'Site Title Element Phone',
 		'header_element_select_html_fcn',
@@ -199,7 +209,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_phone', 'idMyGadget_sanitize_string_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_description_phone',
+		'idMyGadget_sanitize_string_fcn' );
 	add_settings_field( 'idmg_site_description_phone',
 		'Tag Line Phone',
 		'header_text_box_html_fcn',
@@ -211,7 +223,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_element_phone', 'idMyGadget_sanitize_html_element_tag_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_description_element_phone',
+		'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_description_element_phone',
 		'Tag Line Element Phone',
 		'header_element_select_html_fcn',
@@ -234,7 +248,9 @@ function idMyGadget_admin_init()
 		'idMyGadget_section_html_fcn',
 		'idMyGadget_option_settings' );
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_logo_file_tablet', 'idMyGadget_sanitize_image_file_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_logo_file_tablet',
+		'idMyGadget_sanitize_image_file_fcn' );
 	add_settings_field( 'idmg_logo_file_tablet',
 		'Logo Image Tablet',
 		'image_file_picker_html_fcn',
@@ -246,7 +262,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_show_site_name_tablet', 'idMyGadget_sanitize_radio_buttons_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_show_site_name_tablet',
+		'idMyGadget_sanitize_radio_buttons_fcn' );
 	add_settings_field( 'idmg_show_site_name_tablet',
 		'Show Site Name Tablet',
 		'show_site_name_radio_buttons_html_fcn',
@@ -259,7 +277,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_name_element_tablet', 'idMyGadget_sanitize_html_element_tag_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_name_element_tablet',
+		'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_name_element_tablet',
 		'Site Name Element Tablet',
 		'header_element_select_html_fcn',
@@ -272,7 +292,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_tablet', 'idMyGadget_sanitize_string_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_title_tablet',
+		'idMyGadget_sanitize_string_fcn' );
 	add_settings_field( 'idmg_site_title_tablet',
 		'Site Title Tablet',
 		'header_text_box_html_fcn',
@@ -284,7 +306,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_element_tablet', 'idMyGadget_sanitize_html_element_tag_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_title_element_tablet',
+		'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_title_element_tablet',
 		'Site Title Element Tablet',
 		'header_element_select_html_fcn',
@@ -297,7 +321,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_tablet', 'idMyGadget_sanitize_string_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_description_tablet',
+		'idMyGadget_sanitize_string_fcn' );
 	add_settings_field( 'idmg_site_description_tablet',
 		'Tag Line Tablet',
 		'header_text_box_html_fcn',
@@ -309,7 +335,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_element_tablet', 'idMyGadget_sanitize_html_element_tag_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_description_element_tablet',
+		'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_description_element_tablet',
 		'Tag Line Element Tablet',
 		'header_element_select_html_fcn',
@@ -332,7 +360,9 @@ function idMyGadget_admin_init()
 		'idMyGadget_section_html_fcn',
 		'idMyGadget_option_settings' );
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_logo_file_desktop', 'idMyGadget_sanitize_image_file_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_logo_file_desktop',
+		'idMyGadget_sanitize_image_file_fcn' );
 	add_settings_field( 'idmg_logo_file_desktop',
 		'Logo Image Desktop',
 		'image_file_picker_html_fcn',
@@ -344,7 +374,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_show_site_name_desktop', 'idMyGadget_sanitize_radio_buttons_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_show_site_name_desktop',
+		'idMyGadget_sanitize_radio_buttons_fcn' );
 	add_settings_field( 'idmg_show_site_name_desktop',
 		'Show Site Name Desktop',
 		'show_site_name_radio_buttons_html_fcn',
@@ -357,7 +389,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_name_element_desktop', 'idMyGadget_sanitize_html_element_tag_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_name_element_desktop',
+		'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_name_element_desktop',
 		'Site Name Element Desktop',
 		'header_element_select_html_fcn',
@@ -370,7 +404,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_desktop', 'idMyGadget_sanitize_string_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_title_desktop',
+		'idMyGadget_sanitize_string_fcn' );
 	add_settings_field( 'idmg_site_title_desktop',
 		'Site Title Desktop',
 		'header_text_box_html_fcn',
@@ -382,7 +418,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_element_desktop', 'idMyGadget_sanitize_html_element_tag_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_title_element_desktop',
+		'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_title_element_desktop',
 		'Site Title Element Desktop',
 		'header_element_select_html_fcn',
@@ -395,7 +433,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_desktop', 'idMyGadget_sanitize_string_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_description_desktop',
+		'idMyGadget_sanitize_string_fcn' );
 	add_settings_field( 'idmg_site_description_desktop',
 		'Tag Line Desktop',
 		'header_text_box_html_fcn',
@@ -407,7 +447,9 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_element_desktop', 'idMyGadget_sanitize_html_element_tag_fcn' );
+	register_setting( 'idMyGadget_option_settings',
+		'idmg_site_description_element_desktop',
+		'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_description_element_desktop',
 		'Tag Line Element Desktop',
 		'header_element_select_html_fcn',
