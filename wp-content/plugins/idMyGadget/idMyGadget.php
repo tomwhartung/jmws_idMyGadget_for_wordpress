@@ -161,7 +161,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_name_element_phone', 'idMyGadget_sanitize_element_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_site_name_element_phone', 'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_name_element_phone',
 		'Site Name Element Phone',
 		'header_element_select_html_fcn',
@@ -186,7 +186,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_element_phone', 'idMyGadget_sanitize_element_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_element_phone', 'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_title_element_phone',
 		'Site Title Element Phone',
 		'header_element_select_html_fcn',
@@ -211,7 +211,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_element_phone', 'idMyGadget_sanitize_element_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_element_phone', 'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_description_element_phone',
 		'Tag Line Element Phone',
 		'header_element_select_html_fcn',
@@ -259,7 +259,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_name_element_tablet', 'idMyGadget_sanitize_element_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_site_name_element_tablet', 'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_name_element_tablet',
 		'Site Name Element Tablet',
 		'header_element_select_html_fcn',
@@ -284,7 +284,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_element_tablet', 'idMyGadget_sanitize_element_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_element_tablet', 'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_title_element_tablet',
 		'Site Title Element Tablet',
 		'header_element_select_html_fcn',
@@ -309,7 +309,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_element_tablet', 'idMyGadget_sanitize_element_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_element_tablet', 'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_description_element_tablet',
 		'Tag Line Element Tablet',
 		'header_element_select_html_fcn',
@@ -357,7 +357,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_name_element_desktop', 'idMyGadget_sanitize_element_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_site_name_element_desktop', 'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_name_element_desktop',
 		'Site Name Element Desktop',
 		'header_element_select_html_fcn',
@@ -382,7 +382,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_element_desktop', 'idMyGadget_sanitize_element_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_site_title_element_desktop', 'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_title_element_desktop',
 		'Site Title Element Desktop',
 		'header_element_select_html_fcn',
@@ -407,7 +407,7 @@ function idMyGadget_admin_init()
 		)
 	);
 
-	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_element_desktop', 'idMyGadget_sanitize_element_fcn' );
+	register_setting( 'idMyGadget_option_settings', 'idmg_site_description_element_desktop', 'idMyGadget_sanitize_html_element_tag_fcn' );
 	add_settings_field( 'idmg_site_description_element_desktop',
 		'Tag Line Element Desktop',
 		'header_element_select_html_fcn',
@@ -560,7 +560,7 @@ function idMyGadget_sanitize_radio_buttons_fcn( $suspicious_input )
  * @param string $suspicious_input
  * @return string $sanitized_input
  */
-function idMyGadget_sanitize_element_fcn( $suspicious_input )
+function idMyGadget_sanitize_html_element_tag_fcn( $suspicious_input )
 {
 	$sanitized_input = strtolower( JmwsIdMyGadgetWordpress::$validElements[0] );
 
