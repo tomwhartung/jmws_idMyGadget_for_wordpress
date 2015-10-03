@@ -535,7 +535,14 @@ function header_text_box_html_fcn( $field_data )
 }
 //
 // Functions to sanitize user input
+// --------------------------------
 //
+/**
+ * If the value we get for the radio buttons is invalid,
+ *   substitute a valid default value
+ * @param string $suspicious_input
+ * @return string $sanitized_input
+ */
 function idMyGadget_sanitize_radio_buttons_fcn( $suspicious_input )
 {
 	$sanitized_input = strtolower( JmwsIdMyGadgetWordpress::$radioChoices[0] );
@@ -547,6 +554,12 @@ function idMyGadget_sanitize_radio_buttons_fcn( $suspicious_input )
 
 	return $sanitized_input;
 }
+/**
+ * If the value we get for the html element drop down is invalid,
+ *   substitute a valid default value
+ * @param string $suspicious_input
+ * @return string $sanitized_input
+ */
 function idMyGadget_sanitize_element_fcn( $suspicious_input )
 {
 	$sanitized_input = strtolower( JmwsIdMyGadgetWordpress::$validElements[0] );
@@ -558,6 +571,11 @@ function idMyGadget_sanitize_element_fcn( $suspicious_input )
 
 	return $sanitized_input;
 }
+/**
+ * Sanitize the value we get for the image file name
+ * @param string $suspicious_input
+ * @return string $sanitized_input
+ */
 function idMyGadget_sanitize_image_file_fcn( $suspicious_input )
 {
 //	error_log( 'ToDo: implement function idMyGadget_sanitize_image_file_fcn()' );
@@ -565,6 +583,11 @@ function idMyGadget_sanitize_image_file_fcn( $suspicious_input )
 	$sanitized_input = sanitize_text_field( $suspicious_input );
 	return $sanitized_input;
 }
+/**
+ * Sanitize the value we get for an input text string (e.g., the site title)
+ * @param string $suspicious_input
+ * @return string $sanitized_input
+ */
 function idMyGadget_sanitize_string_fcn( $suspicious_input )
 {
 	$sanitized_input = sanitize_text_field( $suspicious_input );
