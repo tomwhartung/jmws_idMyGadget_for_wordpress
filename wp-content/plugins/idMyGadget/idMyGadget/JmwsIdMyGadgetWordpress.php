@@ -56,8 +56,9 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		parent::__construct( $gadgetDetectorString, $debugging, $allowOverridesInUrl );
 	}
 
-	public function getHeaderHtml( $header_html='' )
+	public function getLogoTitleDescriptionHtml(  )
 	{
+		$logoTitleDescription = '';
 		$logo_file = '';
 		$site_name = get_bloginfo('name' );
 		$site_title = '';
@@ -70,25 +71,25 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$site_description = get_option('idmg_site_description_phone');
 			if ( strlen($logo_file) > 0 )
 			{
-				$header_html .= '<img src="' . $logo_file . '" class="logo-file-phone" alt="' . $site_name . '" />';
+				$logoTitleDescription .= '<img src="' . $logo_file . '" class="logo-file-phone" alt="' . $site_name . '" />';
 			}
 			if ( get_option('idmg_show_site_name_phone') == 'yes' )
 			{
-				$header_html .= '<' . get_option('idmg_site_name_element_phone') . ' class="site-name-phone">';
-				$header_html .= $site_name;
-				$header_html .= '</' . get_option('idmg_site_name_element_phone') . '>';
+				$logoTitleDescription .= '<' . get_option('idmg_site_name_element_phone') . ' class="site-name-phone">';
+				$logoTitleDescription .= $site_name;
+				$logoTitleDescription .= '</' . get_option('idmg_site_name_element_phone') . '>';
 			}
 			if ( strlen($site_title) > 0 )
 			{
-				$header_html .= '<' . get_option('idmg_site_title_element_phone') . ' class="site-title-phone">';
-				$header_html .= $site_title;
-				$header_html .= '</' . get_option('idmg_site_title_element_phone') . '>';
+				$logoTitleDescription .= '<' . get_option('idmg_site_title_element_phone') . ' class="site-title-phone">';
+				$logoTitleDescription .= $site_title;
+				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_phone') . '>';
 			}
 			if ( strlen($site_description) > 0 )
 			{
-				$header_html .= '<' . get_option('idmg_site_description_element_phone') . ' class="site-description-phone">';
-				$header_html .= $site_description;
-				$header_html .= '</' . get_option('idmg_site_description_element_phone') . '>';
+				$logoTitleDescription .= '<' . get_option('idmg_site_description_element_phone') . ' class="site-description-phone">';
+				$logoTitleDescription .= $site_description;
+				$logoTitleDescription .= '</' . get_option('idmg_site_description_element_phone') . '>';
 			}
 		}
 		else if ( $this->isTablet() )
@@ -98,25 +99,25 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$site_description = get_option('idmg_site_description_tablet');
 			if ( strlen($logo_file) > 0 )
 			{
-				$header_html .= '<img src="' . $logo_file . '" class="logo-file-tablet" alt="' . $site_name . '" />';
+				$logoTitleDescription .= '<img src="' . $logo_file . '" class="logo-file-tablet" alt="' . $site_name . '" />';
 			}
 			if ( get_option('idmg_show_site_name_tablet') == 'yes' )
 			{
-				$header_html .= '<' . get_option('idmg_site_name_element_tablet') . ' class="site-name-tablet">';
-				$header_html .= $site_name;
-				$header_html .= '</' . get_option('idmg_site_name_element_tablet') . '>';
+				$logoTitleDescription .= '<' . get_option('idmg_site_name_element_tablet') . ' class="site-name-tablet">';
+				$logoTitleDescription .= $site_name;
+				$logoTitleDescription .= '</' . get_option('idmg_site_name_element_tablet') . '>';
 			}
 			if ( strlen($site_title) > 0 )
 			{
-				$header_html .= '<' . get_option('idmg_site_title_element_tablet') . ' class="site-title-tablet">';
-				$header_html .= $site_title;
-				$header_html .= '</' . get_option('idmg_site_title_element_tablet') . '>';
+				$logoTitleDescription .= '<' . get_option('idmg_site_title_element_tablet') . ' class="site-title-tablet">';
+				$logoTitleDescription .= $site_title;
+				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_tablet') . '>';
 			}
 			if ( strlen($site_description) > 0 )
 			{
-				$header_html .= '<' . get_option('idmg_site_description_element_tablet') . ' class="site-description-tablet">';
-				$header_html .= $site_description;
-				$header_html .= '</' . get_option('idmg_site_description_element_tablet') . '>';
+				$logoTitleDescription .= '<' . get_option('idmg_site_description_element_tablet') . ' class="site-description-tablet">';
+				$logoTitleDescription .= $site_description;
+				$logoTitleDescription .= '</' . get_option('idmg_site_description_element_tablet') . '>';
 			}
 		}
 		else
@@ -126,29 +127,29 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$site_description = get_option('idmg_site_description_desktop');
 			if ( strlen($logo_file) > 0 )
 			{
-				$header_html .= '<img src="' . $logo_file . '" class="logo-file-desktop" alt="' . $site_name . '" />';
+				$logoTitleDescription .= '<img src="' . $logo_file . '" class="logo-file-desktop" alt="' . $site_name . '" />';
 			}
 			if ( get_option('idmg_show_site_name_desktop') == 'yes' )
 			{
-				$header_html .= '<' . get_option('idmg_site_name_element_desktop') . ' class="site-name-desktop">';
-				$header_html .= $site_name;
-				$header_html .= '</' . get_option('idmg_site_name_element_desktop') . '>';
+				$logoTitleDescription .= '<' . get_option('idmg_site_name_element_desktop') . ' class="site-name-desktop">';
+				$logoTitleDescription .= $site_name;
+				$logoTitleDescription .= '</' . get_option('idmg_site_name_element_desktop') . '>';
 			}
 			if ( strlen($site_title) > 0 )
 			{
-				$header_html .= '<' . get_option('idmg_site_title_element_desktop') . ' class="site-title-desktop">';
-				$header_html .= $site_title;
-				$header_html .= '</' . get_option('idmg_site_title_element_desktop') . '>';
+				$logoTitleDescription .= '<' . get_option('idmg_site_title_element_desktop') . ' class="site-title-desktop">';
+				$logoTitleDescription .= $site_title;
+				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_desktop') . '>';
 			}
 			if ( strlen($site_description) > 0 )
 			{
-				$header_html .= '<' . get_option('idmg_site_description_element_desktop') . ' class="site-description-desktop">';
-				$header_html .= $site_description;
-				$header_html .= '</' . get_option('idmg_site_description_element_desktop') . '>';
+				$logoTitleDescription .= '<' . get_option('idmg_site_description_element_desktop') . ' class="site-description-desktop">';
+				$logoTitleDescription .= $site_description;
+				$logoTitleDescription .= '</' . get_option('idmg_site_description_element_desktop') . '>';
 			}
 		}
 
-		return $header_html;
+		return $logoTitleDescription;
 	}
 
 }
