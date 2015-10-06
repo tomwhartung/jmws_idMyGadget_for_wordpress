@@ -4,7 +4,7 @@ require_once 'IdMyGadget.php';
 /**
  * Determines whether device is a mobile phone
  */
-class IdMyGadgetDetectNone extends IdMyGadget
+class IdMyGadgetNoDetection extends IdMyGadget
 {
 	/**
 	 * Link to README.md file on github for this detector
@@ -17,6 +17,9 @@ class IdMyGadgetDetectNone extends IdMyGadget
 	 */
 	public function __construct( $debugging=FALSE, $allowOverridesInUrl=FALSE )
 	{
+		// Ignore overrides: without detection, we should not expect to see phone/tablet views
+		//
+		$allowOverridesInUrl = FALSE;
 		parent::__construct( $debugging, $allowOverridesInUrl );
 		$this->detectorUsed = parent::GADGET_DETECTOR_NONE;
 	}

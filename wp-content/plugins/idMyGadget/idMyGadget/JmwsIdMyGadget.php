@@ -41,7 +41,7 @@ class JmwsIdMyGadget
 		'detect_mobile_browsers',   // note that this is used as the default throughout
 		'mobile_detect',
 		'tera_wurfl',
-		'none'      // all requests default to desktop
+		'no_detection'      // all requests default to desktop
 	);
 
 	/**
@@ -121,6 +121,11 @@ class JmwsIdMyGadget
 			}
 			include_once 'php/IdMyGadgetTeraWurfl.php';
 			$this->idMyGadget = new IdMyGadgetTeraWurfl( $debugging, $allowOverridesInUrl );
+		}
+		else
+		{
+			include_once 'php/IdMyGadgetNoDetection.php';
+			$this->idMyGadget = new IdMyGadgetNoDetection( $debugging, $allowOverridesInUrl );
 		}
 
 		if ( $this->idMyGadget !== null )
