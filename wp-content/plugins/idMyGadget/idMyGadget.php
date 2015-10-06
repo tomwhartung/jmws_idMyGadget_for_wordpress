@@ -31,7 +31,7 @@ function idMyGadget()
 	global $idMyGadgetClass;        // global for debugging purposes, consider "locking it down?"
 
 	$gadgetDetectorIndex = get_theme_mod('gadget_detector');
-	$supportedGadgetDetectors = JmwsIdMyGadgetWordpress::$supportedGadgetDetectors;
+	$supportedGadgetDetectors = JmwsIdMyGadget::$supportedGadgetDetectors;
 	$gadgetDetectorString = $supportedGadgetDetectors[$gadgetDetectorIndex];
 
 	global $jmwsIdMyGadget;
@@ -67,7 +67,7 @@ function idmygadget_customize_register( $wp_customize )
 	) );
 
 	$wp_customize->add_setting( 'gadget_detector' , array(
-		'default'     => JmwsIdMyGadgetWordpress::$supportedGadgetDetectors[0],
+		'default'     => JmwsIdMyGadget::$supportedGadgetDetectors[0],
 		'transport'   => 'refresh',
 	) );
 
@@ -75,7 +75,7 @@ function idmygadget_customize_register( $wp_customize )
 		'label'    => __( 'Gadget Detector', $theme_object_stylesheet ),
 		'section'  => 'gadget_detector',
 		'type'     => 'radio',
-		'choices'  => JmwsIdMyGadgetWordpress::$supportedGadgetDetectors,
+		'choices'  => JmwsIdMyGadget::$supportedGadgetDetectors,
 		'priority' => 100,
 	) );
 }
@@ -620,8 +620,6 @@ function idMyGadget_sanitize_html_element_tag_fcn( $suspicious_input )
  */
 function idMyGadget_sanitize_image_file_fcn( $suspicious_input )
 {
-//	error_log( 'ToDo: implement function idMyGadget_sanitize_image_file_fcn()' );
-//	error_log( 'input: ' . $input );
 	$sanitized_input = sanitize_text_field( $suspicious_input );
 	return $sanitized_input;
 }
