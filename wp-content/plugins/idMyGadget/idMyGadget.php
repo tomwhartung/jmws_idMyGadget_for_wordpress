@@ -26,9 +26,7 @@ $theme_object_stylesheet = $theme_object->stylesheet;
  */
 function idMyGadget()
 {
-	global $gadgetDetectorIndex;    // global for debugging purposes, consider "locking it down?"
-	global $gadgetDetectorString;   // global for debugging purposes, consider "locking it down?"
-	global $idMyGadgetClass;        // global for debugging purposes, consider "locking it down?"
+//	global $gadgetDetectorString;   // global for debugging purposes, consider "locking it down?"
 
 	$gadgetDetectorIndex = get_theme_mod('gadget_detector');
 	$supportedGadgetDetectors = JmwsIdMyGadget::$supportedGadgetDetectors;
