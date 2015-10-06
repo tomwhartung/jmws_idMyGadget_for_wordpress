@@ -11,7 +11,7 @@ class IdMyGadgetDetectNone extends IdMyGadget
 	 * @var type URL
 	 */
 	protected $linkToReadme =
-		'https://github.com/tomwhartung/idMyGadget/blob/master/gadget_detectors/detect_mobile_browsers/README.md';
+		'https://github.com/tomwhartung/jmws_idMyGadget_for_wordpress/blob/master/README.md';
 	/**
 	 * Constructor: initialize essential data members
 	 */

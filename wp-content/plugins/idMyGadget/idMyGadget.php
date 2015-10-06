@@ -27,17 +27,14 @@ $theme_object_stylesheet = $theme_object->stylesheet;
 function idMyGadget()
 {
 //	global $gadgetDetectorString;   // global for debugging purposes, consider "locking it down?"
+	global $jmwsIdMyGadget;
 
 	$gadgetDetectorIndex = get_theme_mod('gadget_detector');
 	$supportedGadgetDetectors = JmwsIdMyGadget::$supportedGadgetDetectors;
 	$gadgetDetectorString = $supportedGadgetDetectors[$gadgetDetectorIndex];
 
-	global $jmwsIdMyGadget;
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetectorString);
-
 	$jmwsIdMyGadget->usingJQueryMobile = FALSE;
-
-	$idMyGadgetClass = get_class( $jmwsIdMyGadget->getIdMyGadget() );
 }
 add_action( 'wp', 'idMyGadget' );
 
