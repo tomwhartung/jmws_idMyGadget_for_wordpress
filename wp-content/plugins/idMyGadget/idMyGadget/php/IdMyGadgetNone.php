@@ -30,9 +30,7 @@ class IdMyGadgetDetectNone extends IdMyGadget
 		if ( $this->detectorIsInstalled === null )
 		{
 			$this->detectorIsInstalled = TRUE;
-			$this->detectorIsInstalled = TRUE;
 		}
-
 		return $this->detectorIsInstalled ;
 	}
 	/**
@@ -67,35 +65,20 @@ class IdMyGadgetDetectNone extends IdMyGadget
 	 */
 	protected function setGadgetType()
 	{
-		global $usingMobilePhone;
+		parent::setGadgetType();   // Allows for setting this in the URL (as a GET variable)
 
-		parent::setGadgetType();
-
+		if ( $this->gadgetType == parent::GADGET_TYPE_UNKNOWN )
+		{
+			$this->gadgetType = parent::GADGET_TYPE_DESKTOP;
+		}
+	
 		if ( $this->debugging )
 		{
 			print '<ul class="debugging">';
-			print '<li>usingMobilePhone (global): ' . $usingMobilePhone . '</li>';
-			print '<li>this->usingMobilePhone: ' . $this->usingMobilePhone . '</li>';
 			print '<li>this->gadgetType: ' . $this->gadgetType . '</li>';
 			print '</ul>';
 		}
 
-		if ( $this->gadgetType == parent::GADGET_TYPE_UNKNOWN )
-		{
-			if ( $this->usingMobilePhone === null )
-			{
-				$this->usingMobilePhone = $usingMobilePhone;   // use global value
-			}
-			if ( isset($this->usingMobilePhone) && $this->usingMobilePhone )
-			{
-				$this->gadgetType = parent::GADGET_TYPE_PHONE;
-			}
-			else
-			{
-				$this->gadgetType = parent::GADGET_TYPE_DESKTOP;
-			}
-		}
-	
 		return $this->gadgetType;
 	}
 	/**
