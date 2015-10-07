@@ -21,7 +21,7 @@ class IdMyGadgetNoDetection extends IdMyGadget
 		//
 		$allowOverridesInUrl = FALSE;
 		parent::__construct( $debugging, $allowOverridesInUrl );
-		$this->detectorUsed = parent::GADGET_DETECTOR_NONE;
+		$this->detectorUsed = parent::GADGET_DETECTOR_NO_DETECTION;
 	}
 
 	/**
