@@ -43,11 +43,11 @@ class JmwsIdMyGadget
 		'tera_wurfl',
 		'no_detection'      // defaults to desktop (allows for isolating responsive behavior)
 	);
+
 	/**
 	 * Boolean indicating whether device detection is enabled
 	 */
-	public $detectionEnabled = FALSE;
-
+	protected $detectionEnabled = FALSE;
 	/**
 	 * The directory containing the idMyGadget code
 	 * Used to determine whether the selected gadget detector code is installed.
@@ -160,6 +160,13 @@ class JmwsIdMyGadget
 	public function isInstalled()
 	{
 		return $this->idMyGadget->isInstalled();
+	}
+	/**
+	 * Returns TRUE if device detection is (installed and) enabled, else FALSE
+	 */
+	public function isEnabled()
+	{
+		return $this->detectionEnabled;
 	}
 
 	/**
