@@ -41,8 +41,12 @@ class JmwsIdMyGadget
 		'detect_mobile_browsers',   // note that this is used as the default throughout
 		'mobile_detect',
 		'tera_wurfl',
-		'no_detection'      // all requests default to desktop
+		'no_detection'      // defaults to desktop (allows for isolating responsive behavior)
 	);
+	/**
+	 * Boolean indicating whether device detection is enabled
+	 */
+	public $detectionEnabled = FALSE;
 
 	/**
 	 * The directory containing the idMyGadget code
@@ -131,6 +135,10 @@ class JmwsIdMyGadget
 		if ( $this->idMyGadget !== null )
 		{
 			$this->idMyGadget->idMyGadgetDir = $this->idMyGadgetDir;
+			if ( $this->idMyGadget->detectorUsed !== IdMyGadget::GADGET_DETECTOR_NO_DETECTION )
+			{
+				$this->detectionEnabled = TRUE;
+			}
 			if ( $this->idMyGadget->isInstalled() )
 			{
 				$this->deviceData = $this->idMyGadget->getDeviceData();
