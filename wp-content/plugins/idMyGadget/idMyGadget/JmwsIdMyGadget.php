@@ -135,14 +135,14 @@ class JmwsIdMyGadget
 		if ( $this->idMyGadget !== null )
 		{
 			$this->idMyGadget->idMyGadgetDir = $this->idMyGadgetDir;
-			if ( $this->idMyGadget->detectorUsed !== IdMyGadget::GADGET_DETECTOR_NO_DETECTION )
-			{
-				$this->detectionEnabled = TRUE;
-			}
 			if ( $this->idMyGadget->isInstalled() )
 			{
 				$this->deviceData = $this->idMyGadget->getDeviceData();
 				$this->gadgetString = getIdMyGadgetStringAllDevices( $this->deviceData );
+				if ( $this->idMyGadget->detectorUsed !== IdMyGadget::GADGET_DETECTOR_NO_DETECTION )
+				{
+					$this->detectionEnabled = TRUE;
+				}
 			}
 			else
 			{
