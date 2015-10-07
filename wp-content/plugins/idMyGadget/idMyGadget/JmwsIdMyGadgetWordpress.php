@@ -63,6 +63,8 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		$site_name = get_bloginfo('name' );
 		$site_title = '';
 		$site_description = '';
+		$anchor_tag_open = '<a href="' . esc_url( home_url('/') ) . '" rel="home">';
+		$anchor_tag_close = '</a>';
 
 		if ( $this->isPhone() )
 		{
@@ -71,18 +73,24 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$site_description = get_option('idmg_site_description_phone');
 			if ( strlen($logo_file) > 0 )
 			{
+				$logoTitleDescription .= $anchor_tag_open;
 				$logoTitleDescription .= '<img src="' . $logo_file . '" class="logo-file-phone" alt="' . $site_name . '" />';
+				$logoTitleDescription .= $anchor_tag_close;
 			}
 			if ( get_option('idmg_show_site_name_phone') == 'yes' )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_name_element_phone') . ' class="site-name-phone">';
+				$logoTitleDescription .= $anchor_tag_open;
 				$logoTitleDescription .= $site_name;
+				$logoTitleDescription .= $anchor_tag_close;
 				$logoTitleDescription .= '</' . get_option('idmg_site_name_element_phone') . '>';
 			}
 			if ( strlen($site_title) > 0 )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_title_element_phone') . ' class="site-title-phone">';
+				$logoTitleDescription .= $anchor_tag_open;
 				$logoTitleDescription .= $site_title;
+				$logoTitleDescription .= $anchor_tag_close;
 				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_phone') . '>';
 			}
 			if ( strlen($site_description) > 0 )
@@ -99,18 +107,24 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$site_description = get_option('idmg_site_description_tablet');
 			if ( strlen($logo_file) > 0 )
 			{
+				$logoTitleDescription .= $anchor_tag_open;
 				$logoTitleDescription .= '<img src="' . $logo_file . '" class="logo-file-tablet" alt="' . $site_name . '" />';
+				$logoTitleDescription .= $anchor_tag_close;
 			}
 			if ( get_option('idmg_show_site_name_tablet') == 'yes' )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_name_element_tablet') . ' class="site-name-tablet">';
+				$logoTitleDescription .= $anchor_tag_open;
 				$logoTitleDescription .= $site_name;
+				$logoTitleDescription .= $anchor_tag_close;
 				$logoTitleDescription .= '</' . get_option('idmg_site_name_element_tablet') . '>';
 			}
 			if ( strlen($site_title) > 0 )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_title_element_tablet') . ' class="site-title-tablet">';
+				$logoTitleDescription .= $anchor_tag_open;
 				$logoTitleDescription .= $site_title;
+				$logoTitleDescription .= $anchor_tag_close;
 				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_tablet') . '>';
 			}
 			if ( strlen($site_description) > 0 )
@@ -132,13 +146,17 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			if ( get_option('idmg_show_site_name_desktop') == 'yes' )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_name_element_desktop') . ' class="site-name-desktop">';
+				$logoTitleDescription .= $anchor_tag_open;
 				$logoTitleDescription .= $site_name;
+				$logoTitleDescription .= $anchor_tag_close;
 				$logoTitleDescription .= '</' . get_option('idmg_site_name_element_desktop') . '>';
 			}
 			if ( strlen($site_title) > 0 )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_title_element_desktop') . ' class="site-title-desktop">';
+				$logoTitleDescription .= $anchor_tag_open;
 				$logoTitleDescription .= $site_title;
+				$logoTitleDescription .= $anchor_tag_close;
 				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_desktop') . '>';
 			}
 			if ( strlen($site_description) > 0 )
