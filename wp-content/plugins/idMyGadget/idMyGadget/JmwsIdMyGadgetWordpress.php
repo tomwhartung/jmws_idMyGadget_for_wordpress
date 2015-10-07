@@ -141,7 +141,9 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$siteDescription = get_option('idmg_site_description_desktop');
 			if ( strlen($logoFile) > 0 )
 			{
+				$logoTitleDescription .= $anchorTagOpen;
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-desktop" alt="' . $siteName . '" />';
+				$logoTitleDescription .= $anchorTagClose;
 			}
 			if ( get_option('idmg_show_site_name_desktop') == 'yes' )
 			{
