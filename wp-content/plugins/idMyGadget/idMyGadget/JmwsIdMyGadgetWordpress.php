@@ -17,10 +17,6 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		'jmws_wp_twentyfifteen_idMyGadget'
 	);
 	/**
-	 * Array of choices for Header Image radio buttons
-	 */
-	public static $headerImageChoices = array( 'Do not use', 'Use as banner' );
-	/**
 	 * Array of choices for yes/no radio buttons (e.g., show site name) on plugin page
 	 */
 	public static $radioChoices = array( 'Yes', 'No' );
