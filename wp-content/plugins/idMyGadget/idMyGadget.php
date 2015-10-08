@@ -76,20 +76,29 @@ function idmygadget_customize_register( $wp_customize )
 	//
 	// If the current theme is IdMyGadget in TwentyFifteen
 	//    add a few more options pertaining to the header image
+	// NOTE: WE DECIDED THIS IS MORE TROUBLE THAN IT'S WORTH
+	//    SAVING THE CODE THOUGH FOR POSSIBLE FUTURE REFERENCE
 	//
-	if ( $theme_object_stylesheet == 'jmws_wp_twentyfifteen_idMyGadget' )
-	{
-		idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize );
-	}
+	//	if ( $theme_object_stylesheet == 'jmws_wp_twentyfifteen_idMyGadget' )
+	//	{
+	//		idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize );
+	//	}
 }
 /**
- *
+ * THIS FUNCTION CURRENTLY UNUSED - SAVING IT FOR POSSIBLE FUTURE REFERENCE
+ * At one point I was thinking that it would be nice to give the admin the option of
+ * using the Header Image as a banner on specific gadget types (esp. desktop)
+ * It turned out that doing this by quickly making some minor changes was not possible
+ * (not worth the effort).
+ * Leaving this function (which represents most of the work) here for possible future reference
  * @global type $theme_object_stylesheet
  * @param type $wp_customize
+ * @note THIS FUNCTION CURRENTLY UNUSED - SAVING IT FOR POSSIBLE FUTURE REFERENCE
  */
 function idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize )
 {
 	global $theme_object_stylesheet;   // aka. the theme "name"
+	$headerImageChoices = array( 'Do not use', 'Use as banner' );
 
 	//
 	// Add a section to the theme's Customize side bar that contains
@@ -109,7 +118,7 @@ function idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize )
 		'label'    => __( 'Use Header Image as Banner on Phones', $theme_object_stylesheet ),
 		'section'  => 'idmygadget_header_image',
 		'type'     => 'radio',
-		'choices'  => JmwsIdMyGadgetWordpress::$headerImageChoices,
+		'choices'  => $headerImageChoices,
 		'priority' => 100,
 	) );
 
@@ -121,7 +130,7 @@ function idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize )
 		'label'    => __( 'Use Header Image as Banner on Tablets', $theme_object_stylesheet ),
 		'section'  => 'idmygadget_header_image',
 		'type'     => 'radio',
-		'choices'  => JmwsIdMyGadgetWordpress::$headerImageChoices,
+		'choices'  => $headerImageChoices,
 		'priority' => 100,
 	) );
 
@@ -133,7 +142,7 @@ function idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize )
 		'label'    => __( 'Use Header Image as Banner on Desktops', $theme_object_stylesheet ),
 		'section'  => 'idmygadget_header_image',
 		'type'     => 'radio',
-		'choices'  => JmwsIdMyGadgetWordpress::$headerImageChoices,
+		'choices'  => $headerImageChoices,
 		'priority' => 100,
 	) );
 }
