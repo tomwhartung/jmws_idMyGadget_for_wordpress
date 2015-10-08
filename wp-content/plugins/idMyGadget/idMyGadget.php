@@ -56,9 +56,9 @@ function idmygadget_customize_register( $wp_customize )
 	// radio buttons that allow the admin to set the device detector.
 	//
 	$wp_customize->add_section( 'gadget_detector' , array(
-		'title'      => __( 'IdMyGadget', $theme_object_stylesheet ),
+		'title'      => __( 'IdMyGadget Detector', $theme_object_stylesheet ),
 		'description' => __( 'Select the 3rd party device detector to use for this theme.' ),
-		'priority'   => 9999,
+		'priority'   => 9996,
 	) );
 
 	$wp_customize->add_setting( 'gadget_detector' , array(
@@ -71,6 +71,69 @@ function idmygadget_customize_register( $wp_customize )
 		'section'  => 'gadget_detector',
 		'type'     => 'radio',
 		'choices'  => JmwsIdMyGadget::$supportedGadgetDetectors,
+		'priority' => 100,
+	) );
+	//
+	// If the current theme is IdMyGadget in TwentyFifteen
+	//    add a few more options pertaining to the header image
+	//
+	if ( $theme_object_stylesheet == 'jmws_wp_twentyfifteen_idMyGadget' )
+	{
+		idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize );
+	}
+}
+/**
+ *
+ * @global type $theme_object_stylesheet
+ * @param type $wp_customize
+ */
+function idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize )
+{
+	global $theme_object_stylesheet;   // aka. the theme "name"
+
+	//
+	// Add a section to the theme's Customize side bar that contains
+	// radio buttons that allow the admin to set the device detector.
+	//
+	$wp_customize->add_section( 'idmygadget_header_image' , array(
+		'title'      => __( 'IdMyGadget Header Image', $theme_object_stylesheet ),
+		'description' => __( 'Allows using the twentyfifteen header image as a banner.' ),
+		'priority'   => 9999,
+	) );
+
+	$wp_customize->add_setting( 'idmygadget_header_image_phone' , array(
+		'default'     => 0,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmygadget_header_image_phone', array(
+		'label'    => __( 'Use Header Image as Banner on Phones', $theme_object_stylesheet ),
+		'section'  => 'idmygadget_header_image',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadgetWordpress::$headerImageChoices,
+		'priority' => 100,
+	) );
+
+	$wp_customize->add_setting( 'idmygadget_header_image_tablet' , array(
+		'default'     => 0,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmygadget_header_image_tablet', array(
+		'label'    => __( 'Use Header Image as Banner on Tablets', $theme_object_stylesheet ),
+		'section'  => 'idmygadget_header_image',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadgetWordpress::$headerImageChoices,
+		'priority' => 100,
+	) );
+
+	$wp_customize->add_setting( 'idmygadget_header_image_desktop' , array(
+		'default'     => 1,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmygadget_header_image_desktop', array(
+		'label'    => __( 'Use Header Image as Banner on Desktops', $theme_object_stylesheet ),
+		'section'  => 'idmygadget_header_image',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadgetWordpress::$headerImageChoices,
 		'priority' => 100,
 	) );
 }
