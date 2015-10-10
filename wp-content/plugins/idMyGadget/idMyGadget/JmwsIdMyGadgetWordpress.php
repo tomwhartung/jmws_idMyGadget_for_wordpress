@@ -17,10 +17,6 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		'jmws_wp_twentyfifteen_idMyGadget'
 	);
 	/**
-	 * Array of choices for lists of elements (e.g., site name, site title)
-	 */
-	public static $validElements = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span' );
-	/**
 	 * Used by when this plugin is not installed or active, etc.
 	 * Set only when there's an error.
 	 */
