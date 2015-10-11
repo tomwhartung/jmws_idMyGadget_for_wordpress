@@ -49,7 +49,8 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	}
 
 	/**
-	 *
+	 * Based on the current device, access the device-dependent options set in the admin console 
+	 * and use them to generate most of the markup for the heading
 	 * @return string Markup for site heading (name, logo, title, and description, each of which is optional)
 	 */
 	public function getLogoTitleDescriptionHtml(  )
