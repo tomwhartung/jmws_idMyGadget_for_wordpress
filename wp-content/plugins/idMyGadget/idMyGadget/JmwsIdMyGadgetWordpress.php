@@ -48,6 +48,10 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		parent::__construct( $gadgetDetectorString, $debugging, $allowOverridesInUrl );
 	}
 
+	/**
+	 *
+	 * @return string Markup for site heading (name, logo, title, and description, each of which is optional)
+	 */
 	public function getLogoTitleDescriptionHtml(  )
 	{
 		$logoTitleDescription = '';
