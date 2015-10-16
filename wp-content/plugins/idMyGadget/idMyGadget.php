@@ -49,28 +49,75 @@ add_action( 'wp', 'idMyGadget' );
 function idmygadget_customize_register( $wp_customize )
 {
 	global $theme_object_stylesheet;   // aka. the theme "name"
-
 	//
+	// IdMyGadget Detector Options: Select Device Detector
+	// ----------------------------------------------------
 	// Add a section to the theme's Customize side bar that contains
 	// radio buttons that allow the admin to set the device detector.
 	//
 	$wp_customize->add_section( 'gadget_detector' , array(
 		'title'      => __( 'IdMyGadget Detector', $theme_object_stylesheet ),
 		'description' => __( 'Select the 3rd party device detector to use for this theme.' ),
-		'priority'   => 9996,
+		'priority'   => 9990,
 	) );
 
 	$wp_customize->add_setting( 'gadget_detector' , array(
 		'default'     => JmwsIdMyGadget::$supportedGadgetDetectors[0],
 		'transport'   => 'refresh',
 	) );
-
 	$wp_customize->add_control( 'gadget_detector', array(
 		'label'    => __( 'Gadget Detector', $theme_object_stylesheet ),
 		'section'  => 'gadget_detector',
 		'type'     => 'radio',
 		'choices'  => JmwsIdMyGadget::$supportedGadgetDetectors,
 		'priority' => 100,
+	) );
+	//
+	// IdMyGadget Header and Footer Menu Options: Which Device(s)?
+	// -----------------------------------------------------------
+	// Add a section to the theme's Customize side bar that contains
+	// radio buttons that allow the admin to set which device(s) should .
+	//
+	$wp_customize->add_section( 'header_footer_menus' , array(
+		'title'      => __( 'IdMyGadget Header/Footer Menus', $theme_object_stylesheet ),
+		'description' => __( 'These jQuery Mobile menus look best on mobile devices, especially phones.'),
+		'priority'   => 9993,
+	) );
+
+	$wp_customize->add_setting( 'phone_nav_on_phones' , array(
+		'default'     => JmwsIdMyGadget::$radioChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'phone_nav_on_phones', array(
+		'label'    => __( 'Header/Footer Nav on Phones?', $theme_object_stylesheet ),
+		'section'  => 'header_footer_menus',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadget::$radioChoices,
+		'priority' => 100,
+	) );
+
+	$wp_customize->add_setting( 'phone_nav_on_tablets' , array(
+		'default'     => JmwsIdMyGadget::$radioChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'phone_nav_on_tablets', array(
+		'label'    => __( 'Header/Footer Nav on Tablets?', $theme_object_stylesheet ),
+		'section'  => 'header_footer_menus',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadget::$radioChoices,
+		'priority' => 200,
+	) );
+
+	$wp_customize->add_setting( 'phone_nav_on_desktops' , array(
+		'default'     => JmwsIdMyGadget::$radioChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'phone_nav_on_desktops', array(
+		'label'    => __( 'Header/Footer Nav on Desktops?', $theme_object_stylesheet ),
+		'section'  => 'header_footer_menus',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadget::$radioChoices,
+		'priority' => 300,
 	) );
 	//
 	// If the current theme is IdMyGadget in TwentyFifteen
