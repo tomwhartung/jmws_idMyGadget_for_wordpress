@@ -84,6 +84,18 @@ function idmygadget_customize_register( $wp_customize )
 		'priority'   => 9993,
 	) );
 
+	$wp_customize->add_setting( 'jqm_data_theme' , array(
+		'default'     => JmwsIdMyGadget::$jqueryMobileThemeChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'jqm_data_theme', array(
+		'label'    => __( 'jQuery Mobile Menu Theme', $theme_object_stylesheet ),
+		'section'  => 'header_footer_menus',
+		'type'     => 'select',
+		'choices'  => JmwsIdMyGadget::$jqueryMobileThemeChoices,
+		'priority' => 100,
+	) );
+
 	$wp_customize->add_setting( 'phone_nav_on_phones' , array(
 		'default'     => JmwsIdMyGadget::$radioChoices[0],
 		'transport'   => 'refresh',
@@ -93,7 +105,7 @@ function idmygadget_customize_register( $wp_customize )
 		'section'  => 'header_footer_menus',
 		'type'     => 'radio',
 		'choices'  => JmwsIdMyGadget::$radioChoices,
-		'priority' => 100,
+		'priority' => 300,
 	) );
 
 	$wp_customize->add_setting( 'phone_nav_on_tablets' , array(
@@ -105,7 +117,7 @@ function idmygadget_customize_register( $wp_customize )
 		'section'  => 'header_footer_menus',
 		'type'     => 'radio',
 		'choices'  => JmwsIdMyGadget::$radioChoices,
-		'priority' => 200,
+		'priority' => 400,
 	) );
 
 	$wp_customize->add_setting( 'phone_nav_on_desktops' , array(
@@ -117,7 +129,7 @@ function idmygadget_customize_register( $wp_customize )
 		'section'  => 'header_footer_menus',
 		'type'     => 'radio',
 		'choices'  => JmwsIdMyGadget::$radioChoices,
-		'priority' => 300,
+		'priority' => 500,
 	) );
 	//
 	// If the current theme is IdMyGadget in TwentyFifteen
