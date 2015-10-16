@@ -28,7 +28,7 @@ function idMyGadget()
 {
 	global $jmwsIdMyGadget;
 
-	$gadgetDetectorIndex = get_theme_mod('gadget_detector');
+	$gadgetDetectorIndex = get_theme_mod('idmg_gadget_detector');
 	$supportedGadgetDetectors = JmwsIdMyGadget::$supportedGadgetDetectors;
 	$gadgetDetectorString = $supportedGadgetDetectors[$gadgetDetectorIndex];
 
@@ -61,11 +61,11 @@ function idmygadget_customize_register( $wp_customize )
 		'priority'   => 9990,
 	) );
 
-	$wp_customize->add_setting( 'gadget_detector' , array(
+	$wp_customize->add_setting( 'idmg_gadget_detector' , array(
 		'default'     => JmwsIdMyGadget::$supportedGadgetDetectors[0],
 		'transport'   => 'refresh',
 	) );
-	$wp_customize->add_control( 'gadget_detector', array(
+	$wp_customize->add_control( 'idmg_gadget_detector', array(
 		'label'    => __( 'Gadget Detector', $theme_object_stylesheet ),
 		'section'  => 'gadget_detector',
 		'type'     => 'radio',
@@ -84,11 +84,11 @@ function idmygadget_customize_register( $wp_customize )
 		'priority'   => 9993,
 	) );
 
-	$wp_customize->add_setting( 'jqm_data_theme' , array(
+	$wp_customize->add_setting( 'idmg_jqm_data_theme' , array(
 		'default'     => JmwsIdMyGadget::$jqueryMobileThemeChoices[0],
 		'transport'   => 'refresh',
 	) );
-	$wp_customize->add_control( 'jqm_data_theme', array(
+	$wp_customize->add_control( 'idmg_jqm_data_theme', array(
 		'label'    => __( 'jQuery Mobile Menu Theme', $theme_object_stylesheet ),
 		'section'  => 'header_footer_menus',
 		'type'     => 'select',
@@ -96,11 +96,11 @@ function idmygadget_customize_register( $wp_customize )
 		'priority' => 100,
 	) );
 
-	$wp_customize->add_setting( 'phone_nav_on_phones' , array(
+	$wp_customize->add_setting( 'idmg_phone_nav_on_phones' , array(
 		'default'     => JmwsIdMyGadget::$radioChoices[0],
 		'transport'   => 'refresh',
 	) );
-	$wp_customize->add_control( 'phone_nav_on_phones', array(
+	$wp_customize->add_control( 'idmg_phone_nav_on_phones', array(
 		'label'    => __( 'Header/Footer Nav on Phones?', $theme_object_stylesheet ),
 		'section'  => 'header_footer_menus',
 		'type'     => 'radio',
@@ -108,11 +108,11 @@ function idmygadget_customize_register( $wp_customize )
 		'priority' => 300,
 	) );
 
-	$wp_customize->add_setting( 'phone_nav_on_tablets' , array(
+	$wp_customize->add_setting( 'idmg_phone_nav_on_tablets' , array(
 		'default'     => JmwsIdMyGadget::$radioChoices[0],
 		'transport'   => 'refresh',
 	) );
-	$wp_customize->add_control( 'phone_nav_on_tablets', array(
+	$wp_customize->add_control( 'idmg_phone_nav_on_tablets', array(
 		'label'    => __( 'Header/Footer Nav on Tablets?', $theme_object_stylesheet ),
 		'section'  => 'header_footer_menus',
 		'type'     => 'radio',
@@ -120,11 +120,11 @@ function idmygadget_customize_register( $wp_customize )
 		'priority' => 400,
 	) );
 
-	$wp_customize->add_setting( 'phone_nav_on_desktops' , array(
+	$wp_customize->add_setting( 'idmg_phone_nav_on_desktops' , array(
 		'default'     => JmwsIdMyGadget::$radioChoices[0],
 		'transport'   => 'refresh',
 	) );
-	$wp_customize->add_control( 'phone_nav_on_desktops', array(
+	$wp_customize->add_control( 'idmg_phone_nav_on_desktops', array(
 		'label'    => __( 'Header/Footer Nav on Desktops?', $theme_object_stylesheet ),
 		'section'  => 'header_footer_menus',
 		'type'     => 'radio',
