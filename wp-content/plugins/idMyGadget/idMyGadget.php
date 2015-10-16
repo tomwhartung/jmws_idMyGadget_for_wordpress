@@ -26,7 +26,6 @@ $theme_object_stylesheet = $theme_object->stylesheet;
  */
 function idMyGadget()
 {
-//	global $gadgetDetectorString;   // global for debugging purposes, consider "locking it down?"
 	global $jmwsIdMyGadget;
 
 	$gadgetDetectorIndex = get_theme_mod('gadget_detector');
@@ -83,68 +82,6 @@ function idmygadget_customize_register( $wp_customize )
 	//	{
 	//		idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize );
 	//	}
-}
-/**
- * THIS FUNCTION CURRENTLY UNUSED - SAVING IT FOR POSSIBLE FUTURE REFERENCE
- * At one point I was thinking that it would be nice to give the admin the option of
- * using the Header Image as a banner on specific gadget types (esp. desktop)
- * It turned out that doing this by quickly making some minor changes was not possible
- * (not worth the effort).
- * Leaving this function (which represents most of the work) here for possible future reference
- * @global type $theme_object_stylesheet
- * @param type $wp_customize
- * @note THIS FUNCTION CURRENTLY UNUSED - SAVING IT FOR POSSIBLE FUTURE REFERENCE
- */
-function idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize )
-{
-	global $theme_object_stylesheet;   // aka. the theme "name"
-	$headerImageChoices = array( 'Do not use', 'Use as banner' );
-
-	//
-	// Add a section to the theme's Customize side bar that contains
-	// radio buttons that allow the admin to set the device detector.
-	//
-	$wp_customize->add_section( 'idmygadget_header_image' , array(
-		'title'      => __( 'IdMyGadget Header Image', $theme_object_stylesheet ),
-		'description' => __( 'Allows using the twentyfifteen header image as a banner.' ),
-		'priority'   => 9999,
-	) );
-
-	$wp_customize->add_setting( 'idmygadget_header_image_phone' , array(
-		'default'     => 0,
-		'transport'   => 'refresh',
-	) );
-	$wp_customize->add_control( 'idmygadget_header_image_phone', array(
-		'label'    => __( 'Use Header Image as Banner on Phones', $theme_object_stylesheet ),
-		'section'  => 'idmygadget_header_image',
-		'type'     => 'radio',
-		'choices'  => $headerImageChoices,
-		'priority' => 100,
-	) );
-
-	$wp_customize->add_setting( 'idmygadget_header_image_tablet' , array(
-		'default'     => 0,
-		'transport'   => 'refresh',
-	) );
-	$wp_customize->add_control( 'idmygadget_header_image_tablet', array(
-		'label'    => __( 'Use Header Image as Banner on Tablets', $theme_object_stylesheet ),
-		'section'  => 'idmygadget_header_image',
-		'type'     => 'radio',
-		'choices'  => $headerImageChoices,
-		'priority' => 100,
-	) );
-
-	$wp_customize->add_setting( 'idmygadget_header_image_desktop' , array(
-		'default'     => 1,
-		'transport'   => 'refresh',
-	) );
-	$wp_customize->add_control( 'idmygadget_header_image_desktop', array(
-		'label'    => __( 'Use Header Image as Banner on Desktops', $theme_object_stylesheet ),
-		'section'  => 'idmygadget_header_image',
-		'type'     => 'radio',
-		'choices'  => $headerImageChoices,
-		'priority' => 100,
-	) );
 }
 
 /*
@@ -643,6 +580,7 @@ function header_text_box_html_fcn( $field_data )
 	echo '</label>';
 }
 //
+// --------------------------------
 // Functions to sanitize user input
 // --------------------------------
 //
@@ -699,4 +637,68 @@ function idMyGadget_sanitize_string_fcn( $suspicious_input )
 {
 	$sanitized_input = sanitize_text_field( $suspicious_input );
 	return $sanitized_input;
+}
+//
+// ========================================
+// ***  UNUSED CODE - DELETE OR IGNORE  ***
+// ========================================
+//
+/**
+ * THIS FUNCTION CURRENTLY UNUSED - SAVING IT FOR POSSIBLE FUTURE REFERENCE
+ * At one point I was thinking that it would be nice to give the admin the option of
+ * using the Header Image as a banner on specific gadget types (esp. desktop)
+ * It turned out that doing this by quickly making some minor changes was not possible
+ * (not worth the effort).
+ * Leaving this function (which represents most of the work) here for possible future reference
+ * @global type $theme_object_stylesheet
+ * @param type $wp_customize
+ * @note THIS FUNCTION CURRENTLY UNUSED - SAVING IT FOR POSSIBLE FUTURE REFERENCE
+ */
+function idmygadget_add_twentyfifteen_idMyGadget_options( $wp_customize )
+{
+	global $theme_object_stylesheet;   // aka. the theme "name"
+	$headerImageChoices = array( 'Do not use', 'Use as banner' );
+
+	//
+	// Add a section to the theme's Customize side bar that contains
+	// radio buttons that allow the admin to set the device detector.
+	//
+	$wp_customize->add_section( 'idmygadget_header_image' , array(
+		'title'      => __( 'IdMyGadget Header Image', $theme_object_stylesheet ),
+		'description' => __( 'Allows using the twentyfifteen header image as a banner.' ),
+		'priority'   => 9999,
+	) );
+	$wp_customize->add_setting( 'idmygadget_header_image_phone' , array(
+		'default'     => 0,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmygadget_header_image_phone', array(
+		'label'    => __( 'Use Header Image as Banner on Phones', $theme_object_stylesheet ),
+		'section'  => 'idmygadget_header_image',
+		'type'     => 'radio',
+		'choices'  => $headerImageChoices,
+		'priority' => 100,
+	) );
+	$wp_customize->add_setting( 'idmygadget_header_image_tablet' , array(
+		'default'     => 0,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmygadget_header_image_tablet', array(
+		'label'    => __( 'Use Header Image as Banner on Tablets', $theme_object_stylesheet ),
+		'section'  => 'idmygadget_header_image',
+		'type'     => 'radio',
+		'choices'  => $headerImageChoices,
+		'priority' => 100,
+	) );
+	$wp_customize->add_setting( 'idmygadget_header_image_desktop' , array(
+		'default'     => 1,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmygadget_header_image_desktop', array(
+		'label'    => __( 'Use Header Image as Banner on Desktops', $theme_object_stylesheet ),
+		'section'  => 'idmygadget_header_image',
+		'type'     => 'radio',
+		'choices'  => $headerImageChoices,
+		'priority' => 100,
+	) );
 }
