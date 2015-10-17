@@ -46,7 +46,11 @@ class JmwsIdMyGadget
 	/**
 	 * Array of choices for yes/no radio buttons (e.g., show site name) on plugin page
 	 */
-	public static $radioChoices = array( 'No', 'Yes' );
+	public static $gadgetTypes = array( 'phone', 'tablet', 'desktop' );
+	/**
+	 * Array of choices for yes/no radio buttons (e.g., show site name) on plugin page
+	 */
+	public static $radioChoices = array( 'No', 'Yes' );  // NOTE: 'No' must be the zeroeth elt ;-)
 	/**
 	 * Array of choices for lists of elements (e.g., site name, site title)
 	 */
