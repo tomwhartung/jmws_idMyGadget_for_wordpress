@@ -540,20 +540,16 @@ function idMyGadget_wp_enqueue_scripts()
 	global $jmwsIdMyGadget;
 	if ( $jmwsIdMyGadget->usingJQueryMobile )
 	{
-	//	wp_enqueue_style( 'jquerymobile-css', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL, array('jquery')  );
-		wp_register_style( 'jquerymobilecss', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
-		wp_enqueue_style( 'jquerymobilecss' );
-	//	wp_register_script( 'jquerymobile-js', JmwsIdMyGadget::JQUERY_MOBILE_JS_URL, array('jquery') );
-	//	wp_enqueue_script( 'jquerymobile-js' );
+		// The register_style calls might be useful someday (for more complicated conditionals?)
+		// If not, please delete
+		//
+		//	wp_register_style( 'jquerymobilecss', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
+		//	wp_enqueue_style( 'jquerymobilecss' );
+		//	wp_register_script( 'jquerymobile-js', JmwsIdMyGadget::JQUERY_MOBILE_JS_URL, array('jquery') );
+		//	wp_enqueue_script( 'jquerymobile-js' );
+		wp_enqueue_style( 'jquerymobile-css', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
 		wp_enqueue_script( 'jquerymobile-js', JmwsIdMyGadget::JQUERY_MOBILE_JS_URL, array('jquery') );
 	}
-//	wp_enqueue_style( 'jquerymobile-css', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL, array('jquery')  );
-//	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
-//	wp_enqueue_style( 'idMyGadgetStylesheet' );
-//	wp_register_style( 'jquerymobile-css', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
-//	wp_register_style( 'jquerymobilecss', plugins_url('idMyGadget.css', __FILE__) );
-	wp_register_style( 'jquerymobilecss', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
-	wp_enqueue_style( 'jquerymobilecss' );
 }
 add_action( 'wp_enqueue_scripts', 'idMyGadget_wp_enqueue_scripts' );
 /**
