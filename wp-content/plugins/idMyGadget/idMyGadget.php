@@ -36,7 +36,6 @@ function idMyGadget()
 	$jmwsIdMyGadget->usingJQueryMobile = FALSE;
 }
 add_action( 'wp', 'idMyGadget' );
-
 //
 // ------------------------------------------------
 // Adding options to the theme's Customization page
@@ -151,7 +150,6 @@ if ( in_array($theme_object_stylesheet,JmwsIdMyGadgetWordpress::$supportedThemes
 {
 	add_action( 'customize_register', 'idmygadget_customize_register' );
 }
-
 //
 // ---------------------------------------------------
 // Adding options to the plugin's special Options page
@@ -170,19 +168,11 @@ function idMyGadget_admin_menu_add_options_page()
 		__FILE__,
 		'idMyGadget_options_page_html_fcn'    // Form markup is in idMyGadgetOptionsPage.php
 	);
-	add_action( 'admin_print_styles-' . $page, 'idMyGadget_include_admin_styles' );
 }
-function idMyGadget_include_admin_styles()
-{
-	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
-	wp_enqueue_style( 'idMyGadgetStylesheet' );
-}
-
 if ( is_admin() )  // Add the options only when we are logged in as an admin
 {
 	add_action( 'admin_menu', 'idMyGadget_admin_menu_add_options_page' );
 }
-
 /**
  * Add the idMyGadget admin options
  */
@@ -523,12 +513,53 @@ function idMyGadget_admin_init()
 			'choices' => JmwsIdMyGadgetWordpress::$validElements
 		)
 	);
-
 }
 add_action( 'admin_init', 'idMyGadget_admin_init' );
-
+//
+// ------------------------------------------------------------------
+// Adding CSS and JS files for use on the SITE and in the ADMIN panel
+// ------------------------------------------------------------------
+//
 /**
- * Add the JavaScript file we need to use to upload the logo image:
+ * Add the SITE CSS files
+ */
+function idMyGadget_include_site_styles()
+{
+//	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
+//	wp_enqueue_style( 'idMyGadgetStylesheet' );
+}
+//if ( is_admin() )  // Add the options only when we are logged in as an admin
+//{
+//	add_action( 'admin_menu', 'idMyGadget_include_site_styles' );
+//}
+/**
+ * Add the SITE JavaScript files
+ */
+function idMyGadget_site_enqueue_scripts()
+{
+	if ( isset($_GET['page']) && $_GET['page'] == 'idMyGadget/idMyGadget.php' )
+	{
+//		wp_enqueue_media();
+//		wp_register_script( 'idMyGadget-js', WP_PLUGIN_URL . '/idMyGadget/idMyGadget.js', array('jquery') );
+//		wp_enqueue_script( 'idMyGadget-js' );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'idMyGadget_site_enqueue_scripts' );
+/**
+ * Add the ADMIN CSS file to help make the Plugins -> IdMyGadget page look decent:
+ */
+function idMyGadget_admin_print_styles()
+{
+	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
+	wp_enqueue_style( 'idMyGadgetStylesheet' );
+}
+if ( is_admin() )  // Add the options only when we are logged in as an admin
+{
+	add_action( 'admin_print_styles' . $page, 'idMyGadget_admin_print_styles' );
+
+}
+/**
+ * Add the ADMIN JavaScript file we need to use to upload the logo image:
  */
 function idMyGadget_admin_enqueue_scripts()
 {
@@ -540,7 +571,6 @@ function idMyGadget_admin_enqueue_scripts()
 	}
 }
 add_action( 'admin_enqueue_scripts', 'idMyGadget_admin_enqueue_scripts' );
-
 //
 // -------------------------------------------------------------------
 // Html Fcns: Functions that generate the html for each of the options
