@@ -33,7 +33,8 @@ function idMyGadget()
 	$gadgetDetectorString = $supportedGadgetDetectors[$gadgetDetectorIndex];
 
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetectorString);
-	$jmwsIdMyGadget->usingJQueryMobile = FALSE;
+
+	// $jmwsIdMyGadget->usingJQueryMobile = FALSE;
 }
 add_action( 'wp', 'idMyGadget' );
 //
@@ -528,23 +529,27 @@ function idMyGadget_include_site_styles()
 //	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
 //	wp_enqueue_style( 'idMyGadgetStylesheet' );
 }
-//if ( is_admin() )  // Add the options only when we are logged in as an admin
-//{
-//	add_action( 'admin_menu', 'idMyGadget_include_site_styles' );
-//}
 /**
  * Add the SITE JavaScript files
+ * Add the SITE CSS files
+ * Reference:
+ *   http://wordpress.stackexchange.com/questions/82490/when-should-i-use-wp-register-script-with-wp-enqueue-script-vs-just-wp-enque
  */
-function idMyGadget_site_enqueue_scripts()
+function idMyGadget_wp_enqueue_scripts()
 {
-	if ( isset($_GET['page']) && $_GET['page'] == 'idMyGadget/idMyGadget.php' )
+	global $jmwsIdMyGadget;
+	if ( $jmwsIdMyGadget->usingJQueryMobile )
 	{
-//		wp_enqueue_media();
-//		wp_register_script( 'idMyGadget-js', WP_PLUGIN_URL . '/idMyGadget/idMyGadget.js', array('jquery') );
-//		wp_enqueue_script( 'idMyGadget-js' );
+		wp_enqueue_style( 'jquerymobile-css', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL, array('jquery')  );
+	//	wp_register_script( 'jquerymobile-js', JmwsIdMyGadget::JQUERY_MOBILE_JS_URL, array('jquery') );
+	//	wp_enqueue_script( 'jquerymobile-js' );
+		wp_enqueue_script( 'jquerymobile-js', JmwsIdMyGadget::JQUERY_MOBILE_JS_URL, array('jquery') );
 	}
+//	wp_enqueue_style( 'jquerymobile-css', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL, array('jquery')  );
+	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
+	wp_enqueue_style( 'idMyGadgetStylesheet' );
 }
-add_action( 'admin_enqueue_scripts', 'idMyGadget_site_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'idMyGadget_wp_enqueue_scripts' );
 /**
  * Add the ADMIN CSS file to help make the Plugins -> IdMyGadget page look decent:
  */
