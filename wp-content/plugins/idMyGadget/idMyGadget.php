@@ -73,8 +73,8 @@ function idmygadget_customize_register( $wp_customize )
 		'priority' => 100,
 	) );
 	//
-	// IdMyGadget Header and Footer Menu Options: Which Device(s)?
-	// -----------------------------------------------------------
+	// IdMyGadget Header and Footer Menu Options: Which Device Type(s)?
+	// ----------------------------------------------------------------
 	// Add a section to the theme's Customize side bar that contains
 	// radio buttons that allow the admin to set which device(s) should .
 	//
@@ -174,6 +174,7 @@ function idMyGadget_admin_menu_add_options_page()
 }
 function idMyGadget_include_admin_styles()
 {
+	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
 	wp_enqueue_style( 'idMyGadgetStylesheet' );
 }
 
@@ -187,8 +188,6 @@ if ( is_admin() )  // Add the options only when we are logged in as an admin
  */
 function idMyGadget_admin_init()
 {
-	wp_register_style( 'idMyGadgetStylesheet', plugins_url('idMyGadget.css', __FILE__) );
-
 	//
 	// ---------------------
 	// Phone option settings
