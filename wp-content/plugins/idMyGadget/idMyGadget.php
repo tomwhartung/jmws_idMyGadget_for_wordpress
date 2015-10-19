@@ -777,6 +777,27 @@ function idMyGadget_sanitize_string_fcn( $suspicious_input )
 	return $sanitized_input;
 }
 //
+// -------------------------------
+// Debug code (e.g., sanity check)
+// -------------------------------
+// Please delete when project is done
+//
+/**
+ * For development only! remove when code is stable:
+ * Displaying these values can help us make sure we haven't inadvertently
+ * broken something while we are actively working on this.
+ * @return string
+ */
+function get_sanity_check_string()
+{
+	global $jmwsIdMyGadget;
+	$return_value = '';
+	$return_value .= $jmwsIdMyGadget->getGadgetDetectorStringChar() . '/';
+	$return_value .= $jmwsIdMyGadget->getGadgetStringChar() . '/';
+	$return_value .= $jmwsIdMyGadget->usingJQueryMobile ? 'Y' : 'N';
+	return $return_value;
+}
+//
 // ========================================
 // ***  UNUSED CODE - DELETE OR IGNORE  ***
 // ========================================
