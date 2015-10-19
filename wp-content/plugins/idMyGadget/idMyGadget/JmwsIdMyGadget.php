@@ -221,7 +221,7 @@ class JmwsIdMyGadget
 		$returnValue .= $this->getGadgetStringChar() . '/';
 		$returnValue .= $this->usingJQueryMobile ? 'Y' : 'N';
 
-		$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );
+		$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );  // WARNING: wp-specific (but we are just checking sanity)
 		$returnValue .= '/' . $this->jqmDataRole['header'];
 		$returnValue .= '/' . $jqmDataThemeIndex;
 		$returnValue .= '/' . $this->jqmDataThemeAttribute;
@@ -243,17 +243,19 @@ class JmwsIdMyGadget
 	{
 		return $this->detectionEnabled;
 	}
+
 	/**
-	 * Set the jQquery Mobile data-role attributes
+	 * Determine whether we are using jQuery Mobile
+	 * If we are using it, get it set up, based on the values of our options
 	 */
-	public function setJqmDataRoles()
+	public function initializeJQueryMobileVars()
 	{
+		$this->setUsingJQueryMobile();       // sets $this->usingJQueryMobile
+
 		if ( $this->usingJQueryMobile )
 		{
-			$this->jqmDataRole['page'] = 'data-role="page"';
-			$this->jqmDataRole['header'] = 'data-role="header"';
-			$this->jqmDataRole['content'] = 'data-role="content"';
-			$this->jqmDataRole['footer'] = 'data-role="footer"';
+			$this->setJqmDataRoles();            // if we're using it, set the data roles and ...
+			$this->setJqmDataThemeAttribute();   // the theme attribute (a, b, c, etc.)
 		}
 	}
 
@@ -361,5 +363,16 @@ class JmwsIdMyGadget
 	public function displayDeviceData()
 	{
 		return $this->idMyGadget->displayDeviceData();
+	}
+
+	/**
+	 * Set the jQquery Mobile data-role attributes
+	 */
+	protected function setJqmDataRoles()
+	{
+		$this->jqmDataRole['page'] = 'data-role="page"';
+		$this->jqmDataRole['header'] = 'data-role="header"';
+		$this->jqmDataRole['content'] = 'data-role="content"';
+		$this->jqmDataRole['footer'] = 'data-role="footer"';
 	}
 }

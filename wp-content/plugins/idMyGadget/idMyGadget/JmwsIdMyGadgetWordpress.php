@@ -27,19 +27,6 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	}
 
 	/**
-	 * Use the admin option to set the jQuery Mobile Data Theme attribute (if necessary)
-	 */
-	public function setJqmDataThemeAttribute()
-	{
-		if ( $this->usingJQueryMobile )
-		{
-			$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );
-			$jqmDataThemeLetter = JmwsIdMyGadget::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
-			$this->jqmDataThemeAttribute = 'data-theme="' . $jqmDataThemeLetter . '"';
-		}
-	}
-
-	/**
 	 * Based on the current device, access the device-dependent options set in the admin console 
 	 * and use them to generate most of the markup for the heading
 	 * @return string Markup for site heading (name, logo, title, and description, each of which is optional)
@@ -160,4 +147,58 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		return $logoTitleDescription;
 	}
 
+	/**
+	 * Decide whether we are using the jQuery Mobile js library,
+	 * based on the device we are on and the values of device-dependent options set by the admin
+	 */
+	protected function setUsingJQueryMobile()
+	{
+		$this->usingJQueryMobile = FALSE;
+		$this->phoneHeaderNavThisDevice = FALSE;
+		$this->phoneFooterNavThisDevice = FALSE;
+		$this->phoneBurgerIconThisDeviceLeft = FALSE;
+		$this->phoneBurgerIconThisDeviceRight = FALSE;
+		$phoneNavOnThisDevice = FALSE;
+		//
+		// Not worrying about the phone burger stuff right now,
+		// so this logic will probably change as time progresses
+		//
+		if ( $this->isPhone() )
+		{
+			$this->usingJQueryMobile = TRUE;
+			$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_phones' );
+		}
+		else if ( $this->isTablet() )
+		{
+			$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_tablets' );
+			if ( $phoneNavOnThisDevice ) {
+				$this->usingJQueryMobile = TRUE;
+			}
+		}
+		else
+		{
+			$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_desktops' );
+			if ( $phoneNavOnThisDevice )
+			{
+				$this->usingJQueryMobile = TRUE;
+			}
+		}
+		if( $phoneNavOnThisDevice )
+		{
+			$this->phoneHeaderNavThisDevice = TRUE;
+			$this->phoneFooterNavThisDevice = TRUE;
+		}
+	}
+	/**
+	 * Use the admin option to set the jQuery Mobile Data Theme attribute (if necessary)
+	 */
+	protected function setJqmDataThemeAttribute()
+	{
+		if ( $this->usingJQueryMobile )
+		{
+			$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );
+			$jqmDataThemeLetter = JmwsIdMyGadget::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
+			$this->jqmDataThemeAttribute = 'data-theme="' . $jqmDataThemeLetter . '"';
+		}
+	}
 }

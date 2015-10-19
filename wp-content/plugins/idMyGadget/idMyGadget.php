@@ -32,63 +32,9 @@ function idMyGadget()
 	$gadgetDetectorString = $supportedGadgetDetectors[$gadgetDetectorIndex];
 
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetectorString);
-	initializeJQueryMobileVars();
+	$jmwsIdMyGadget->initializeJQueryMobileVars();
 }
 add_action( 'wp', 'idMyGadget' );
-/**
- * Determine whether we are using jQuery Mobile
- * If we are using it, get it set up, based on the values of our options
- */
-function initializeJQueryMobileVars()
-{
-	global $jmwsIdMyGadget;
-	setUsingJQueryMobile();                  // sets $jmwsIdMyGadget->usingJQueryMobile
-	$jmwsIdMyGadget->setJqmDataRoles();      // if we're using it, set the data roles and ...
-	$jmwsIdMyGadget->setJqmDataThemeAttribute();
-}
-/**
- * Decide whether we are using the jQuery Mobile js library,
- * based on the device we are on and the values of device-dependent options set by the admin
- */
-function setUsingJQueryMobile()
-{
-	global $jmwsIdMyGadget;
-	$jmwsIdMyGadget->usingJQueryMobile = FALSE;
-	$jmwsIdMyGadget->phoneHeaderNavThisDevice = FALSE;
-	$jmwsIdMyGadget->phoneFooterNavThisDevice = FALSE;
-	$jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft = FALSE;
-	$jmwsIdMyGadget->phoneBurgerIconThisDeviceRight = FALSE;
-	$phoneNavOnThisDevice = FALSE;
-	//
-	// Not worrying about the phone burger stuff right now,
-	// so this logic will probably change as time progresses
-	//
-	if ( $jmwsIdMyGadget->isPhone() )
-	{
-		$jmwsIdMyGadget->usingJQueryMobile = TRUE;
-		$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_phones' );
-	}
-	else if ( $jmwsIdMyGadget->isTablet() )
-	{
-		$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_tablets' );
-		if ( $phoneNavOnThisDevice ) {
-			$jmwsIdMyGadget->usingJQueryMobile = TRUE;
-		}
-	}
-	else
-	{
-		$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_desktops' );
-		if ( $phoneNavOnThisDevice )
-		{
-			$jmwsIdMyGadget->usingJQueryMobile = TRUE;
-		}
-	}
-	if( $phoneNavOnThisDevice )
-	{
-		$jmwsIdMyGadget->phoneHeaderNavThisDevice = TRUE;
-		$jmwsIdMyGadget->phoneFooterNavThisDevice = TRUE;
-	}
-}
 //
 // ------------------------------------------------
 // Adding options to the theme's Customization page
