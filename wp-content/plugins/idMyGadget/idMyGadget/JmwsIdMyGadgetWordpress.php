@@ -49,6 +49,19 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	}
 
 	/**
+	 * Use the admin option to set the jQuery Mobile Data Theme attribute (if necessary)
+	 */
+	public function setJqmDataThemeAttribute()
+	{
+		if ( $this->usingJQueryMobile )
+		{
+			$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );
+			$jqmDataThemeLetter = JmwsIdMyGadget::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
+			$this->jqmDataThemeAttribute = 'data-theme="' . $jqmDataThemeLetter . '"';
+		}
+	}
+
+	/**
 	 * Based on the current device, access the device-dependent options set in the admin console 
 	 * and use them to generate most of the markup for the heading
 	 * @return string Markup for site heading (name, logo, title, and description, each of which is optional)
