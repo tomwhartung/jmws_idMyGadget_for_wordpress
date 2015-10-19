@@ -27,16 +27,59 @@ $theme_object_stylesheet = $theme_object->stylesheet;
 function idMyGadget()
 {
 	global $jmwsIdMyGadget;
-
 	$gadgetDetectorIndex = get_theme_mod('idmg_gadget_detector');
 	$supportedGadgetDetectors = JmwsIdMyGadget::$supportedGadgetDetectors;
 	$gadgetDetectorString = $supportedGadgetDetectors[$gadgetDetectorIndex];
 
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetectorString);
 
-	// $jmwsIdMyGadget->usingJQueryMobile = FALSE;
+	setUsingJQueryMobile();   // sets $jmwsIdMyGadget->usingJQueryMobile
 }
 add_action( 'wp', 'idMyGadget' );
+/**
+ * Decide whether we are using the jQuery Mobile js library,
+ * based on the device we are on and the values of device-dependent options set by the admin
+ */
+function setUsingJQueryMobile()
+{
+	global $jmwsIdMyGadget;
+	$gadgetDetectorIndex = get_theme_mod('idmg_gadget_detector');
+	$jmwsIdMyGadget->usingJQueryMobile = FALSE;
+	$jmwsIdMyGadget->phoneHeaderNavThisDevice = FALSE;
+	$jmwsIdMyGadget->phoneFooterNavThisDevice = FALSE;
+	$jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft = FALSE;
+	$jmwsIdMyGadget->phoneBurgerIconThisDeviceRight = FALSE;
+	$phoneNavOnThisDevice = FALSE;
+	//
+	// Not worrying about the phone burger stuff right now,
+	// so this logic will probably change as time progresses
+	//
+	if ( $jmwsIdMyGadget->isPhone() )
+	{
+		$jmwsIdMyGadget->usingJQueryMobile = TRUE;
+		$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_phones' );
+	}
+	else if ( $jmwsIdMyGadget->isTablet() )
+	{
+		$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_tablets' );
+		if ( $phoneNavOnThisDevice ) {
+			$jmwsIdMyGadget->usingJQueryMobile = TRUE;
+		}
+	}
+	else
+	{
+		$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_desktops' );
+		if ( $phoneNavOnThisDevice )
+		{
+			$jmwsIdMyGadget->usingJQueryMobile = TRUE;
+		}
+	}
+	if( $phoneNavOnThisDevice )
+	{
+		$jmwsIdMyGadget->phoneHeaderNavThisDevice = TRUE;
+		$jmwsIdMyGadget->phoneFooterNavThisDevice = TRUE;
+	}
+}
 //
 // ------------------------------------------------
 // Adding options to the theme's Customization page
