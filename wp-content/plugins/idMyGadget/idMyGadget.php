@@ -32,10 +32,20 @@ function idMyGadget()
 	$gadgetDetectorString = $supportedGadgetDetectors[$gadgetDetectorIndex];
 
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetectorString);
-
-	setUsingJQueryMobile();   // sets $jmwsIdMyGadget->usingJQueryMobile
+	initializeJQueryMobileVars();
 }
 add_action( 'wp', 'idMyGadget' );
+/**
+ * Determine whether we are using jQuery Mobile
+ * If we are using it, get it set up, based on the values of our options
+ */
+function initializeJQueryMobileVars()
+{
+	global $jmwsIdMyGadget;
+	setUsingJQueryMobile();                  // sets $jmwsIdMyGadget->usingJQueryMobile
+	$jmwsIdMyGadget->setJqmDataRoles();      // if we're using it, set the data roles and ...
+	$jmwsIdMyGadget->setJqmDataThemeAttribute();
+}
 /**
  * Decide whether we are using the jQuery Mobile js library,
  * based on the device we are on and the values of device-dependent options set by the admin
@@ -43,7 +53,6 @@ add_action( 'wp', 'idMyGadget' );
 function setUsingJQueryMobile()
 {
 	global $jmwsIdMyGadget;
-	$gadgetDetectorIndex = get_theme_mod('idmg_gadget_detector');
 	$jmwsIdMyGadget->usingJQueryMobile = FALSE;
 	$jmwsIdMyGadget->phoneHeaderNavThisDevice = FALSE;
 	$jmwsIdMyGadget->phoneFooterNavThisDevice = FALSE;
@@ -775,27 +784,6 @@ function idMyGadget_sanitize_string_fcn( $suspicious_input )
 {
 	$sanitized_input = sanitize_text_field( $suspicious_input );
 	return $sanitized_input;
-}
-//
-// -------------------------------
-// Debug code (e.g., sanity check)
-// -------------------------------
-// Please delete when project is done
-//
-/**
- * For development only! remove when code is stable:
- * Displaying these values can help us make sure we haven't inadvertently
- * broken something while we are actively working on this.
- * @return string
- */
-function get_sanity_check_string()
-{
-	global $jmwsIdMyGadget;
-	$return_value = '';
-	$return_value .= $jmwsIdMyGadget->getGadgetDetectorStringChar() . '/';
-	$return_value .= $jmwsIdMyGadget->getGadgetStringChar() . '/';
-	$return_value .= $jmwsIdMyGadget->usingJQueryMobile ? 'Y' : 'N';
-	return $return_value;
 }
 //
 // ========================================
