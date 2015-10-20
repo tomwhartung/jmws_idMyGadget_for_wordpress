@@ -194,11 +194,8 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 */
 	protected function setJqmDataThemeAttribute()
 	{
-		if ( $this->usingJQueryMobile )
-		{
-			$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );
-			$jqmDataThemeLetter = JmwsIdMyGadget::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
-			$this->jqmDataThemeAttribute = 'data-theme="' . $jqmDataThemeLetter . '"';
-		}
+		$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );
+		$jqmDataThemeLetter = JmwsIdMyGadget::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
+		$this->jqmDataThemeAttribute = 'data-theme="' . $jqmDataThemeLetter . '"';
 	}
 }
