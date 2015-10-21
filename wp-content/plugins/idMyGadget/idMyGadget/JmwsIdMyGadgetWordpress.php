@@ -26,6 +26,25 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		parent::__construct( $gadgetDetectorString, $debugging, $allowOverridesInUrl );
 	}
 
+
+	/**
+	 * For development only! Please remove when code is stable.
+	 * Displaying some values that can help us make sure we haven't inadvertently
+	 * broken something while we are actively working on this.
+	 * @return string
+	 */
+	public function getSanityCheckString()
+	{
+		$returnValue = '<p>';
+		$returnValue .= parent::getSanityCheckString() . '/';
+
+		$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );  // WARNING: wp-specific (but we are just checking sanity)
+		$returnValue .= '/' . $jqmDataThemeIndex;
+		$returnValue .= '/' . $this->jqmDataThemeAttribute;
+		$returnValue .= '</p>';
+		return $returnValue;
+	}
+
 	/**
 	 * Based on the current device, access the device-dependent options set in the admin console 
 	 * and use them to generate most of the markup for the heading
