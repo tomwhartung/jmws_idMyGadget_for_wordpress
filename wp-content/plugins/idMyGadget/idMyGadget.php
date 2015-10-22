@@ -9,6 +9,11 @@
  * Version: 1.0
  * Author URI: http://tomwhartung.com/
  */
+//
+// -------------------------------------------------------------
+// Initialize Device Detection and Theme Locations for the Menus
+// -------------------------------------------------------------
+//
 define( 'IDMYGADGET__PLUGIN_DIR', plugin_dir_path( __FILE__ ) . DIRECTORY_SEPARATOR . 'idMyGadget' );
 require_once( IDMYGADGET__PLUGIN_DIR . DIRECTORY_SEPARATOR . 'JmwsIdMyGadgetWordpress.php' );
 // require_once 'idMyGadget/PhoneBurgerMenuIcon.php';
@@ -24,7 +29,7 @@ $theme_object_stylesheet = $theme_object->stylesheet;
  * Instantiate the IdMyGadget Device Detection object
  * @global object $jmwsIdMyGadget
  */
-function idMyGadget()
+function idMyGadget_wp()
 {
 	global $jmwsIdMyGadget;
 	$gadgetDetectorIndex = get_theme_mod('idmg_gadget_detector');
@@ -34,7 +39,16 @@ function idMyGadget()
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetectorString);
 	$jmwsIdMyGadget->initializeJQueryMobileVars();
 }
-add_action( 'wp', 'idMyGadget' );
+add_action( 'wp', 'idMyGadget_wp' );
+/**
+ * Set up the theme locations for the phone nav menus
+ */
+function idMyGadget_init()
+{
+	register_nav_menu('phone-header-nav',__( 'Phone Header Nav' ));
+	register_nav_menu('phone-Footer-nav',__( 'Phone Footer Nav' ));
+}
+add_action( 'init', 'idMyGadget_init' );
 //
 // ------------------------------------------------
 // Adding options to the theme's Customization page
