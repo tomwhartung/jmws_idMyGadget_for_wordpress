@@ -88,7 +88,9 @@ function idmygadget_customize_register( $wp_customize )
 	// IdMyGadget Header and Footer Menu Options: Which Device Type(s)?
 	// ----------------------------------------------------------------
 	// Add a section to the theme's Customize side bar that contains
-	// radio buttons that allow the admin to set which device(s) should .
+	// radio buttons that allow the admin to set which device(s) should display.
+	// For info. about the jmws_wp_twentyfifteen_idMyGadget-specific options,
+	//   see the README.md for that repo.
 	//
 	$wp_customize->add_section( 'header_footer_menus' , array(
 		'title'      => __( 'IdMyGadget Header/Footer Menus', $theme_object_stylesheet ),
@@ -117,8 +119,23 @@ function idmygadget_customize_register( $wp_customize )
 		'section'  => 'header_footer_menus',
 		'type'     => 'radio',
 		'choices'  => JmwsIdMyGadget::$radioChoices,
-		'priority' => 300,
+		'priority' => 200,
 	) );
+
+	if ( $theme_object_stylesheet == 'jmws_wp_twentyfifteen_idMyGadget' )
+	{
+		$wp_customize->add_setting( 'idmg_phone_nav_in_sidebar_phones' , array(
+			'default'     => JmwsIdMyGadget::$radioChoices[1],
+			'transport'   => 'refresh',
+		) );
+		$wp_customize->add_control( 'idmg_phone_nav_in_sidebar_phones', array(
+			'label'    => __( 'Nav in Sidebar on Phones?', $theme_object_stylesheet ),
+			'section'  => 'header_footer_menus',
+			'type'     => 'radio',
+			'choices'  => JmwsIdMyGadget::$radioChoices,
+			'priority' => 300,
+		) );
+	}
 
 	$wp_customize->add_setting( 'idmg_phone_nav_on_tablets' , array(
 		'default'     => JmwsIdMyGadget::$radioChoices[0],
@@ -132,6 +149,21 @@ function idmygadget_customize_register( $wp_customize )
 		'priority' => 400,
 	) );
 
+	if ( $theme_object_stylesheet == 'jmws_wp_twentyfifteen_idMyGadget' )
+	{
+		$wp_customize->add_setting( 'idmg_phone_nav_in_sidebar_tablets' , array(
+			'default'     => JmwsIdMyGadget::$radioChoices[0],
+			'transport'   => 'refresh',
+		) );
+		$wp_customize->add_control( 'idmg_phone_nav_in_sidebar_tablets', array(
+			'label'    => __( 'Nav in Sidebar on Tablets?', $theme_object_stylesheet ),
+			'section'  => 'header_footer_menus',
+			'type'     => 'radio',
+			'choices'  => JmwsIdMyGadget::$radioChoices,
+			'priority' => 500,
+		) );
+	}
+
 	$wp_customize->add_setting( 'idmg_phone_nav_on_desktops' , array(
 		'default'     => JmwsIdMyGadget::$radioChoices[0],
 		'transport'   => 'refresh',
@@ -141,8 +173,24 @@ function idmygadget_customize_register( $wp_customize )
 		'section'  => 'header_footer_menus',
 		'type'     => 'radio',
 		'choices'  => JmwsIdMyGadget::$radioChoices,
-		'priority' => 500,
+		'priority' => 600,
 	) );
+
+	if ( $theme_object_stylesheet == 'jmws_wp_twentyfifteen_idMyGadget' )
+	{
+		$wp_customize->add_setting( 'idmg_phone_nav_in_sidebar_desktops' , array(
+			'default'     => JmwsIdMyGadget::$radioChoices[0],
+			'transport'   => 'refresh',
+		) );
+		$wp_customize->add_control( 'idmg_phone_nav_in_sidebar_desktops', array(
+			'label'    => __( 'Nav in Sidebar on Desktops?', $theme_object_stylesheet ),
+			'section'  => 'header_footer_menus',
+			'type'     => 'radio',
+			'choices'  => JmwsIdMyGadget::$radioChoices,
+			'priority' => 700,
+		) );
+	}
+
 	//
 	// If the current theme is IdMyGadget in TwentyFifteen
 	//    add a few more options pertaining to the header image
