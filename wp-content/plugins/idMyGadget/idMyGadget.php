@@ -124,15 +124,15 @@ function idmygadget_customize_register( $wp_customize )
 
 	if ( $theme_object_stylesheet == 'jmws_wp_twentyfifteen_idMyGadget' )
 	{
-		$wp_customize->add_setting( 'idmg_phone_nav_in_sidebar_phones' , array(
-			'default'     => JmwsIdMyGadget::$radioChoices[1],
+		$wp_customize->add_setting( 'idmg_nav_in_page_or_sidebar_phones' , array(
+			'default'     => JmwsIdMyGadgetWordpress::$pageOrSidebar2015Options[1],
 			'transport'   => 'refresh',
 		) );
-		$wp_customize->add_control( 'idmg_phone_nav_in_sidebar_phones', array(
-			'label'    => __( 'Nav in Sidebar on Phones?', $theme_object_stylesheet ),
+		$wp_customize->add_control( 'idmg_nav_in_page_or_sidebar_phones', array(
+			'label'    => __( 'In Page or Sidebar on Phones?', $theme_object_stylesheet ),
 			'section'  => 'header_footer_menus',
 			'type'     => 'radio',
-			'choices'  => JmwsIdMyGadget::$radioChoices,
+			'choices'  => JmwsIdMyGadgetWordpress::$pageOrSidebar2015Options,
 			'priority' => 300,
 		) );
 	}
@@ -151,15 +151,15 @@ function idmygadget_customize_register( $wp_customize )
 
 	if ( $theme_object_stylesheet == 'jmws_wp_twentyfifteen_idMyGadget' )
 	{
-		$wp_customize->add_setting( 'idmg_phone_nav_in_sidebar_tablets' , array(
-			'default'     => JmwsIdMyGadget::$radioChoices[0],
+		$wp_customize->add_setting( 'idmg_nav_in_page_or_sidebar_tablets' , array(
+			'default'     => JmwsIdMyGadgetWordpress::$pageOrSidebar2015Options[0],
 			'transport'   => 'refresh',
 		) );
-		$wp_customize->add_control( 'idmg_phone_nav_in_sidebar_tablets', array(
-			'label'    => __( 'Nav in Sidebar on Tablets?', $theme_object_stylesheet ),
+		$wp_customize->add_control( 'idmg_nav_in_page_or_sidebar_tablets', array(
+			'label'    => __( 'In Page or Sidebar on Tablets?', $theme_object_stylesheet ),
 			'section'  => 'header_footer_menus',
 			'type'     => 'radio',
-			'choices'  => JmwsIdMyGadget::$radioChoices,
+			'choices'  => JmwsIdMyGadgetWordpress::$pageOrSidebar2015Options,
 			'priority' => 500,
 		) );
 	}
@@ -178,15 +178,15 @@ function idmygadget_customize_register( $wp_customize )
 
 	if ( $theme_object_stylesheet == 'jmws_wp_twentyfifteen_idMyGadget' )
 	{
-		$wp_customize->add_setting( 'idmg_phone_nav_in_sidebar_desktops' , array(
-			'default'     => JmwsIdMyGadget::$radioChoices[0],
+		$wp_customize->add_setting( 'idmg_nav_in_page_or_sidebar_desktops' , array(
+			'default'     => JmwsIdMyGadgetWordpress::$pageOrSidebar2015Options[0],
 			'transport'   => 'refresh',
 		) );
-		$wp_customize->add_control( 'idmg_phone_nav_in_sidebar_desktops', array(
-			'label'    => __( 'Nav in Sidebar on Desktops?', $theme_object_stylesheet ),
+		$wp_customize->add_control( 'idmg_nav_in_page_or_sidebar_desktops', array(
+			'label'    => __( 'In Page or Sidebar on Desktops?', $theme_object_stylesheet ),
 			'section'  => 'header_footer_menus',
 			'type'     => 'radio',
-			'choices'  => JmwsIdMyGadget::$radioChoices,
+			'choices'  => JmwsIdMyGadgetWordpress::$pageOrSidebar2015Options,
 			'priority' => 700,
 		) );
 	}
