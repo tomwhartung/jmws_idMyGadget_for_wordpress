@@ -46,7 +46,7 @@ add_action( 'wp', 'idMyGadget_wp' );
 function idMyGadget_init()
 {
 	register_nav_menu('phone-header-nav',__( 'Phone Header Nav' ));
-	register_nav_menu('phone-Footer-nav',__( 'Phone Footer Nav' ));
+	register_nav_menu('phone-footer-nav',__( 'Phone Footer Nav' ));
 }
 add_action( 'init', 'idMyGadget_init' );
 //
