@@ -18,7 +18,10 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	);
 
 	/**
-	 * 
+	 * Options for where the phone nav can appear in the markup.
+	 * Sidebar works best on phones and really you should not be using this nav on non-phones
+	 * (but if you want to that is really none of my business).
+	 * Relevant to the twentyfifteen theme only
 	 */
 	public static $pageOrSidebar2015Options = array( 'Page', 'Sidebar' );
 	//
