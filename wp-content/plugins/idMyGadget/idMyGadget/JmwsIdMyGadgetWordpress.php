@@ -60,7 +60,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 * broken something while we are actively working on this.
 	 * @return string
 	 */
-	public function getSanityCheckString()
+	public function getSanityCheckString( $extra='' )
 	{
 		$returnValue = '<p>';
 		$returnValue .= parent::getSanityCheckString() . '/';
@@ -68,6 +68,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );  // WARNING: wp-specific (but we are just checking sanity)
 		$returnValue .= '/' . $jqmDataThemeIndex;
 		$returnValue .= '/' . $this->jqmDataThemeAttribute;
+		$returnValue .= '/' . $extra;
 		$returnValue .= '</p>';
 		return $returnValue;
 	}
