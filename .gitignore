@@ -2,8 +2,6 @@
 # Documentation is here: http://git-scm.com/docs/gitignore
 #
 tmp/
-*.swp
-/nbproject/
 
 #
 # Ignore third-party device detection code
@@ -12,3 +10,31 @@ tmp/
 /wp-content/plugins/idMyGadget/idMyGadget/gadget_detectors/mobile_detect/Mobile-Detect/
 /wp-content/plugins/idMyGadget/idMyGadget/gadget_detectors/tera_wurfl/Tera-Wurfl/wurfl-dbapi*
 
+#
+#  I switch between netbeans, eclipse, and vi
+#
+/nbproject/
+
+/.buildpath
+/.project
+/.settings/
+
+*.swp
+
+#
+#  Standard entries added by github when I have created other repos:
+#  (May be unneeded but they shouldn't hurt and may help save an edit to this file someday.)
+#
+*.log
+.htaccess
+sitemap.xml
+sitemap.xml.gz
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/
+wp-content/wp-cache-config.php
