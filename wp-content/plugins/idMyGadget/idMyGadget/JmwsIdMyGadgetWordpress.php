@@ -13,7 +13,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 * Array of themes that know how to use idMyGadget
 	 */
 	public static $supportedThemes = array(
-		'jmws_wp_vqsg_ot_idMyGadget',
+		'idmygadget_vqsg_ot',
 		'jmws_wp_twentyfifteen_idMyGadget',
 		'twentythirteen_idMyGadget',
 	);
