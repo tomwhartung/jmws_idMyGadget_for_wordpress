@@ -122,7 +122,7 @@ function idmygadget_customize_register( $wp_customize )
 		'priority' => 200,
 	) );
 
-	if ( $theme_object_stylesheet == 'jmws_wp_twentyfifteen_idMyGadget' )
+	if ( $theme_object_stylesheet == 'idmygadget_twentyfifteen' )
 	{
 		$wp_customize->add_setting( 'idmg_nav_in_page_or_sidebar_phones' , array(
 			'default'     => JmwsIdMyGadgetWordpress::$pageOrSidebar2015Options[1],
