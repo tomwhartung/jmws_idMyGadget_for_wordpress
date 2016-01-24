@@ -18,6 +18,18 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		'idmygadget_twentythirteen',
 	);
 
+	//
+	// These are relevant to the twentythirteen theme only and set based on a variety of options and conditions
+	//
+	/**
+	 * Boolean indicating whether the phone header nav should be in the page on the current device
+	 */
+	public $phoneHeaderNavInTwentyThirteenPage = FALSE;
+	/**
+	 * Boolean indicating whether the phone footer nav should be in the page on the current device
+	 */
+	public $phoneFooterNavInTwentyThirteenPage = FALSE;
+	
 	/**
 	 * Options for where the phone nav can appear in the markup.
 	 * Sidebar works best on phones and really you should not be using this nav on non-phones
