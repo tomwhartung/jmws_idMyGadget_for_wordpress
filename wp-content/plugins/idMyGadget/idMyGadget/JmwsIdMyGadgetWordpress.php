@@ -37,18 +37,6 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 */
 	public static $pageOrSidebar2015Options = array( 'Page', 'Sidebar' );
 
-	//
-	// These are relevant to the twentythirteen theme only and set based on a variety of options and conditions
-	//
-	/**
-	 * Boolean indicating whether the phone header nav should be in the page on the current device
-	 */
-	public $phoneHeaderNavInTwentyThirteenPage = FALSE;
-	/**
-	 * Boolean indicating whether the phone footer nav should be in the page on the current device
-	 */
-	public $phoneFooterNavInTwentyThirteenPage = FALSE;
-
 	/**
 	 * Constructor: for best results, install and use a gadgetDetector other than the default
 	 */
