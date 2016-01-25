@@ -72,6 +72,7 @@ class JmwsIdMyGadget
 	 * Although we always use it on phones, we do not always use it on tablets.
 	 */
 	public $usingJQueryMobile = TRUE;
+
 	/**
 	 * Boolean: determines whether we want the hamburger menu in the upper left corner
 	 * of this page for this device.

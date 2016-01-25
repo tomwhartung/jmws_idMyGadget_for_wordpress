@@ -18,6 +18,25 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		'idmygadget_twentythirteen',
 	);
 
+	/**
+	 * Boolean: whether the admins want the jQuery Mobile phone header nav on this device
+	 * Added pretty much only for demo purposes, so people see why we don't use it.
+	 */
+	public $phoneHeaderNavThisDevice = FALSE;
+	/**
+	 * Boolean: whether the admins want the jQuery Mobile phone footer nav on this device
+	 * Added pretty much only for demo purposes, so people see why we don't use it.
+	 */
+	public $phoneFooterNavThisDevice = FALSE;
+
+	/**
+	 * *** Relevant to the twentyfifteen theme only ***
+	 * Options for where the phone nav can appear in the markup.
+	 * Page works best on phones and really you should not be using this nav on non-phones
+	 * (but if you want to that is really none of my business).
+	 */
+	public static $pageOrSidebar2015Options = array( 'Page', 'Sidebar' );
+
 	//
 	// These are relevant to the twentythirteen theme only and set based on a variety of options and conditions
 	//
@@ -29,33 +48,6 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 * Boolean indicating whether the phone footer nav should be in the page on the current device
 	 */
 	public $phoneFooterNavInTwentyThirteenPage = FALSE;
-	
-	/**
-	 * Options for where the phone nav can appear in the markup.
-	 * Sidebar works best on phones and really you should not be using this nav on non-phones
-	 * (but if you want to that is really none of my business).
-	 * Relevant to the twentyfifteen theme only
-	 */
-	public static $pageOrSidebar2015Options = array( 'Page', 'Sidebar' );
-	//
-	// These are relevant to the twentyfifteen theme only and set based on a variety of options and conditions
-	//
-	/**
-	 * Boolean indicating whether the phone header nav should be in the page on the current device
-	 */
-	public $phoneHeaderNavIn2015Page = FALSE;
-	/**
-	 * Boolean indicating whether the phone header nav should be in the sidebar on the current device
-	 */
-	public $phoneHeaderNavIn2015Sidebar = FALSE;
-	/**
-	 * Boolean indicating whether the phone footer nav should be in the page on the current device
-	 */
-	public $phoneFooterNavIn2015Page = FALSE;
-	/**
-	 * Boolean indicating whether the phone footer nav should be in the sidebar on the current device
-	 */
-	public $phoneFooterNavIn2015Sidebar = FALSE;
 
 	/**
 	 * Constructor: for best results, install and use a gadgetDetector other than the default
