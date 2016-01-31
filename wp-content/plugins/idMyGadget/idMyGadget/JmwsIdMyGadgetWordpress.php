@@ -58,9 +58,11 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		$returnValue = '<p>';
 		$returnValue .= parent::getSanityCheckString() . '/';
 
-		$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );  // WARNING: wp-specific (but we are just checking sanity)
-		$returnValue .= '/' . $jqmDataThemeIndex;
-		$returnValue .= '/' . $this->jqmDataThemeAttribute;
+		if ( $this->jqmDataThemeLetter == null )    // supposedly set in constructor but let's be safe
+		{
+			$this->setJqmDataThemeLetter();
+		}
+		$returnValue .= '/' . $this->jqmDataThemeLetter;
 		$returnValue .= '/' . $extra;
 		$returnValue .= '</p>';
 		return $returnValue;
@@ -234,8 +236,18 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 */
 	protected function setJqmDataThemeAttribute()
 	{
+		if ( $this->jqmDataThemeLetter == null )    // supposedly set in constructor but let's be safe
+		{
+			$this->setJqmDataThemeLetter();
+		}
+		$this->jqmDataThemeAttribute = 'data-theme="' . $this->jqmDataThemeLetter . '"';
+	}
+	/**
+	 * Use the admin option to set the jQuery Mobile Data Theme Letter
+	 */
+	protected function setJqmDataThemeLetter()
+	{
 		$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );
-		$jqmDataThemeLetter = JmwsIdMyGadget::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
-		$this->jqmDataThemeAttribute = 'data-theme="' . $jqmDataThemeLetter . '"';
+		$this->jqmDataThemeLetter = JmwsIdMyGadget::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
 	}
 }
