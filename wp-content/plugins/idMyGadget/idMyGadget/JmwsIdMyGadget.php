@@ -100,7 +100,7 @@ class JmwsIdMyGadget
 	/**
 	 * The data theme letter is set in the CMS's admin page and used in the sanity check string
 	 */
-	public $jqmDataThemeLetter;
+	public $jqmDataThemeLetter = null;
 	/**
 	 * Data role and theme attributes determine how the jQuery Mobile widgets appear
 	 */
@@ -228,7 +228,7 @@ class JmwsIdMyGadget
 		$returnValue = '';
 		$returnValue .= $this->getGadgetDetectorStringChar() . '/';
 		$returnValue .= $this->getGadgetStringChar() . '/';
-		$returnValue .= $this->usingJQueryMobile ? 'Y' : 'N';
+		$returnValue .= $this->usingJQueryMobile ? 'Jqm' : 'NoJqm';
 		return $returnValue;
 	}
 
