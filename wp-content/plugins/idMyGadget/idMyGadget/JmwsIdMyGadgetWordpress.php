@@ -239,7 +239,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 * Returns attributes that we want to add to the footer tag, as appropriate for each gadget type
 	 * @return string
 	 */
-	public function getFooterAttributes()
+	public function getFooterAttributes($originalAttributes='')
 	{
 		$footerAttributes = '';
 		if ( $this->usingJQueryMobile )
@@ -252,7 +252,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		}
 		else
 		{
-			$footerAttributes = 'id="footer"';
+			$footerAttributes = $originalAttributes;
 		}
 
 		return $footerAttributes;
