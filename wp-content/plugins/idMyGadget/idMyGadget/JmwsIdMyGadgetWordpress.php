@@ -236,6 +236,25 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	}
 
 	/**
+	 * Returns attributes that we want to add to the footer tag, as appropriate for each gadget type
+	 * @return string
+	 */
+	public function getFooterAttributes()
+	{
+		$footerAttributes = '';
+		if ( $this->usingJQueryMobile )
+		{
+			$footerAttributes = $this->jqmDataRole['footer'] . ' ' . $this->jqmDataThemeAttribute;
+			if ( $this->phoneFooterNavThisDevice )
+			{
+				$footerAttributes .= 'class="ui-bar" data-position="fixed" ';
+			}
+		}
+
+		return $footerAttributes;
+	}
+
+	/**
 	 * Decide whether we are using the jQuery Mobile js library,
 	 * based on the device we are on and the values of device-dependent options set by the admin
 	 */
