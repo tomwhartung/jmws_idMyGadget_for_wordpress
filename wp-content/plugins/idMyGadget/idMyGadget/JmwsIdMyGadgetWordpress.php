@@ -250,6 +250,10 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$footerAttributes .= 'class="ui-bar" data-position="fixed" ';
 			}
 		}
+		else
+		{
+			$footerAttributes = 'id="footer"';
+		}
 
 		return $footerAttributes;
 	}
