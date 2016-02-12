@@ -69,6 +69,43 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	}
 
 	/**
+	 * Returns either the site title or the site name, as appropriate
+	 * @return string
+	 */
+	public function getSiteTitleOrName()
+	{
+		if ( $this->isPhone() )
+		{
+			$siteTitle = get_option( 'idmg_site_title_phone' );
+			$showSiteName = get_option( 'idmg_show_site_name_phone' );
+		}
+		else if ( $this->isTablet() )
+		{
+			$siteTitle = get_option('idmg_site_title_tablet');
+			$showSiteName = get_option( 'idmg_show_site_name_tablet' );
+		}
+		else
+		{
+			$siteTitle = get_option('idmg_site_title_desktop');
+			$showSiteName = get_option( 'idmg_show_site_name_desktop' );
+		}
+
+		$siteTitleOrName = '';   // return value
+		if ( $showSiteName == 'yes' )
+		{
+			$siteTitleOrName = get_bloginfo('name');
+		}
+		if ( strlen($siteTitle) > 0 )
+		{
+			$siteTitleOrName = $siteTitle;
+		}
+		else
+		{
+			$siteTitleOrName = get_bloginfo('name');
+		}
+		return $siteTitleOrName;
+	}
+	/**
 	 * Based on the current device, access the device-dependent options set in the admin console 
 	 * and use them to generate most of the markup for the heading
 	 * @return string Markup for site heading (name, logo, title, and description, each of which is optional)
