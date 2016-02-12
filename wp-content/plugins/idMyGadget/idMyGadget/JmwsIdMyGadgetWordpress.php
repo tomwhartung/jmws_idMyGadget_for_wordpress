@@ -88,15 +88,16 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$logoFile = get_option( 'idmg_logo_file_phone' );
 			$siteTitle = get_option( 'idmg_site_title_phone' );
 			$siteDescription = get_option('idmg_site_description_phone');
-			$anchorTagWithClass = $anchorTagPrelude . 'class="site-title-phone">';
 			if ( strlen($logoFile) > 0 )
 			{
+				$anchorTagWithClass = $anchorTagPrelude . 'class="logo-file-phone">';
 				$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-phone" alt="' . $siteName . '" />';
 				$logoTitleDescription .= $anchorTagClose;
 			}
 			if ( get_option('idmg_show_site_name_phone') == 'yes' )
 			{
+				$anchorTagWithClass = $anchorTagPrelude . 'class="site-name-phone">';
 				$logoTitleDescription .= '<' . get_option('idmg_site_name_element_phone') . ' class="site-name-phone">';
 				$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= $siteName;
@@ -105,6 +106,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			}
 			if ( strlen($siteTitle) > 0 )
 			{
+				$anchorTagWithClass = $anchorTagPrelude . 'class="site-title-phone">';
 				$logoTitleDescription .= '<' . get_option('idmg_site_title_element_phone') . ' class="site-title-phone">';
 				$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= $siteTitle;
@@ -123,15 +125,16 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$logoFile = get_option( 'idmg_logo_file_tablet' );
 			$siteTitle = get_option('idmg_site_title_tablet');
 			$siteDescription = get_option('idmg_site_description_tablet');
-			$anchorTagWithClass = $anchorTagPrelude . 'class="site-title-tablet">';
 			if ( strlen($logoFile) > 0 )
 			{
+				$anchorTagWithClass = $anchorTagPrelude . 'class="logo-file-tablet">';
 				$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-tablet" alt="' . $siteName . '" />';
 				$logoTitleDescription .= $anchorTagClose;
 			}
 			if ( get_option('idmg_show_site_name_tablet') == 'yes' )
 			{
+				$anchorTagWithClass = $anchorTagPrelude . 'class="site-name-tablet">';
 				$logoTitleDescription .= '<' . get_option('idmg_site_name_element_tablet') . ' class="site-name-tablet">';
 				$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= $siteName;
@@ -140,6 +143,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			}
 			if ( strlen($siteTitle) > 0 )
 			{
+				$anchorTagWithClass = $anchorTagPrelude . 'class="site-title-tablet">';
 				$logoTitleDescription .= '<' . get_option('idmg_site_title_element_tablet') . ' class="site-title-tablet">';
 				$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= $siteTitle;
@@ -158,15 +162,16 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$logoFile = get_option( 'idmg_logo_file_desktop' );
 			$siteTitle = get_option('idmg_site_title_desktop');
 			$siteDescription = get_option('idmg_site_description_desktop');
-			$anchorTagWithClass = $anchorTagPrelude . 'class="site-title-desktop">';
 			if ( strlen($logoFile) > 0 )
 			{
+				$anchorTagWithClass = $anchorTagPrelude . 'class="logo-file-desktop">';
 				$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-desktop" alt="' . $siteName . '" />';
 				$logoTitleDescription .= $anchorTagClose;
 			}
 			if ( get_option('idmg_show_site_name_desktop') == 'yes' )
 			{
+				$anchorTagWithClass = $anchorTagPrelude . 'class="site-name-desktop">';
 				$logoTitleDescription .= '<' . get_option('idmg_site_name_element_desktop') . ' class="site-name-desktop">';
 				$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= $siteName;
@@ -175,6 +180,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			}
 			if ( strlen($siteTitle) > 0 )
 			{
+				$anchorTagWithClass = $anchorTagPrelude . 'class="site-title-desktop">';
 				$logoTitleDescription .= '<' . get_option('idmg_site_title_element_desktop') . ' class="site-title-desktop">';
 				$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= $siteTitle;
