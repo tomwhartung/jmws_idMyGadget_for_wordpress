@@ -194,7 +194,7 @@ function idmygadget_customize_register( $wp_customize )
 	// IdMyGadget Hamburger Menu Icon Options: Icon on Left Side
 	// ---------------------------------------------------------
 	// Add a section to the theme's Customize side bar containing controls that allow the
-	// admin to customize how the hamburger menu icon on the left side should display.
+	// admin to customize how the hamburger menu icon on the right side should display.
 	//
 	$wp_customize->add_section( 'hamburger_menu_icon_left' , array(
 		'title'      => __( 'IdMyGadget Left Hamburger Menu Icon', $theme_object_stylesheet ),
@@ -297,6 +297,89 @@ function idmygadget_customize_register( $wp_customize )
 		'priority'   => 9997,
 	) );
 
+	$wp_customize->add_setting( 'idmg_hamburger_icon_right_on_phones' , array(
+		'default'     => JmwsIdMyGadget::$radioChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_right_on_phones', array(
+		'label'    => __( 'Right Hamburger Menu Icon on Phones?', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_right',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadget::$radioChoices,
+		'priority' => 200,
+	) );
+	$wp_customize->add_setting( 'idmg_hamburger_icon_right_on_tablets' , array(
+		'default'     => JmwsIdMyGadget::$radioChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_right_on_tablets', array(
+		'label'    => __( 'Right Hamburger Menu Icon on Tablets?', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_right',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadget::$radioChoices,
+		'priority' => 400,
+	) );
+	$wp_customize->add_setting( 'idmg_hamburger_icon_right_on_desktops' , array(
+		'default'     => JmwsIdMyGadget::$radioChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_right_on_desktops', array(
+		'label'    => __( 'Right Hamburger Menu Icon on Desktops?', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_right',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadget::$radioChoices,
+		'priority' => 600,
+	) );
+
+	$wp_customize->add_setting( 'idmg_hamburger_icon_right_size' , array(
+		'default'     => 0,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_right_size', array(
+		'label'    => __( 'Right Hamburger Menu Icon Size', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_right',
+		'type'     => 'select',
+		'choices'  => JmwsIdMyGadget::$hamburgerMenuIconSizeChoices,
+		'priority' => 1000,
+	) );
+	//
+	// TODO: Update to use a color picker
+	// Possible References:
+	//    https://codex.wordpress.org/Creating_Options_Pages
+	//    https://make.wordpress.org/core/2012/11/30/new-color-picker-in-wp-3-5/
+	//
+	$wp_customize->add_setting( 'idmg_hamburger_icon_right_color' , array(
+		'default'     => '#CCCCCC',
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_right_color', array(
+		'label'    => __( 'Right Hamburger Menu Icon: Color', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_right',
+		'type'     => 'text',
+		'priority' => 1020,
+	) );
+	$wp_customize->add_setting( 'idmg_hamburger_icon_right_line_cap' , array(
+		'default'     => 0,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_right_line_cap', array(
+		'label'    => __( 'Right Hamburger Menu Icon: Line Cap', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_right',
+		'type'     => 'select',
+		'choices'  => JmwsIdMyGadget::$hamburgerMenuIconLineCapChoices,
+		'priority' => 1030,
+	) );
+	$wp_customize->add_setting( 'idmg_hamburger_icon_right_line_size' , array(
+		'default'     => 0,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_right_line_size', array(
+		'label'    => __( 'Right Hamburger Menu Icon: Line Size', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_right',
+		'type'     => 'select',
+		'choices'  => JmwsIdMyGadget::$hamburgerMenuIconLineSizeChoices,
+		'priority' => 1040,
+	) );
 
 	//
 	// If the current theme is IdMyGadget in TwentyFifteen
