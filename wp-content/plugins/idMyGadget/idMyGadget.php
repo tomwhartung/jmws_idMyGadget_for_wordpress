@@ -237,7 +237,7 @@ function idmygadget_customize_register( $wp_customize )
 	) );
 
 	$wp_customize->add_setting( 'idmg_hamburger_icon_left_size' , array(
-		'default'     => JmwsIdMyGadget::$hamburgerMenuIconSizeChoices[0],
+		'default'     => 0,
 		'transport'   => 'refresh',
 	) );
 	$wp_customize->add_control( 'idmg_hamburger_icon_left_size', array(
@@ -246,6 +246,17 @@ function idmygadget_customize_register( $wp_customize )
 		'type'     => 'select',
 		'choices'  => JmwsIdMyGadget::$hamburgerMenuIconSizeChoices,
 		'priority' => 1000,
+	) );
+	$wp_customize->add_setting( 'idmg_hamburger_icon_left_line_size' , array(
+		'default'     => 0,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_left_line_size', array(
+		'label'    => __( 'Left Hamburger Menu Icon: Line Size', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_left',
+		'type'     => 'select',
+		'choices'  => JmwsIdMyGadget::$hamburgerMenuIconLineSizeChoices,
+		'priority' => 1040,
 	) );
 	//
 	// IdMyGadget Hamburger Menu Icon Options: Icon on Right Side
