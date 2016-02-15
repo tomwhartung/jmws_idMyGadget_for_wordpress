@@ -52,7 +52,7 @@ class JmwsIdMyGadget
 	/**
 	 * Array of choices for yes/no radio buttons (e.g., show site name) on plugin page
 	 */
-	public static $radioChoices = array( 'No', 'Yes' );  // NOTE: 'No' must be the zeroeth elt ;-)
+	public static $radioChoices = array( 'No', 'Yes' );  // NOTE: 'No' must be the zeroeth elt (for wordpress)
 	/**
 	 * Array of choices for lists of elements (e.g., site name, site title)
 	 */
@@ -61,6 +61,14 @@ class JmwsIdMyGadget
 	 * Array of choices for jQuery Mobile theme
 	 */
 	public static $jqueryMobileThemeChoices = array( 'a', 'b', 'c', 'd', 'e', 'f' );
+	/**
+	 * Array of choices for the size of the hamburger menu icon
+	 */
+	public static $hamburgerMenuIconSizeChoices = array( '55x55', '11x11', '22x22', '33x33', '44x44', '66x66', '77x77', '88x88' );
+	/**
+	 * Array of choices for the size of the hamburger menu icon line cap
+	 */
+	public $hamburgerMenuIconLineCapChoices = array( 'round', 'square', 'butt' );
 
 	/**
 	 * Used when this plugin/module is not installed or active, etc.
@@ -145,6 +153,7 @@ class JmwsIdMyGadget
 	 */
 	public function __construct( $gadgetDetectorString=null, $debugging=FALSE, $allowOverridesInUrl=TRUE )
 	{
+	//	error_log( 'Creating a base JmwsIdMyGadget object for detector "' . $gadgetDetectorString . '" - note we want to do this only once!' );
 		require_once 'gadget_detectors/all_detectors/getIdMyGadgetStringAllDevices.php';
 
 		if ( $gadgetDetectorString === null )
@@ -218,6 +227,12 @@ class JmwsIdMyGadget
 	}
 
 	/**
+	 * Returns the list of currently supported gadget detectors
+	 */
+	public function getSupportedGadgetDetectors() {
+		return self::$supportedGadgetDetectors;
+	}
+	/**
 	 * For development only! Please remove when code is stable.
 	 * Displaying some values that can help us make sure we haven't inadvertently
 	 * broken something while we are actively working on this.
@@ -229,6 +244,18 @@ class JmwsIdMyGadget
 		$returnValue .= $this->getGadgetDetectorStringChar() . '/';
 		$returnValue .= $this->getGadgetStringChar() . '/';
 		$returnValue .= $this->usingJQueryMobile ? 'Jqm' : 'NoJqm';
+		return $returnValue;
+	}
+	/**
+	 * For development only! Please remove when code is stable.
+	 * Displaying these values while in development can ensure us that it is working the way it should
+	 * @return string
+	 */
+	public function getSanityCheckText()
+	{
+		$returnValue = '';
+		$returnValue .= 'Using detector ' . $this->getGadgetDetectorString();
+		$returnValue .= ' this looks like a ' . $this->getGadgetString();
 		return $returnValue;
 	}
 
@@ -253,12 +280,13 @@ class JmwsIdMyGadget
 	 */
 	public function initializeJQueryMobileVars()
 	{
-		$this->setUsingJQueryMobile();       // sets $this->usingJQueryMobile
+		$this->setUsingJQueryMobile();       // sets $this->usingJQueryMobile and other important variables
+		$this->setJqmDataThemeLetter();
 
 		if ( $this->usingJQueryMobile )
 		{
 			$this->setJqmDataRoles();            // if we're using it, set the data roles and ...
-			$this->setJqmDataThemeAttribute();   // the theme attribute (a, b, c, etc.)
+			$this->setJqmDataThemeAttribute();   // the theme attribute (else leave them blank!)
 		}
 	}
 
