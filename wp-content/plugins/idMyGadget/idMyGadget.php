@@ -213,7 +213,6 @@ function idmygadget_customize_register( $wp_customize )
 		'choices'  => JmwsIdMyGadget::$radioChoices,
 		'priority' => 200,
 	) );
-
 	$wp_customize->add_setting( 'idmg_hamburger_icon_left_on_tablets' , array(
 		'default'     => JmwsIdMyGadget::$radioChoices[0],
 		'transport'   => 'refresh',
@@ -225,7 +224,6 @@ function idmygadget_customize_register( $wp_customize )
 		'choices'  => JmwsIdMyGadget::$radioChoices,
 		'priority' => 400,
 	) );
-
 	$wp_customize->add_setting( 'idmg_hamburger_icon_left_on_desktops' , array(
 		'default'     => JmwsIdMyGadget::$radioChoices[0],
 		'transport'   => 'refresh',
@@ -236,6 +234,18 @@ function idmygadget_customize_register( $wp_customize )
 		'type'     => 'radio',
 		'choices'  => JmwsIdMyGadget::$radioChoices,
 		'priority' => 600,
+	) );
+
+	$wp_customize->add_setting( 'idmg_hamburger_icon_left_size' , array(
+		'default'     => JmwsIdMyGadget::$hamburgerMenuIconSizeChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_left_size', array(
+		'label'    => __( 'Left Hamburger Menu Icon Size', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_left',
+		'type'     => 'select',
+		'choices'  => JmwsIdMyGadget::$hamburgerMenuIconSizeChoices,
+		'priority' => 1000,
 	) );
 	//
 	// IdMyGadget Hamburger Menu Icon Options: Icon on Right Side
