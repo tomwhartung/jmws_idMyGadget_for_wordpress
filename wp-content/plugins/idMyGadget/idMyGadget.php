@@ -247,6 +247,17 @@ function idmygadget_customize_register( $wp_customize )
 		'choices'  => JmwsIdMyGadget::$hamburgerMenuIconSizeChoices,
 		'priority' => 1000,
 	) );
+	$wp_customize->add_setting( 'idmg_hamburger_icon_left_line_cap' , array(
+		'default'     => 0,
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_left_line_cap', array(
+		'label'    => __( 'Left Hamburger Menu Icon: Line Cap', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_left',
+		'type'     => 'select',
+		'choices'  => JmwsIdMyGadget::$hamburgerMenuIconLineCapChoices,
+		'priority' => 1030,
+	) );
 	$wp_customize->add_setting( 'idmg_hamburger_icon_left_line_size' , array(
 		'default'     => 0,
 		'transport'   => 'refresh',
