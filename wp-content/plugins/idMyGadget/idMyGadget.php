@@ -190,6 +190,65 @@ function idmygadget_customize_register( $wp_customize )
 			'priority' => 700,
 		) );
 	}
+	//
+	// IdMyGadget Hamburger Menu Icon Options: Icon on Left Side
+	// ---------------------------------------------------------
+	// Add a section to the theme's Customize side bar containing controls that allow the
+	// admin to customize how the hamburger menu icon on the left side should display.
+	//
+	$wp_customize->add_section( 'hamburger_menu_icon_left' , array(
+		'title'      => __( 'IdMyGadget Left Hamburger Menu Icon', $theme_object_stylesheet ),
+		'description' => __( 'Customize the hamburger menu icon that appears on the left side of the heading.'),
+		'priority'   => 9995,
+	) );
+
+	$wp_customize->add_setting( 'idmg_hamburger_icon_left_on_phones' , array(
+		'default'     => JmwsIdMyGadget::$radioChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_left_on_phones', array(
+		'label'    => __( 'Left Hamburger Menu Icon on Phones?', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_left',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadget::$radioChoices,
+		'priority' => 200,
+	) );
+
+	$wp_customize->add_setting( 'idmg_hamburger_icon_left_on_tablets' , array(
+		'default'     => JmwsIdMyGadget::$radioChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_left_on_tablets', array(
+		'label'    => __( 'Left Hamburger Menu Icon on Tablets?', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_left',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadget::$radioChoices,
+		'priority' => 400,
+	) );
+
+	$wp_customize->add_setting( 'idmg_hamburger_icon_left_on_desktops' , array(
+		'default'     => JmwsIdMyGadget::$radioChoices[0],
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_left_on_desktops', array(
+		'label'    => __( 'Left Hamburger Menu Icon on Desktops?', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_left',
+		'type'     => 'radio',
+		'choices'  => JmwsIdMyGadget::$radioChoices,
+		'priority' => 600,
+	) );
+	//
+	// IdMyGadget Hamburger Menu Icon Options: Icon on Right Side
+	// ----------------------------------------------------------
+	// Add a section to the theme's Customize side bar containing controls that allow the
+	// admin to customize how the hamburger menu icon on the right side should display.
+	//
+	$wp_customize->add_section( 'hamburger_menu_icon_right' , array(
+		'title'      => __( 'IdMyGadget Right Hamburger Menu Icon', $theme_object_stylesheet ),
+		'description' => __( 'Customize the hamburger menu icon that appears on the right side of the heading.'),
+		'priority'   => 9995,
+	) );
+
 
 	//
 	// If the current theme is IdMyGadget in TwentyFifteen
