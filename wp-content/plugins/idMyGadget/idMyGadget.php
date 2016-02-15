@@ -247,6 +247,22 @@ function idmygadget_customize_register( $wp_customize )
 		'choices'  => JmwsIdMyGadget::$hamburgerMenuIconSizeChoices,
 		'priority' => 1000,
 	) );
+	//
+	// TODO: Update to use a color picker
+	// Possible References:
+	//    https://codex.wordpress.org/Creating_Options_Pages
+	//    https://make.wordpress.org/core/2012/11/30/new-color-picker-in-wp-3-5/
+	//
+	$wp_customize->add_setting( 'idmg_hamburger_icon_left_color' , array(
+		'default'     => '#CCCCCC',
+		'transport'   => 'refresh',
+	) );
+	$wp_customize->add_control( 'idmg_hamburger_icon_left_color', array(
+		'label'    => __( 'Left Hamburger Menu Icon: Color', $theme_object_stylesheet ),
+		'section'  => 'hamburger_menu_icon_left',
+		'type'     => 'text',
+		'priority' => 1020,
+	) );
 	$wp_customize->add_setting( 'idmg_hamburger_icon_left_line_cap' , array(
 		'default'     => 0,
 		'transport'   => 'refresh',
@@ -278,7 +294,7 @@ function idmygadget_customize_register( $wp_customize )
 	$wp_customize->add_section( 'hamburger_menu_icon_right' , array(
 		'title'      => __( 'IdMyGadget Right Hamburger Menu Icon', $theme_object_stylesheet ),
 		'description' => __( 'Customize the hamburger menu icon that appears on the right side of the heading.'),
-		'priority'   => 9995,
+		'priority'   => 9997,
 	) );
 
 
