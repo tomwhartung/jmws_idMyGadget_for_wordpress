@@ -19,17 +19,6 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	);
 
 	/**
-	 * Boolean: whether the admins want the jQuery Mobile phone header nav on this device
-	 * Added pretty much only for demo purposes, so people see why we don't use it.
-	 */
-	public $phoneHeaderNavThisDevice = FALSE;
-	/**
-	 * Boolean: whether the admins want the jQuery Mobile phone footer nav on this device
-	 * Added pretty much only for demo purposes, so people see why we don't use it.
-	 */
-	public $phoneFooterNavThisDevice = FALSE;
-
-	/**
 	 * *** Relevant to the twentyfifteen theme only ***
 	 * Options for where the phone nav can appear in the markup.
 	 * Page works best on phones and really you should not be using this nav on non-phones
@@ -259,8 +248,11 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	}
 
 	/**
+	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
 	 * Decide whether we are using the jQuery Mobile js library,
+	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
 	 * based on the device we are on and the values of device-dependent options set by the admin
+	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
 	 */
 	protected function setUsingJQueryMobile()
 	{
@@ -308,6 +300,28 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$this->phoneHeaderNavThisDevice = TRUE;
 			$this->phoneFooterNavThisDevice = TRUE;
 		}
+	}
+	/**
+	 * Return a boolean indicating whether we want the jQuery Mobile Phone Nav on this device
+	 */
+	protected function getPhoneNavOnThisDevice()
+	{
+		$phoneNavOnThisDevice = FALSE;
+
+		if ( $this->isPhone() )
+		{
+			$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_phones' );
+		}
+		else if ( $this->isTablet() )
+		{
+			$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_tablets' );
+		}
+		else
+		{
+			$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_desktops' );
+		}
+
+		return $phoneNavOnThisDevice;
 	}
 	/**
 	 * Use the admin option to set the jQuery Mobile Data Theme attribute (if necessary)
