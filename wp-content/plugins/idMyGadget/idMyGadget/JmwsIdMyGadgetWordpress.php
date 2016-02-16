@@ -6,7 +6,7 @@
  * *THEN* we can reuse the rest of the code in this project for joomla and Drupal (and...?)
  */
 require_once 'JmwsIdMyGadget.php';
-require_once 'HamburgerMenuIcon.php';
+require_once 'HamburgerMenuIconHtmlJs.php';
 
 class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 {
@@ -247,61 +247,6 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 
 		return $footerAttributes;
 	}
-
-	/**
-	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
-	 * Decide whether we are using the jQuery Mobile js library,
-	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
-	 * based on the device we are on and the values of device-dependent options set by the admin
-	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
-	 */
-	protected function setUsingJQueryMobile()
-	{
-		$this->usingJQueryMobile = FALSE;
-		$this->phoneHeaderNavThisDevice = FALSE;
-		$this->phoneFooterNavThisDevice = FALSE;
-		$this->hamburgerIconThisDeviceLeft = FALSE;
-		$this->hamburgerIconThisDeviceRight = FALSE;
-		$phoneNavOnThisDevice = FALSE;
-		//
-		// The logic for setting usingJQueryMobile is directly related to the
-		//   logic for setting the phone nav and hamburger menu icon *ThisDevice* variables,
-		//   so we do all this at the same time
-		//
-		if ( $this->isPhone() )
-		{
-			$this->usingJQueryMobile = TRUE;
-			$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_phones' );
-			if ($this->params->get('phoneBurgerMenuLeftOnPhone') )
-			{
-				$jmwsIdMyGadget->hamburgerIconThisDeviceLeft = TRUE;
-			}
-			if ( $this->params->get('phoneBurgerMenuRightOnPhone') )
-			{
-				$jmwsIdMyGadget->hamburgerIconThisDeviceRight = TRUE;
-			}
-		}
-		else if ( $this->isTablet() )
-		{
-			$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_tablets' );
-			if ( $phoneNavOnThisDevice ) {
-				$this->usingJQueryMobile = TRUE;
-			}
-		}
-		else
-		{
-			$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_desktops' );
-			if ( $phoneNavOnThisDevice )
-			{
-				$this->usingJQueryMobile = TRUE;
-			}
-		}
-		if( $phoneNavOnThisDevice )
-		{
-			$this->phoneHeaderNavThisDevice = TRUE;
-			$this->phoneFooterNavThisDevice = TRUE;
-		}
-	}
 	/**
 	 * Return a boolean indicating whether we want the jQuery Mobile Phone Nav on this device
 	 */
@@ -357,16 +302,6 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$this->setJqmDataThemeLetter();
 		}
 		$this->jqmDataThemeAttribute = 'data-theme="' . $this->jqmDataThemeLetter . '"';
-	}
-	/**
-	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
-	 * Use the admin option to set the jQuery Mobile Data Theme Letter
-	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
-	 */
-	protected function setJqmDataThemeLetter()
-	{
-		$jqmDataThemeIndex = get_theme_mod( 'idmg_jqm_data_theme' );
-		$this->jqmDataThemeLetter = JmwsIdMyGadget::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
 	}
 	/**
 	 * Use the admin option to set the index of the jQuery Mobile Data Theme Letter
