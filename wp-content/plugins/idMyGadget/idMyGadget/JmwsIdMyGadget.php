@@ -1,4 +1,5 @@
 <?php
+// namespace Drupal\idmygadget\JmwsIdMyGadget;
 /**
  * Creates an object of the desired idMyGadget subclass and uses it for device detection.
  * Ideally this should exactly match the class with the same name in jmws_idMyGadget_for_joomla.
@@ -68,7 +69,11 @@ class JmwsIdMyGadget
 	/**
 	 * Array of choices for the size of the hamburger menu icon line cap
 	 */
-	public $hamburgerMenuIconLineCapChoices = array( 'round', 'square', 'butt' );
+	public static $hamburgerMenuIconLineCapChoices = array( 'round', 'square', 'butt' );
+	/**
+	 * Array of choices for the size of the hamburger menu icon line size
+	 */
+	public static $hamburgerMenuIconLineSizeChoices = array( 'normal', 'fat', 'thin' );
 
 	/**
 	 * Used when this plugin/module is not installed or active, etc.
@@ -77,9 +82,19 @@ class JmwsIdMyGadget
 	public $errorMessage = '';
 	/**
 	 * Boolean: Using jQuery Mobile changes everything, so we need to know when we are using it.
-	 * Although we always use it on phones, we do not always use it on tablets.
+	 * Although we always use it on phones, we do not always use it on tablets or desktops.
 	 */
-	public $usingJQueryMobile = TRUE;
+	public $usingJQueryMobile = FALSE;
+	/**
+	 * Boolean: whether the admins want the jQuery Mobile phone header nav on this device
+	 * Added pretty much only for demo purposes, so people see why we don't use it.
+	 */
+	public $phoneHeaderNavThisDevice = FALSE;
+	/**
+	 * Boolean: whether the admins want the jQuery Mobile phone footer nav on this device
+	 * Added pretty much only for demo purposes, so people see why we don't use it.
+	 */
+	public $phoneFooterNavThisDevice = FALSE;
 
 	/**
 	 * Boolean: determines whether we want the hamburger menu in the upper left corner
@@ -87,11 +102,11 @@ class JmwsIdMyGadget
 	 * Set by the template, based on options set in the back end.
 	 * Kept here so that modules can access it without us polluting the global namespace.
 	 */
-	public $phoneBurgerIconThisDeviceLeft = FALSE;
+	public $hamburgerIconThisDeviceLeft = FALSE;
 	/**
-	 * Boolean: analogous to phoneBurgerIconThisDeviceLeft, but for the right side.
+	 * Boolean: analogous to hamburgerIconThisDeviceLeft, but for the right side.
 	 */
-	public $phoneBurgerIconThisDeviceRight = FALSE;
+	public $hamburgerIconThisDeviceRight = FALSE;
 
 	/**
 	 * We want to use jQuery Mobile data-role attributes only when we are using that library.
@@ -224,6 +239,7 @@ class JmwsIdMyGadget
 
 		$this->gadgetDetectorStringChar = substr( $this->gadgetDetectorString, 0, 1 );  // part of the sanity check string
 		$this->gadgetStringChar = substr( $this->gadgetString, 0, 1 );                  // part of the sanity check string
+		$this->initializeJQueryMobileVars();
 	}
 
 	/**
@@ -236,14 +252,30 @@ class JmwsIdMyGadget
 	 * For development only! Please remove when code is stable.
 	 * Displaying some values that can help us make sure we haven't inadvertently
 	 * broken something while we are actively working on this.
+	 * If something breaks, the sooner we know it the better!
 	 * @return string
 	 */
-	public function getSanityCheckString()
+	public function getSanityCheckString( $extra='' )
 	{
 		$returnValue = '';
 		$returnValue .= $this->getGadgetDetectorStringChar() . '/';
 		$returnValue .= $this->getGadgetStringChar() . '/';
 		$returnValue .= $this->usingJQueryMobile ? 'Jqm' : 'NoJqm';
+		$returnValue .= '/"' . $this->jqmDataThemeLetter . '"';
+
+		$phnHorN = $this->phoneHeaderNavThisDevice ? 'H' : 'N';
+		$pfnForN = $this->phoneFooterNavThisDevice ? 'F' : 'N';
+		$returnValue .= '/PhoneNav:' . $phnHorN . '-' . $pfnForN;
+
+		$hmiLeftLorN = $this->hamburgerIconThisDeviceLeft ? 'L' : 'N';
+		$hmiRightRorN = $this->hamburgerIconThisDeviceRight ? 'R' : 'N';
+		$returnValue .= '/HMI:' . $hmiLeftLorN . '-' . $hmiRightRorN;
+
+		if ( strlen($extra) > 0 )
+		{
+			$returnValue .= '/' . $extra;
+		}
+
 		return $returnValue;
 	}
 	/**
@@ -256,6 +288,8 @@ class JmwsIdMyGadget
 		$returnValue = '';
 		$returnValue .= 'Using detector ' . $this->getGadgetDetectorString();
 		$returnValue .= ' this looks like a ' . $this->getGadgetString();
+		$returnValue .= '.';
+		$returnValue .= '.';
 		return $returnValue;
 	}
 
@@ -272,22 +306,6 @@ class JmwsIdMyGadget
 	public function isEnabled()
 	{
 		return $this->detectionEnabled;
-	}
-
-	/**
-	 * Determine whether we are using jQuery Mobile
-	 * If we are using it, get it set up, based on the values of our options
-	 */
-	public function initializeJQueryMobileVars()
-	{
-		$this->setUsingJQueryMobile();       // sets $this->usingJQueryMobile and other important variables
-		$this->setJqmDataThemeLetter();
-
-		if ( $this->usingJQueryMobile )
-		{
-			$this->setJqmDataRoles();            // if we're using it, set the data roles and ...
-			$this->setJqmDataThemeAttribute();   // the theme attribute (else leave them blank!)
-		}
 	}
 
 	/**
@@ -395,6 +413,94 @@ class JmwsIdMyGadget
 	{
 		return $this->idMyGadget->displayDeviceData();
 	}
+// ------------------------------------------------------------------
+// The methods in this section call methods in the subclasses
+// (for drupal and wp and maybe joomla) to read configuration options,
+// each in their own special way, and uses those values to set
+// important variables that determine what menus we display on the
+// device currently being used.
+	/**
+	 * Called by constructor:
+	 * Determine whether we are using jQuery Mobile and set many related variables in the process
+	 * Note:
+	 *   We always add the jQuery Mobile Data Roles and Theme Attributes to the markup
+	 *   So if we are not using them, it is important that they remain empty strings
+	 */
+	protected function initializeJQueryMobileVars()
+	{
+	  $this->setUsingJQueryMobile();
+	  $this->setJqmDataThemeLetter();
+
+	  if ( $this->usingJQueryMobile )
+	  {
+	    $this->setJqmDataRoles();            // if we're using it, set the data roles and ...
+	    $this->setJqmDataThemeAttribute();   // the theme attribute (else leave them blank!)
+	  }
+	}
+	/**
+	 * Decide whether we are using the jQuery Mobile js library, based on:
+	 * o the device we are on and
+	 * o the values of device-dependent options set by the admin
+	 */
+	protected function setUsingJQueryMobile()
+	{
+		require_once 'HamburgerMenuIconHtmlJs.php';
+		$this->usingJQueryMobile = FALSE;
+		$this->phoneHeaderNavThisDevice = FALSE;
+		$this->phoneFooterNavThisDevice = FALSE;
+		$this->hamburgerIconThisDeviceLeft = FALSE;
+		$this->hamburgerIconThisDeviceRight = FALSE;
+
+		//
+		// The logic for setting usingJQueryMobile is directly related to the
+		//   logic for setting the phone nav and hamburger menu icon *ThisDevice* variables,
+		//   so we do all this at the same time
+		//
+		$phoneNavOnThisDevice = $this->getPhoneNavOnThisDevice();
+		if( $phoneNavOnThisDevice )
+		{
+			$this->phoneHeaderNavThisDevice = TRUE;
+			$this->phoneFooterNavThisDevice = TRUE;
+		}
+
+		$this->hamburgerIconThisDeviceLeft = $this->getHamburgerIconOnThisDevice( HamburgerMenuIconHtmlJs::LEFT );
+		$this->hamburgerIconThisDeviceRight = $this->getHamburgerIconOnThisDevice( HamburgerMenuIconHtmlJs::RIGHT );
+
+		if ( $this->isPhone() )
+		{
+			$this->usingJQueryMobile = TRUE;
+		}
+		else if ( $this->isTablet() )
+		{
+			if ( $phoneNavOnThisDevice )
+			{
+				$this->usingJQueryMobile = TRUE;
+			}
+		}
+		else
+		{
+			if ( $phoneNavOnThisDevice )
+			{
+				$this->usingJQueryMobile = TRUE;
+			}
+		}
+	}
+	/**
+	 * Use the admin option to set the jQuery Mobile Data Theme Letter
+	 */
+	protected function setJqmDataThemeLetter()
+	{
+		$jqmDataThemeIndex = $this->getJqmDataThemeIndex();
+
+		if ( isset($jqmDataThemeIndex) && is_numeric($jqmDataThemeIndex) )
+		{
+			$this->jqmDataThemeLetter = self::$jqueryMobileThemeChoices[$jqmDataThemeIndex];
+		}
+		else
+		{
+			$this->jqmDataThemeLetter = self::$jqueryMobileThemeChoices[0];
+		}
+	}
 
 	/**
 	 * Set the jQquery Mobile data-role attributes
@@ -405,5 +511,16 @@ class JmwsIdMyGadget
 		$this->jqmDataRole['header'] = 'data-role="header"';
 		$this->jqmDataRole['content'] = 'data-role="content"';
 		$this->jqmDataRole['footer'] = 'data-role="footer"';
+	}
+	/**
+	 * Use the admin option to set the jQuery Mobile Data Theme attribute
+	 */
+	protected function setJqmDataThemeAttribute()
+	{
+	  if ( $this->jqmDataThemeLetter == null )     // supposedly set in constructor but let's be safe
+	  {
+	    $this->setJqmDataThemeLetter();
+	  }
+	  $this->jqmDataThemeAttribute = 'data-theme="' . $this->jqmDataThemeLetter . '"';
 	}
 }
