@@ -37,7 +37,6 @@ function idMyGadget_wp()
 	$gadgetDetectorString = $supportedGadgetDetectors[$gadgetDetectorIndex];
 
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetectorString);
-	$jmwsIdMyGadget->initializeJQueryMobileVars();
 }
 add_action( 'wp', 'idMyGadget_wp' );
 /**
