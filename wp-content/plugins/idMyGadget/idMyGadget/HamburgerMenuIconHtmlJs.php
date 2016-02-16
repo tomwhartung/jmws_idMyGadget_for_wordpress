@@ -6,7 +6,7 @@
  *   except when we reload the page. It would be nice to be able to remove that someday....
  */
 
-class PhoneBurgerMenuIcon
+class HamburgerMenuIconHtmlJs
 {
 	const LEFT = 'left';
 	const RIGHT = 'right';
@@ -30,12 +30,12 @@ class PhoneBurgerMenuIcon
 	 * Hence this hack, to allow using an image in a file.
 	 * To display a file instead of drawing the icon,
 	 * (1) put it in images/idMyGadget/ and
-	 * (2) name it phoneBurgerMenuIcon[Left|Right][Device].png .
+	 * (2) name it hamburgerMenuIcon[Left|Right][Device].png .
 	 *     where [Device] is "Desktop" "Phone" or "Tablet"
 	 * Examples:
-	 *    images/idMyGadget/phoneBurgerMenuIconLeftDesktop.png
-	 *    images/idMyGadget/phoneBurgerMenuIconRightPhone.png
-	 *    images/idMyGadget/phoneBurgerMenuIconRightTablet.png
+	 *    images/idMyGadget/hamburgerMenuIconLeftDesktop.png
+	 *    images/idMyGadget/hamburgerMenuIconRightPhone.png
+	 *    images/idMyGadget/hamburgerMenuIconRightTablet.png
 	 * @var type
 	 */
 	public $fileName = '';      // used for hack needed for phones and beez3
@@ -81,7 +81,7 @@ class PhoneBurgerMenuIcon
 
 	protected function setPublicDataMembers()
 	{
-		$this->fileName = $this->template . '/images/idMyGadget/phoneBurgerMenuIcon' .
+		$this->fileName = $this->template . '/images/idMyGadget/hamburgerMenuIcon' .
 			ucfirst($this->leftOrRight) .
 			ucfirst($this->jmwsIdMyGadget->getGadgetString()) .
 			'.png';
@@ -90,62 +90,62 @@ class PhoneBurgerMenuIcon
 			$this->useImage = TRUE;
 		}
 		if ( $this->leftOrRight === self::LEFT &&
-		     $this->jmwsIdMyGadget->phoneBurgerIconThisDeviceLeft )
+		     $this->jmwsIdMyGadget->hamburgerIconThisDeviceLeft )
 		{
-			$this->html = '<a href="#phone-burger-menu-left" data-rel="dialog">';
+			$this->html = '<a href="#hamburger-menu-left" data-rel="dialog">';
 			if ( $this->useImage )
 			{
 				$this->html .=
-					'<img id="phone-burger-icon-image-left" ' .
-						'width="' . $this->params->get('phoneBurgerMenuLeftSize') . '" ' .
-						'height="' . $this->params->get('phoneBurgerMenuLeftSize') . '" ' .
+					'<img id="hamburger-icon-image-left" ' .
+						'width="' . $this->params->get('hamburgerMenuLeftSize') . '" ' .
+						'height="' . $this->params->get('hamburgerMenuLeftSize') . '" ' .
 						'src="templates/' . $this->fileName . '" />';
 			}
 			else
 			{
 				$this->html .=
-					'<canvas id="phone-burger-icon-left" ' .
-						'width="' . $this->params->get('phoneBurgerMenuLeftSize') . '" ' .
-						'height="' . $this->params->get('phoneBurgerMenuLeftSize') . '">' .
+					'<canvas id="hamburger-icon-left" ' .
+						'width="' . $this->params->get('hamburgerMenuLeftSize') . '" ' .
+						'height="' . $this->params->get('hamburgerMenuLeftSize') . '">' .
 						'&nbsp;Menu&nbsp;' . '</canvas>';
 			}
 			$this->html .= '</a>';
 			$this->js =
 				'<script>' .
-					'var phoneBurgerIconLeftOptions = {};' .
-					'phoneBurgerIconLeftOptions.color = "' . $this->params->get('phoneBurgerMenuLeftColor') . '";' .
-					'phoneBurgerIconLeftOptions.lineCap = "' . $this->params->get('phoneBurgerMenuLeftLineCap') . '";' .
-					'phoneBurgerIconLeftOptions.lineSize = "' . $this->params->get('phoneBurgerMenuLeftLineSize') . '";' .
+					'var hamburgerIconLeftOptions = {};' .
+					'hamburgerIconLeftOptions.color = "' . $this->params->get('hamburgerMenuLeftColor') . '";' .
+					'hamburgerIconLeftOptions.lineCap = "' . $this->params->get('hamburgerMenuLeftLineCap') . '";' .
+					'hamburgerIconLeftOptions.lineSize = "' . $this->params->get('hamburgerMenuLeftLineSize') . '";' .
 				'</script>';
 		}
 		if ( $this->leftOrRight === self::RIGHT &&
-		     $this->jmwsIdMyGadget->phoneBurgerIconThisDeviceRight )
+		     $this->jmwsIdMyGadget->hamburgerIconThisDeviceRight )
 		{
 			$this->html =
-				'<a href="#phone-burger-menu-right" class="pull-right" data-rel="dialog">';
+				'<a href="#hamburger-menu-right" class="pull-right" data-rel="dialog">';
 			if ( $this->useImage )
 			{
 				$this->html .=
-					'<img id="phone-burger-icon-image-right"' .
-						'width="' . $this->params->get('phoneBurgerMenuRightSize') . '" ' .
-						'height="' . $this->params->get('phoneBurgerMenuRightSize') . '" ' .
+					'<img id="hamburger-icon-image-right"' .
+						'width="' . $this->params->get('hamburgerMenuRightSize') . '" ' .
+						'height="' . $this->params->get('hamburgerMenuRightSize') . '" ' .
 						' src="templates/' . $this->fileName . '" />';
 			}
 			else
 			{
 				$this->html .=
-					'<canvas id="phone-burger-icon-right" ' .
-						'width="' . $this->params->get('phoneBurgerMenuRightSize') . '" ' .
-						'height="' . $this->params->get('phoneBurgerMenuRightSize') . '">' .
+					'<canvas id="hamburger-icon-right" ' .
+						'width="' . $this->params->get('hamburgerMenuRightSize') . '" ' .
+						'height="' . $this->params->get('hamburgerMenuRightSize') . '">' .
 						'&nbsp;Menu&nbsp;' . '</canvas>';
 			}
 			$this->html .= '</a>';
 			$this->js =
 				'<script>' .
-					'var phoneBurgerIconRightOptions = {};' .
-					'phoneBurgerIconRightOptions.color = "' . $this->params->get('phoneBurgerMenuRightColor') . '";' .
-					'phoneBurgerIconRightOptions.lineCap = "' . $this->params->get('phoneBurgerMenuRightLineCap') . '";' .
-					'phoneBurgerIconRightOptions.lineSize = "' . $this->params->get('phoneBurgerMenuRightLineSize') . '";' .
+					'var hamburgerIconRightOptions = {};' .
+					'hamburgerIconRightOptions.color = "' . $this->params->get('hamburgerMenuRightColor') . '";' .
+					'hamburgerIconRightOptions.lineCap = "' . $this->params->get('hamburgerMenuRightLineCap') . '";' .
+					'hamburgerIconRightOptions.lineSize = "' . $this->params->get('hamburgerMenuRightLineSize') . '";' .
 				'</script>';
 		}
 	}
