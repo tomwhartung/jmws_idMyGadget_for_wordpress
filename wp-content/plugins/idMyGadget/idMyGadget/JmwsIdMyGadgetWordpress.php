@@ -267,17 +267,26 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		$this->usingJQueryMobile = FALSE;
 		$this->phoneHeaderNavThisDevice = FALSE;
 		$this->phoneFooterNavThisDevice = FALSE;
-		$this->phoneBurgerIconThisDeviceLeft = FALSE;
-		$this->phoneBurgerIconThisDeviceRight = FALSE;
+		$this->hamburgerIconThisDeviceLeft = FALSE;
+		$this->hamburgerIconThisDeviceRight = FALSE;
 		$phoneNavOnThisDevice = FALSE;
 		//
-		// Not worrying about the phone burger stuff right now,
-		// so this logic will probably change as time progresses
+		// The logic for setting usingJQueryMobile is directly related to the
+		//   logic for setting the phone nav and hamburger menu icon *ThisDevice* variables,
+		//   so we do all this at the same time
 		//
 		if ( $this->isPhone() )
 		{
 			$this->usingJQueryMobile = TRUE;
 			$phoneNavOnThisDevice = get_theme_mod( 'idmg_phone_nav_on_phones' );
+			if ($this->params->get('phoneBurgerMenuLeftOnPhone') )
+			{
+				$jmwsIdMyGadget->hamburgerIconThisDeviceLeft = TRUE;
+			}
+			if ( $this->params->get('phoneBurgerMenuRightOnPhone') )
+			{
+				$jmwsIdMyGadget->hamburgerIconThisDeviceRight = TRUE;
+			}
 		}
 		else if ( $this->isTablet() )
 		{
