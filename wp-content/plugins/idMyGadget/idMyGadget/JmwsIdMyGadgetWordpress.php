@@ -6,6 +6,7 @@
  * *THEN* we can reuse the rest of the code in this project for joomla and Drupal (and...?)
  */
 require_once 'JmwsIdMyGadget.php';
+require_once 'HamburgerMenuIcon.php';
 
 class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 {
@@ -322,6 +323,29 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		}
 
 		return $phoneNavOnThisDevice;
+	}
+	/**
+	 * Return a boolean indicating whether we want the hamburger menu icon
+	 *   (left or right or both) on this device
+	 */
+	protected function getHamburgerIconOnThisDevice($leftOrRight=HamburgerMenuIcon::LEFT)
+	{
+		$hamburgerIconOnThisDevice = FALSE;
+
+		if ( $this->isPhone() )
+		{
+			$hamburgerIconOnThisDevice = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_on_phones' );
+		}
+		else if ( $this->isTablet() )
+		{
+			$hamburgerIconOnThisDevice = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_on_tablets' );
+		}
+		else
+		{
+			$hamburgerIconOnThisDevice = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_on_desktops' );
+		}
+
+		return $hamburgerIconOnThisDevice;
 	}
 	/**
 	 * Use the admin option to set the jQuery Mobile Data Theme attribute (if necessary)
