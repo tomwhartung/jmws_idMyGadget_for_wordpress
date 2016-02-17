@@ -273,7 +273,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 * Return a boolean indicating whether we want the hamburger menu icon
 	 *   (left or right or both) on this device
 	 */
-	protected function getHamburgerIconOnThisDevice($leftOrRight=HamburgerMenuIcon::LEFT)
+	protected function getHamburgerIconOnThisDevice( $leftOrRight=HamburgerMenuIcon::LEFT )
 	{
 		$hamburgerIconOnThisDevice = FALSE;
 
@@ -291,6 +291,19 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		}
 
 		return $hamburgerIconOnThisDevice;
+	}
+	/**
+	 * Get the values set in the admin panel used to customize the icon
+	 * Call methods in base class to use these values to generate the html and js for the icon
+	 * @param type $leftOrRight
+	 */
+	protected function setHamburgerIconHtmlJs( $leftOrRight=HamburgerMenuIconHtmlJs::LEFT )
+	{
+		$hamburgerIconSize = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_size' );
+		$hamburgerIconColor = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_color' );
+		$hamburgerIconLineCap = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_cap' );
+		$hamburgerIconLineSize = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_size' );
+		
 	}
 	/**
 	 * Use the admin option to set the jQuery Mobile Data Theme attribute (if necessary)
