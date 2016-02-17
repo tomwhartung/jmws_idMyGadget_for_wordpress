@@ -97,9 +97,9 @@ class JmwsIdMyGadget
 	public $phoneFooterNavThisDevice = FALSE;
 
 	/**
-	 * Boolean: indicates whether we want the hamburger menu in the left side of the header
+	 * Boolean: indicates whether we want the hamburger menu in the left side of the header on this device
 	 */
-	public $hamburgerIconLeftThisDevice = FALSE;
+	public $hamburgerIconLeftOnThisDevice = FALSE;
 	/**
 	 * HTML to use for the Header Menu Icon on the Left side
 	 */
@@ -109,9 +109,9 @@ class JmwsIdMyGadget
 	 */
 	public $hamburgerIconLeftJs = '';
 	/**
-	 * Boolean: indicates whether we want the hamburger menu in the right side of the header
+	 * Boolean: indicates whether we want the hamburger menu in the right side of the header on this device
 	 */
-	public $hamburgerIconRightThisDevice = FALSE;
+	public $hamburgerIconRightOnThisDevice = FALSE;
 	/**
 	 * HTML to use for the Header Menu Icon on the Right side
 	 */
@@ -280,8 +280,8 @@ class JmwsIdMyGadget
 		$pfnForN = $this->phoneFooterNavThisDevice ? 'F' : 'N';
 		$returnValue .= '/PhoneNav:' . $phnHorN . '-' . $pfnForN;
 
-		$hmiLeftLorN = $this->hamburgerIconLeftThisDevice ? 'L' : 'N';
-		$hmiRightRorN = $this->hamburgerIconRightThisDevice ? 'R' : 'N';
+		$hmiLeftLorN = $this->hamburgerIconLeftOnThisDevice ? 'L' : 'N';
+		$hmiRightRorN = $this->hamburgerIconRightOnThisDevice ? 'R' : 'N';
 		$returnValue .= '/HMI:' . $hmiLeftLorN . '-' . $hmiRightRorN;
 
 		if ( strlen($extra) > 0 )
@@ -462,11 +462,15 @@ class JmwsIdMyGadget
 		$this->phoneHeaderNavThisDevice = FALSE;
 		$this->phoneFooterNavThisDevice = FALSE;
 
-		//
-		// The logic for setting usingJQueryMobile is directly related to the
-		//   logic for setting the phone nav and hamburger menu icon *ThisDevice* variables,
-		//   so we do all this at the same time
-		//
+		$this->setPhoneNavVariables();
+		$this->setHamburgerIconVariables();
+	}
+	/**
+	 * The logic for setting usingJQueryMobile is directly related to the
+	 *   logic for setting the phone nav *ThisDevice variables, so we do them together
+	 */
+	protected function setPhoneNavVariables()
+	{
 		$phoneNavOnThisDevice = $this->getPhoneNavOnThisDevice();
 		if( $phoneNavOnThisDevice )
 		{
@@ -492,9 +496,24 @@ class JmwsIdMyGadget
 				$this->usingJQueryMobile = TRUE;
 			}
 		}
+	}
+	/**
+	 * If we are using either or both hamburger menu icons on this device
+	 *   set the corresponding hamburgerIcon*Html and hamburgerIcon*Js variables as well
+	 */
+	protected function setHamburgerIconVariables()
+	{
+		$this->hamburgerIconLeftOnThisDevice = $this->getHamburgerIconOnThisDevice( HamburgerMenuIconHtmlJs::LEFT );
+		$this->hamburgerIconRightOnThisDevice = $this->getHamburgerIconOnThisDevice( HamburgerMenuIconHtmlJs::RIGHT );
 
-		$this->hamburgerIconLeftThisDevice = $this->getHamburgerIconOnThisDevice( HamburgerMenuIconHtmlJs::LEFT );
-		$this->hamburgerIconRightThisDevice = $this->getHamburgerIconOnThisDevice( HamburgerMenuIconHtmlJs::RIGHT );
+		if ( $this->hamburgerIconLeftOnThisDevice )
+		{
+			$this->setHamburgerIconHtmlJs( HamburgerMenuIconHtmlJs::LEFT );
+		}
+		if ( $this->hamburgerIconRightOnThisDevice )
+		{
+			$this->setHamburgerIconHtmlJs( HamburgerMenuIconHtmlJs::RIGHT );
+		}
 	}
 	/**
 	 * Use the admin option to set the jQuery Mobile Data Theme Letter
