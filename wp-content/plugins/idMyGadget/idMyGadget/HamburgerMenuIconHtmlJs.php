@@ -89,7 +89,8 @@ class HamburgerMenuIconHtmlJs
 		$this->iconColor = $iconColor;
 		$this->iconLineCap = $iconLineCap;
 		$this->iconLineSize = $iconLineSize;
-	//	$this->template = $template;
+	//	$this->setUseImage();
+		$this->useImage = FALSE;
 	}
 
 	/**
@@ -107,6 +108,20 @@ class HamburgerMenuIconHtmlJs
 	{
 		$this->js .= '';
 		return $this->js;
+	}
+	/**
+	 * Determine whether an appropriate image is available
+	 */
+	protected function setUseImage()
+	{
+		$this->fileName = $this->template . '/images/idMyGadget/hamburgerMenuIcon' .
+			ucfirst($this->leftOrRight) .
+			ucfirst($this->jmwsIdMyGadget->getGadgetString()) .
+			'.png';
+		if ( file_exists(JPATH_THEMES . DS . $this->fileName) )
+		{
+			$this->useImage = TRUE;
+		}
 	}
 	/**
 	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
