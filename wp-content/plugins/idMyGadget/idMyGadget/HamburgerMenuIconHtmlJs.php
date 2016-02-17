@@ -99,6 +99,49 @@ class HamburgerMenuIconHtmlJs
 	public function getHtml()
 	{
 		$this->html .= '';
+		if ( $this->leftOrRight === self::LEFT )
+		{
+			$this->html = '<a href="#hamburger-menu-left" data-rel="dialog">';
+			if ( $this->useImage )
+			{
+				$this->html .=
+					'<img id="hamburger-icon-image-left" ' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '" ' .
+						'src="templates/' . $this->fileName . '" />';
+			}
+			else
+			{
+				$this->html .=
+					'<canvas id="hamburger-icon-left" ' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '">' .
+						'&nbsp;Menu&nbsp;' . '</canvas>';
+			}
+			$this->html .= '</a>';
+		}
+		else if ( $this->leftOrRight === self::RIGHT )
+		{
+			$this->html =
+				'<a href="#hamburger-menu-right" class="pull-right" data-rel="dialog">';
+			if ( $this->useImage )
+			{
+				$this->html .=
+					'<img id="hamburger-icon-image-right"' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '" ' .
+						' src="templates/' . $this->fileName . '" />';
+			}
+			else
+			{
+				$this->html .=
+					'<canvas id="hamburger-icon-right" ' .
+						'width="' . $this->iconSize . '" ' .
+						'height="' . $this->iconSize . '">' .
+						'&nbsp;Menu&nbsp;' . '</canvas>';
+			}
+			$this->html .= '</a>';
+		}
 		return $this->html;
 	}
 	/**
@@ -107,6 +150,26 @@ class HamburgerMenuIconHtmlJs
 	public function getJs()
 	{
 		$this->js .= '';
+		if ( $this->leftOrRight === self::LEFT )
+		{
+			$this->js =
+				'<script>' .
+					'var hamburgerIconLeftOptions = {};' .
+					'hamburgerIconLeftOptions.color = "' . $this->iconColor . '";' .
+					'hamburgerIconLeftOptions.lineCap = "' . $this->iconLineCap . '";' .
+					'hamburgerIconLeftOptions.lineSize = "' . $this->iconLineSize . '";' .
+				'</script>';
+		}
+		else if ( $this->leftOrRight === self::RIGHT )
+		{
+			$this->js =
+				'<script>' .
+					'var hamburgerIconRightOptions = {};' .
+					'hamburgerIconRightOptions.color = "' . $this->iconColor. '";' .
+					'hamburgerIconRightOptions.lineCap = "' . $this->iconLineCap . '";' .
+					'hamburgerIconRightOptions.lineSize = "' . $this->iconLineSize . '";' .
+				'</script>';
+		}
 		return $this->js;
 	}
 	/**
