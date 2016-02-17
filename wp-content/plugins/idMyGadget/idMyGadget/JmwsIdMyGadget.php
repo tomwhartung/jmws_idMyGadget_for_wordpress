@@ -515,6 +515,24 @@ class JmwsIdMyGadget
 			$this->setHamburgerIconHtmlJs( HamburgerMenuIconHtmlJs::RIGHT );
 		}
 	}
+	protected function setHamburgerIconHtmlJs( $leftOrRight,
+					$iconSize, $iconColor, $iconLineCap, $iconLineSize )
+	{
+		$iconHtmlJs = new HamburgerMenuIconHtmlJs( $leftOrRight,
+					$iconSize, $iconColor, $iconLineCap, $iconLineSize );
+
+		if ( $leftOrRight == HamburgerMenuIconHtmlJs::LEFT )
+		{
+			$this->hamburgerIconLeftHtml = $iconHtmlJs->getHtml();
+			$this->hamburgerIconLeftJs = $iconHtmlJs->getJs();
+		}
+		else if ( $leftOrRight == HamburgerMenuIconHtmlJs::RIGHT )
+		{
+			$this->hamburgerIconRightHtml = $iconHtmlJs->getHtml();
+			$this->hamburgerIconRightJs = $iconHtmlJs->getJs();
+		}
+
+	}
 	/**
 	 * Use the admin option to set the jQuery Mobile Data Theme Letter
 	 */
