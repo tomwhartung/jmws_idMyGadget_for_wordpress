@@ -15,6 +15,7 @@
 // -------------------------------------------------------------
 //
 define( 'IDMYGADGET__PLUGIN_DIR', plugin_dir_path( __FILE__ ) . DIRECTORY_SEPARATOR . 'idMyGadget' );
+define( 'IDMYGADGET__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 require_once( IDMYGADGET__PLUGIN_DIR . DIRECTORY_SEPARATOR . 'JmwsIdMyGadgetWordpress.php' );
 // require_once 'idMyGadget/PhoneBurgerMenuIcon.php';
 
@@ -798,6 +799,13 @@ function idMyGadget_wp_enqueue_scripts()
 		//	wp_enqueue_script( 'jquerymobile-js' );
 		wp_enqueue_style( 'jquerymobile-css', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
 		wp_enqueue_script( 'jquerymobile-js', JmwsIdMyGadget::JQUERY_MOBILE_JS_URL, array('jquery') );
+		if ( $jmwsIdMyGadget->hamburgerIconLeftOnThisDevice ||
+		     $jmwsIdMyGadget->hamburgerIconRightOnThisDevice )
+		{
+			wp_register_script( 'hamburgerMenuIcon-js',
+					 IDMYGADGET__PLUGIN_URL . DIRECTORY_SEPARATOR . 'idMyGadget/hamburgerMenuIcon.js' );
+			wp_enqueue_script( 'hamburgerMenuIcon-js' );
+		}
 	}
 }
 add_action( 'wp_enqueue_scripts', 'idMyGadget_wp_enqueue_scripts' );
@@ -819,6 +827,8 @@ if ( is_admin() )  // Add the options only when we are logged in as an admin
  */
 function idMyGadget_admin_enqueue_scripts()
 {
+	global  $jmwsIdMyGadget;
+
 	if ( isset($_GET['page']) && $_GET['page'] == 'idMyGadget/idMyGadget.php' )
 	{
 		wp_enqueue_media();
