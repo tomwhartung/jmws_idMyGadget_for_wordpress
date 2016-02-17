@@ -299,11 +299,12 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 */
 	protected function setHamburgerIconHtmlJs( $leftOrRight=HamburgerMenuIconHtmlJs::LEFT )
 	{
-		$hamburgerIconSize = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_size' );
-		$hamburgerIconColor = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_color' );
-		$hamburgerIconLineCap = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_cap' );
-		$hamburgerIconLineSize = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_size' );
-		
+		$iconSize = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_size' );
+		$iconColor = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_color' );
+		$iconLineCap = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_cap' );
+		$iconLineSize = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_size' );
+		parent::setHamburgerIconHtmlJs( $leftOrRight,
+				$iconSize, $iconColor, $iconLineCap, $iconLineSize );
 	}
 	/**
 	 * Use the admin option to set the jQuery Mobile Data Theme attribute (if necessary)
