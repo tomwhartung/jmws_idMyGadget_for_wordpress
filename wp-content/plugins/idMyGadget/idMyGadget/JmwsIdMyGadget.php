@@ -466,8 +466,7 @@ class JmwsIdMyGadget
 		$this->setHamburgerIconVariables();
 	}
 	/**
-	 * The logic for setting usingJQueryMobile is directly related to the
-	 *   logic for setting the phone nav *ThisDevice variables, so we do them together
+	 * The phone nav uses jQuery Mobile, so if we use it we need to set usingJQueryMobile
 	 */
 	protected function setPhoneNavVariables()
 	{
@@ -498,6 +497,7 @@ class JmwsIdMyGadget
 		}
 	}
 	/**
+	 * The hamburger menu icon uses a jQuery Mobile pop up, so if we use one, we set usingJQueryMobile
 	 * If we are using either or both hamburger menu icons on this device
 	 *   set the corresponding hamburgerIcon*Html and hamburgerIcon*Js variables as well
 	 */
@@ -508,13 +508,23 @@ class JmwsIdMyGadget
 
 		if ( $this->hamburgerIconLeftOnThisDevice )
 		{
+			$this->usingJQueryMobile = TRUE;
 			$this->setHamburgerIconHtmlJs( HamburgerMenuIconHtmlJs::LEFT );
 		}
 		if ( $this->hamburgerIconRightOnThisDevice )
 		{
+			$this->usingJQueryMobile = TRUE;
 			$this->setHamburgerIconHtmlJs( HamburgerMenuIconHtmlJs::RIGHT );
 		}
 	}
+	/**
+	 * Create a HamburgerMenuIconHtmlJs object and use it to set the html and js for the icon
+	 * @param type $leftOrRight
+	 * @param type $iconSize
+	 * @param type $iconColor
+	 * @param type $iconLineCap
+	 * @param type $iconLineSize
+	 */
 	protected function setHamburgerIconHtmlJs( $leftOrRight,
 					$iconSize, $iconColor, $iconLineCap, $iconLineSize )
 	{
@@ -532,6 +542,7 @@ class JmwsIdMyGadget
 			$this->hamburgerIconRightJs = $iconHtmlJs->getJs();
 		}
 
+		unset( $iconHtmlJs );
 	}
 	/**
 	 * Use the admin option to set the jQuery Mobile Data Theme Letter
