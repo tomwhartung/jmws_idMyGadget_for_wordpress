@@ -6,62 +6,62 @@
  * @since       3.2
  */
 
-var phoneBurgerMenu = {};
+var hamburgerMenu = {};
 
 (function($)
 {
 	$(document).ready(function()
 	{
-		phoneBurgerMenu.drawPhoneBurgerMenuIcons();
+		hamburgerMenu.drawHamburgerMenuIcons();
 	})
 })(jQuery);
 /**
  * Driver function to draw zero, one, or both menu icons, as appropriate
  * @returns {undefined}
  */
-phoneBurgerMenu.drawPhoneBurgerMenuIcons = function () {
-	phoneBurgerMenu.leftElement = document.getElementById( 'phone-burger-icon-left' );
-	phoneBurgerMenu.rightElement = document.getElementById( 'phone-burger-icon-right' );
+hamburgerMenu.drawHamburgerMenuIcons = function () {
+	hamburgerMenu.leftElement = document.getElementById( 'hamburger-icon-left' );
+	hamburgerMenu.rightElement = document.getElementById( 'hamburger-icon-right' );
 
-	if ( phoneBurgerMenu.leftElement !== null &&
-	     typeof phoneBurgerIconLeftOptions !== 'undefined' ) {     // options are set in the admin console
-		phoneBurgerMenu.drawPhoneBurgerMenuIcon(
-			phoneBurgerMenu.leftElement, phoneBurgerIconLeftOptions );
+	if ( hamburgerMenu.leftElement !== null &&
+	     typeof hamburgerIconLeftOptions !== 'undefined' ) {     // options are set in the admin console
+		hamburgerMenu.drawHamburgerMenuIcon(
+			hamburgerMenu.leftElement, hamburgerIconLeftOptions );
 	}
-	if ( phoneBurgerMenu.rightElement !== null &&
-	     typeof phoneBurgerIconRightOptions !== 'undefined' ) {     // options are set in the admin console
-		phoneBurgerMenu.drawPhoneBurgerMenuIcon(
-			phoneBurgerMenu.rightElement, phoneBurgerIconRightOptions );
+	if ( hamburgerMenu.rightElement !== null &&
+	     typeof hamburgerIconRightOptions !== 'undefined' ) {     // options are set in the admin console
+		hamburgerMenu.drawHamburgerMenuIcon(
+			hamburgerMenu.rightElement, hamburgerIconRightOptions );
 	}
 };
 
 /**
  * Draw three lines, using the options specified in the admin console
  * @param {type} canvasElement
- * @param {type} phoneBurgerIconOptions
+ * @param {type} hamburgerIconOptions
  * @returns {undefined}
  */
-phoneBurgerMenu.drawPhoneBurgerMenuIcon = function (canvasElement, phoneBurgerIconOptions ) {
+hamburgerMenu.drawHamburgerMenuIcon = function (canvasElement, hamburgerIconOptions ) {
 	if ( canvasElement === null ) {
-		console.log( 'phoneBurgerMenu.drawThinRoundedPhoneBurgerMenu error: passed-in canvasElement is null!' );
+		console.log( 'hamburgerMenu.drawThinRoundedHamburgerMenu error: passed-in canvasElement is null!' );
 		return;
 	}
 
 	var context = canvasElement.getContext( '2d' );
-	phoneBurgerMenu.setPhoneBurgerIconDimensions( canvasElement, phoneBurgerIconOptions );
-	var leftMargin = phoneBurgerMenu.leftMargin;
-	var topMargin = phoneBurgerMenu.topMargin;
-	var barHeight = phoneBurgerMenu.barHeight;
-	var barWidth = phoneBurgerMenu.barWidth;
-	var gapHeight = phoneBurgerMenu.gapHeight;
+	hamburgerMenu.setHamburgerIconDimensions( canvasElement, hamburgerIconOptions );
+	var leftMargin = hamburgerMenu.leftMargin;
+	var topMargin = hamburgerMenu.topMargin;
+	var barHeight = hamburgerMenu.barHeight;
+	var barWidth = hamburgerMenu.barWidth;
+	var gapHeight = hamburgerMenu.gapHeight;
 	var firstBarMidpoint = topMargin;
 	var secondBarMidpoint = topMargin+barHeight+gapHeight;
 	var thirdBarMidpoint = topMargin + 2*(barHeight+gapHeight);
 
 	context.save();
 	context.beginPath();
-	context.strokeStyle = phoneBurgerIconOptions.color;
-	context.lineCap = phoneBurgerIconOptions.lineCap;
+	context.strokeStyle = hamburgerIconOptions.color;
+	context.lineCap = hamburgerIconOptions.lineCap;
 	context.lineWidth = barHeight;
 
 	context.moveTo( leftMargin, firstBarMidpoint );
@@ -79,10 +79,10 @@ phoneBurgerMenu.drawPhoneBurgerMenuIcon = function (canvasElement, phoneBurgerIc
 /**
  * Use the options specified in the admin console to set the dimensions of lines in the icon
  * @param {type} canvasElement
- * @param {type} phoneBurgerIconOptions
+ * @param {type} hamburgerIconOptions
  * @returns {undefined}
  */
-phoneBurgerMenu.setPhoneBurgerIconDimensions = function ( canvasElement, phoneBurgerIconOptions ) {
+hamburgerMenu.setHamburgerIconDimensions = function ( canvasElement, hamburgerIconOptions ) {
 	var topMargin;
 	var barHeight;
 	var gapHeight;
@@ -90,25 +90,25 @@ phoneBurgerMenu.setPhoneBurgerIconDimensions = function ( canvasElement, phoneBu
 	var canvasHeight = canvasElement.height;
 	var oneEleventh = Math.round( canvasHeight / 11 );
 
-	if ( phoneBurgerIconOptions.lineSize === 'fat' ) {
+	if ( hamburgerIconOptions.lineSize === 'fat' ) {
 		barHeight = oneEleventh * 3;
 		gapHeight = oneEleventh;
 		topMargin = Math.ceil( barHeight / 2 );
 	}
-	else if ( phoneBurgerIconOptions.lineSize === 'normal' ) {
+	else if ( hamburgerIconOptions.lineSize === 'normal' ) {
 		barHeight = oneEleventh * 2;
 		gapHeight = oneEleventh * 2;
 		topMargin = oneEleventh + Math.ceil( barHeight / 2 );
 	}
-	else {   // phoneBurgerIconOptions.lineSize === 'thin'
+	else {   // hamburgerIconOptions.lineSize === 'thin'
 		barHeight = oneEleventh;
 		gapHeight = oneEleventh * 2;
 		topMargin = (oneEleventh * 2) + Math.ceil( barHeight / 2 );
 	}
 
-	phoneBurgerMenu.topMargin = topMargin;
-	phoneBurgerMenu.barHeight = barHeight;
-	phoneBurgerMenu.gapHeight = gapHeight;
-	phoneBurgerMenu.leftMargin = Math.ceil( barHeight / 2 );
-	phoneBurgerMenu.barWidth = Math.round( canvasWidth - (barHeight*2) );
+	hamburgerMenu.topMargin = topMargin;
+	hamburgerMenu.barHeight = barHeight;
+	hamburgerMenu.gapHeight = gapHeight;
+	hamburgerMenu.leftMargin = Math.ceil( barHeight / 2 );
+	hamburgerMenu.barWidth = Math.round( canvasWidth - (barHeight*2) );
 };
