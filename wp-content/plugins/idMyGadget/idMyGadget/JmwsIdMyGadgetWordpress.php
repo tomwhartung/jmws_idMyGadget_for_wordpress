@@ -293,18 +293,16 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		return $hamburgerIconOnThisDevice;
 	}
 	/**
-	 * Get the values set in the admin panel used to customize the icon
-	 * Call methods in base class to use these values to generate the html and js for the icon
-	 * @param type $leftOrRight
+	 * Returns an array of icon settings, set in the admin page
 	 */
-	protected function setHamburgerIconHtmlJs( $leftOrRight=HamburgerMenuIconHtmlJs::LEFT )
+	protected function getHamburgerIconSettings( $leftOrRight )
 	{
-		$iconSize = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_size' );
-		$iconColor = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_color' );
-		$iconLineCap = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_cap' );
-		$iconLineSize = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_size' );
-		parent::setHamburgerIconHtmlJs( $leftOrRight,
-				$iconSize, $iconColor, $iconLineCap, $iconLineSize );
+		$iconSettings = array();
+		$iconSettings['size'] = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_size' );
+		$iconSettings['color'] = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_color' );
+		$iconSettings['line_cap'] = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_cap' );
+		$iconSettings['line_size'] = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_size' );
+		return $iconSettings;
 	}
 	/**
 	 * Use the admin option to set the jQuery Mobile Data Theme attribute (if necessary)
