@@ -303,11 +303,18 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 */
 	protected function getHamburgerIconSettings( $leftOrRight )
 	{
+		$iconSizeIndex = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_size' );
+		$iconLineCapIndex = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_cap' );
+		$iconLineSizeIndex  = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_size' );
 		$iconSettings = array();
-		$iconSettings['size'] = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_size' );
+		$dimensions = parent::$hamburgerMenuIconSizeChoices[$iconSizeIndex];
+		$iconSettings['size'] = (integer) substr($dimensions, 0, 2 );
 		$iconSettings['color'] = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_color' );
-		$iconSettings['line_cap'] = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_cap' );
-		$iconSettings['line_size'] = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_line_size' );
+		$iconSettings['line_cap'] = parent::$hamburgerMenuIconLineCapChoices[$iconLineCapIndex];
+		$iconSettings['line_size'] = parent::$hamburgerMenuIconLineSizeChoices[$iconLineSizeIndex];
+	//	$debug = 'size: ' . $iconSettings['size'];
+		$debug = '$dimensions: ' . $dimensions;
+		error_log( $debug );
 		return $iconSettings;
 	}
 	/**
