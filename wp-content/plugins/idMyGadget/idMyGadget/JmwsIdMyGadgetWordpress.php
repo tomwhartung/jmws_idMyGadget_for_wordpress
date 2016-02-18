@@ -122,6 +122,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-phone" alt="' . $siteName . '" />';
 				$logoTitleDescription .= $anchorTagClose;
 			}
+			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( get_option('idmg_show_site_name_phone') == 'yes' )
 			{
 				$anchorTagWithClass = $anchorTagPrelude . 'class="site-name-phone">';
@@ -140,6 +141,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= $anchorTagClose;
 				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_phone') . '>';
 			}
+			$logoTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
 			if ( strlen($siteDescription) > 0 )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_description_element_phone') . ' class="site-description-phone">';
@@ -159,6 +161,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-tablet" alt="' . $siteName . '" />';
 				$logoTitleDescription .= $anchorTagClose;
 			}
+			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( get_option('idmg_show_site_name_tablet') == 'yes' )
 			{
 				$anchorTagWithClass = $anchorTagPrelude . 'class="site-name-tablet">';
@@ -177,6 +180,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= $anchorTagClose;
 				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_tablet') . '>';
 			}
+			$logoTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
 			if ( strlen($siteDescription) > 0 )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_description_element_tablet') . ' class="site-description-tablet">';
@@ -196,6 +200,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-desktop" alt="' . $siteName . '" />';
 				$logoTitleDescription .= $anchorTagClose;
 			}
+			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( get_option('idmg_show_site_name_desktop') == 'yes' )
 			{
 				$anchorTagWithClass = $anchorTagPrelude . 'class="site-name-desktop">';
@@ -214,6 +219,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= $anchorTagClose;
 				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_desktop') . '>';
 			}
+			$logoTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
 			if ( strlen($siteDescription) > 0 )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_description_element_desktop') . ' class="site-description-desktop">';
