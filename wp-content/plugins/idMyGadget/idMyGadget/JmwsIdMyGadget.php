@@ -119,7 +119,7 @@ class JmwsIdMyGadget
 	/**
 	 * JavaScript to use for the Header Menu Icon on the Right side
 	 */
-	public $hamburgerMenuIconRightJs = '';
+	public $hamburgerIconRightJs = '';
 
 	/**
 	 * We want to use jQuery Mobile data-role attributes only when we are using that library.
@@ -280,9 +280,16 @@ class JmwsIdMyGadget
 		$pfnForN = $this->phoneFooterNavThisDevice ? 'F' : 'N';
 		$returnValue .= '/PhoneNav:' . $phnHorN . '-' . $pfnForN;
 
-		$hmiLeftLorN = $this->hamburgerIconLeftOnThisDevice ? 'L' : 'N';
-		$hmiRightRorN = $this->hamburgerIconRightOnThisDevice ? 'R' : 'N';
-		$returnValue .= '/HMI:' . $hmiLeftLorN . '-' . $hmiRightRorN;
+		$lenHmiLH = strlen( $this->hamburgerIconLeftHtml );
+		$lenHmiLJ = strlen( $this->hamburgerIconLeftJs );
+		$lenHmiRH = strlen( $this->hamburgerIconRightHtml );
+		$lenHmiRJ = strlen( $this->hamburgerIconRightJs );
+		$lengthsLeft = '(' . $lenHmiLH . ',' . $lenHmiLJ . ')';
+		$lengthsRight = '(' . $lenHmiRH . ',' . $lenHmiRJ . ')';
+
+	//	$hmiLeftLorN = $this->hamburgerIconLeftOnThisDevice ? 'L' : 'N';
+	//	$hmiRightRorN = $this->hamburgerIconRightOnThisDevice ? 'R' : 'N';
+		$returnValue .= '/hmiL:' . $lengthsLeft . '-hmiR:' . $lengthsRight;
 
 		if ( strlen($extra) > 0 )
 		{
@@ -509,27 +516,26 @@ class JmwsIdMyGadget
 		if ( $this->hamburgerIconLeftOnThisDevice )
 		{
 			$this->usingJQueryMobile = TRUE;
-			$this->setHamburgerIconHtmlJs( HamburgerMenuIconHtmlJs::LEFT );
+			$leftOrRight = HamburgerMenuIconHtmlJs::LEFT;
+			$iconSettings = $this->getHamburgerIconSettings( $leftOrRight );
+			$this->setHamburgerIconHtmlJs( $leftOrRight, $iconSettings );
 		}
 		if ( $this->hamburgerIconRightOnThisDevice )
 		{
 			$this->usingJQueryMobile = TRUE;
-			$this->setHamburgerIconHtmlJs( HamburgerMenuIconHtmlJs::RIGHT );
+			$leftOrRight = HamburgerMenuIconHtmlJs::RIGHT;
+			$iconSettings = $this->getHamburgerIconSettings( $leftOrRight );
+			$this->setHamburgerIconHtmlJs( $leftOrRight, $iconSettings );
 		}
 	}
 	/**
 	 * Create a HamburgerMenuIconHtmlJs object and use it to set the html and js for the icon
 	 * @param type $leftOrRight
-	 * @param type $iconSize
-	 * @param type $iconColor
-	 * @param type $iconLineCap
-	 * @param type $iconLineSize
+	 * @param type $iconSettings
 	 */
-	protected function setHamburgerIconHtmlJs( $leftOrRight,
-					$iconSize, $iconColor, $iconLineCap, $iconLineSize )
+	protected function setHamburgerIconHtmlJs( $leftOrRight, $iconSettings )
 	{
-		$iconHtmlJs = new HamburgerMenuIconHtmlJs( $leftOrRight,
-					$iconSize, $iconColor, $iconLineCap, $iconLineSize );
+		$iconHtmlJs = new HamburgerMenuIconHtmlJs( $leftOrRight, $iconSettings );
 
 		if ( $leftOrRight == HamburgerMenuIconHtmlJs::LEFT )
 		{
