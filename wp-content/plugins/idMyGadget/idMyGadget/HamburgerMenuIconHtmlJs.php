@@ -81,14 +81,13 @@ class HamburgerMenuIconHtmlJs
 	/**
 	 * Constructor: use the parameters set in the joomla back end to set the data members
 	 */
-	public function __construct( $leftOrRight,
-							$iconSize, $iconColor, $iconLineCap, $iconLineSize  )
+	public function __construct( $leftOrRight, $iconSettings )
 	{
 		$this->leftOrRight = $leftOrRight;
-		$this->iconSize = $iconSize;
-		$this->iconColor = $iconColor;
-		$this->iconLineCap = $iconLineCap;
-		$this->iconLineSize = $iconLineSize;
+		$this->iconSize = $iconSettings['size'];
+		$this->iconColor = $iconSettings['color'];
+		$this->iconLineCap = $iconSettings['line_cap'];
+		$this->iconLineSize = $iconSettings['line_size'];
 	//	$this->setUseImage();
 		$this->useImage = FALSE;
 	}
