@@ -73,19 +73,6 @@ class HamburgerMenuIconHtmlJs
 	 */
 	protected $imageOverrideDir = '';
 
-
-	/**
-	 * The object we are using for device detection
-	 * @var type Object
-	 */
-	protected $jmwsIdMyGadget = null;
-	/**
-	 * Just the template name (not an object, just a string)
-	 * Needed to find the image files used for the hack (see above)
-	 * @var type String
-	 */
-	protected $template = '';
-
 	/**
 	 * Constructor: use the parameters set in the joomla back end to set the data members
 	 */
@@ -200,77 +187,6 @@ class HamburgerMenuIconHtmlJs
 		{
 		  error_log( 'fileName: ' . $this->fileName );
 		  $this->useImage = TRUE;
-		}
-	}
-	/**
-	 * *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE *** OBSOLETE ***
-	 */
-	protected function setPublicDataMembers()
-	{
-		$this->fileName = $this->template . '/images/idMyGadget/hamburgerMenuIcon' .
-			ucfirst($this->leftOrRight) .
-			ucfirst($this->jmwsIdMyGadget->getGadgetString()) .
-			'.png';
-		if ( file_exists(JPATH_THEMES . DS . $this->fileName) )
-		{
-			$this->useImage = TRUE;
-		}
-		if ( $this->leftOrRight === self::LEFT )
-		{
-			$this->html = '<a href="#hamburger-menu-left" data-rel="dialog">';
-			if ( $this->useImage )
-			{
-				$this->html .=
-					'<img id="hamburger-icon-image-left" ' .
-						'width="' . $this->iconSize . '" ' .
-						'height="' . $this->iconSize . '" ' .
-						'src="templates/' . $this->fileName . '" />';
-			}
-			else
-			{
-				$this->html .=
-					'<canvas id="hamburger-icon-left" ' .
-						'width="' . $this->iconSize . '" ' .
-						'height="' . $this->iconSize . '">' .
-						'&nbsp;Menu&nbsp;' . '</canvas>';
-			}
-			$this->html .= '</a>';
-			$this->js =
-				'<script>' .
-					'var hamburgerIconLeftOptions = {};' .
-					'hamburgerIconLeftOptions.color = "' . $this->iconColor . '";' .
-					'hamburgerIconLeftOptions.lineCap = "' . $this->iconLineCap . '";' .
-					'hamburgerIconLeftOptions.lineSize = "' . $this->iconLineSize . '";' .
-				'</script>';
-		}
-		else if ( $this->leftOrRight === self::RIGHT )
-		{
-			$this->html =
-				'<a href="#hamburger-menu-right" class="pull-right" data-rel="dialog">';
-			if ( $this->useImage )
-			{
-				$this->html .=
-					'<img id="hamburger-icon-image-right"' .
-						'width="' . $this->iconSize . '" ' .
-						'height="' . $this->iconSize . '" ' .
-						' src="templates/' . $this->fileName . '" />';
-			}
-			else
-			{
-				$this->html .=
-					'<canvas id="hamburger-icon-right" ' .
-						'width="' . $this->iconSize . '" ' .
-						'height="' . $this->iconSize . '">' .
-						'&nbsp;Menu&nbsp;' . '</canvas>';
-			}
-			$this->html .= '</a>';
-			$this->js =
-				'<script>' .
-					'var hamburgerIconRightOptions = {};' .
-					'hamburgerIconRightOptions.color = "' . $this->iconColor. '";' .
-					'hamburgerIconRightOptions.lineCap = "' . $this->iconLineCap . '";' .
-					'hamburgerIconRightOptions.lineSize = "' . $this->iconLineSize . '";' .
-				'</script>';
 		}
 	}
 }
