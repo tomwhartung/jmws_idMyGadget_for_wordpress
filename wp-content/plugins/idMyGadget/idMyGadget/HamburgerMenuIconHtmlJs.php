@@ -66,6 +66,14 @@ class HamburgerMenuIconHtmlJs
 	 * Line size of icon - set in the back end admin page of the CMS
 	 */
 	protected $iconLineSize;
+
+	/**
+	 * Directory in which to put an image that will override drawing of the hamburger menu icon
+	 * If we want to use this feature, this must be passed in to the constructor
+	 */
+	protected $imageOverrideDir = '';
+
+
 	/**
 	 * The object we are using for device detection
 	 * @var type Object
@@ -81,13 +89,14 @@ class HamburgerMenuIconHtmlJs
 	/**
 	 * Constructor: use the parameters set in the joomla back end to set the data members
 	 */
-	public function __construct( $leftOrRight, $iconSettings, $gadgetString )
+	public function __construct( $leftOrRight, $iconSettings, $gadgetString, $imageOverrideDir='' )
 	{
 		$this->leftOrRight = $leftOrRight;
 		$this->iconSize = $iconSettings['size'];
 		$this->iconColor = $iconSettings['color'];
 		$this->iconLineCap = $iconSettings['line_cap'];
 		$this->iconLineSize = $iconSettings['line_size'];
+		$this->imageOverrideDir = $imageOverrideDir;
 		$this->setUseImage( $gadgetString );
 	//	$this->useImage = FALSE;
 	}
@@ -182,7 +191,8 @@ class HamburgerMenuIconHtmlJs
 			ucfirst($this->leftOrRight) .
 			ucfirst($gadgetString) .
 			'.png';
-		$this->fileName = 'wp-content/plugins/idMyGadget/' . $relativeFileName;
+		// $this->fileName = 'wp-content/plugins/idMyGadget/' . $relativeFileName;
+		$this->fileName = $this->imageOverrideDir . '/' . $relativeFileName;
 		$fileNameToCheck = IDMYGADGET_MODULE_DIR . '/' . $relativeFileName;
 		error_log( '$fileNameToCheck: ' . $fileNameToCheck );
 
