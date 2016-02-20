@@ -15,10 +15,8 @@
 // -------------------------------------------------------------
 //
 define( 'IDMYGADGET__PLUGIN_DIR', plugin_dir_path( __FILE__ ) . DIRECTORY_SEPARATOR . 'idMyGadget' );
-define( 'IDMYGADGET__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'IDMYGADGET_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 require_once( IDMYGADGET__PLUGIN_DIR . DIRECTORY_SEPARATOR . 'JmwsIdMyGadgetWordpress.php' );
-// require_once 'idMyGadget/PhoneBurgerMenuIcon.php';
-
 $jmwsIdMyGadget = null;
 /*
  * Get the theme name (aka. "stylesheet" in Wordpress speak)
@@ -805,7 +803,7 @@ function idMyGadget_wp_enqueue_scripts()
 		     $jmwsIdMyGadget->hamburgerIconRightOnThisDevice )
 		{
 			wp_register_script( 'hamburgerMenuIcon-js',
-					 IDMYGADGET__PLUGIN_URL . DIRECTORY_SEPARATOR . 'idMyGadget/hamburgerMenuIcon.js' );
+					 IDMYGADGET_PLUGIN_URL . DIRECTORY_SEPARATOR . 'idMyGadget/hamburgerMenuIcon.js' );
 			wp_enqueue_script( 'hamburgerMenuIcon-js' );
 		}
 	}
