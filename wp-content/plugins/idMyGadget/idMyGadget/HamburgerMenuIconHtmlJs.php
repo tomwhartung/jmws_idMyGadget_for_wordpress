@@ -103,6 +103,7 @@ class HamburgerMenuIconHtmlJs
 			$this->html = '<a href="#hamburger-menu-left" data-rel="dialog">';
 			if ( $this->useImage )
 			{
+				error_log( 'Using image left!' );
 				$this->html .=
 					'<img id="hamburger-icon-image-left" ' .
 						'width="' . $this->iconSize . '" ' .
@@ -125,6 +126,7 @@ class HamburgerMenuIconHtmlJs
 				'<a href="#hamburger-menu-right" class="pull-right" data-rel="dialog">';
 			if ( $this->useImage )
 			{
+				error_log( 'Using image right!' );
 				$this->html .=
 					'<img id="hamburger-icon-image-right"' .
 						'width="' . $this->iconSize . '" ' .
@@ -180,7 +182,7 @@ class HamburgerMenuIconHtmlJs
 			ucfirst($this->leftOrRight) .
 			ucfirst($gadgetString) .
 			'.png';
-		$this->fileName = 'modules/jmws/idmygadget/' . $relativeFileName;
+		$this->fileName = 'wp-content/plugins/idMyGadget/' . $relativeFileName;
 		$fileNameToCheck = IDMYGADGET_MODULE_DIR . '/' . $relativeFileName;
 		error_log( '$fileNameToCheck: ' . $fileNameToCheck );
 
