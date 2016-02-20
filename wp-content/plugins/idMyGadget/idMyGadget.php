@@ -47,6 +47,8 @@ function idMyGadget_init()
 {
 	register_nav_menu('phone-header-nav',__( 'Phone Header Nav' ));
 	register_nav_menu('phone-footer-nav',__( 'Phone Footer Nav' ));
+	register_nav_menu('hamburger-icon-left-nav',__( 'Hamburger Icon Left Nav' ));
+	register_nav_menu('hamburger-icon-right-nav',__( 'Hamburger Icon Right Nav' ));
 }
 add_action( 'init', 'idMyGadget_init' );
 //
