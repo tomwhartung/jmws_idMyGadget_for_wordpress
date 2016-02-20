@@ -14,8 +14,9 @@
 // Initialize Device Detection and Theme Locations for the Menus
 // -------------------------------------------------------------
 //
-define( 'IDMYGADGET__PLUGIN_DIR', plugin_dir_path( __FILE__ ) . DIRECTORY_SEPARATOR . 'idMyGadget' );
 define( 'IDMYGADGET_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'IDMYGADGET_MODULE_DIR', plugin_dir_url( __FILE__ ) );
+define( 'IDMYGADGET__PLUGIN_DIR', plugin_dir_path( __FILE__ ) . DIRECTORY_SEPARATOR . 'idMyGadget' );
 require_once( IDMYGADGET__PLUGIN_DIR . DIRECTORY_SEPARATOR . 'JmwsIdMyGadgetWordpress.php' );
 $jmwsIdMyGadget = null;
 /*

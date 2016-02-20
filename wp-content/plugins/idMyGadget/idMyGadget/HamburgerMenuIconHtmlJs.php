@@ -81,15 +81,15 @@ class HamburgerMenuIconHtmlJs
 	/**
 	 * Constructor: use the parameters set in the joomla back end to set the data members
 	 */
-	public function __construct( $leftOrRight, $iconSettings )
+	public function __construct( $leftOrRight, $iconSettings, $gadgetString )
 	{
 		$this->leftOrRight = $leftOrRight;
 		$this->iconSize = $iconSettings['size'];
 		$this->iconColor = $iconSettings['color'];
 		$this->iconLineCap = $iconSettings['line_cap'];
 		$this->iconLineSize = $iconSettings['line_size'];
-	//	$this->setUseImage();
-		$this->useImage = FALSE;
+		$this->setUseImage( $gadgetString );
+	//	$this->useImage = FALSE;
 	}
 
 	/**
@@ -107,7 +107,7 @@ class HamburgerMenuIconHtmlJs
 					'<img id="hamburger-icon-image-left" ' .
 						'width="' . $this->iconSize . '" ' .
 						'height="' . $this->iconSize . '" ' .
-						'src="templates/' . $this->fileName . '" />';
+						'src="' . $this->fileName . '" />';
 			}
 			else
 			{
@@ -174,15 +174,20 @@ class HamburgerMenuIconHtmlJs
 	/**
 	 * Determine whether an appropriate image is available
 	 */
-	protected function setUseImage()
+	protected function setUseImage( $gadgetString )
 	{
-		$this->fileName = $this->template . '/images/idMyGadget/hamburgerMenuIcon' .
+		$relativeFileName = 'images/idMyGadget/hamburgerMenuIcon' .
 			ucfirst($this->leftOrRight) .
-			ucfirst($this->jmwsIdMyGadget->getGadgetString()) .
+			ucfirst($gadgetString) .
 			'.png';
-		if ( file_exists(JPATH_THEMES . DS . $this->fileName) )
+		$this->fileName = 'modules/jmws/idmygadget/' . $relativeFileName;
+		$fileNameToCheck = IDMYGADGET_MODULE_DIR . '/' . $relativeFileName;
+		error_log( '$fileNameToCheck: ' . $fileNameToCheck );
+
+		if ( file_exists($fileNameToCheck) )
 		{
-			$this->useImage = TRUE;
+		  error_log( 'fileName: ' . $this->fileName );
+		  $this->useImage = TRUE;
 		}
 	}
 	/**
