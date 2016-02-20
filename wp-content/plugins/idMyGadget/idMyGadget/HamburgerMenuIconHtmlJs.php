@@ -127,7 +127,7 @@ class HamburgerMenuIconHtmlJs
 					'<img id="hamburger-icon-image-right"' .
 						'width="' . $this->iconSize . '" ' .
 						'height="' . $this->iconSize . '" ' .
-						' src="templates/' . $this->fileName . '" />';
+						' src="' . $this->fileName . '" />';
 			}
 			else
 			{
