@@ -120,6 +120,11 @@ class JmwsIdMyGadget
 	 * JavaScript to use for the Header Menu Icon on the Right side
 	 */
 	public $hamburgerIconRightJs = '';
+	/**
+	 * Directory in which to put an image that will override drawing of the hamburger menu icon
+	 * If we want to use this feature, this must be set by subclasses in their constructor
+	 */
+	protected $imageOverrideDir = '';
 
 	/**
 	 * We want to use jQuery Mobile data-role attributes only when we are using that library.
@@ -536,7 +541,8 @@ class JmwsIdMyGadget
 	protected function setHamburgerIconHtmlJs( $leftOrRight, $iconSettings )
 	{
 		$gadgetString = $this->getGadgetString();
-		$iconHtmlJs = new HamburgerMenuIconHtmlJs( $leftOrRight, $iconSettings, $gadgetString );
+		$iconHtmlJs = new HamburgerMenuIconHtmlJs(
+			$leftOrRight, $iconSettings, $gadgetString, $this->imageOverrideDir );
 
 		if ( $leftOrRight == HamburgerMenuIconHtmlJs::LEFT )
 		{
