@@ -32,7 +32,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 */
 	public function __construct( $gadgetDetectorString=null, $debugging=FALSE, $allowOverridesInUrl=TRUE )
 	{
-		$this->idMyGadgetDir = IDMYGADGET__PLUGIN_DIR;
+		$this->idMyGadgetDir = IDMYGADGET_PLUGIN_DIRECTORY;
 		parent::__construct( $gadgetDetectorString, $debugging, $allowOverridesInUrl );
 	}
 
