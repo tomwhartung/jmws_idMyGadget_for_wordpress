@@ -20,8 +20,8 @@ var hamburgerMenu = {};
  * @returns {undefined}
  */
 hamburgerMenu.drawHamburgerMenuIcons = function () {
-	hamburgerMenu.leftElement = document.getElementById( 'hamburger-icon-left' );
-	hamburgerMenu.rightElement = document.getElementById( 'hamburger-icon-right' );
+	hamburgerMenu.leftElement = document.getElementById( 'hamburger-icon-canvas-left' );
+	hamburgerMenu.rightElement = document.getElementById( 'hamburger-icon-canvas-right' );
 
 	if ( hamburgerMenu.leftElement !== null &&
 	     typeof hamburgerIconLeftOptions !== 'undefined' ) {     // options are set in the admin console
