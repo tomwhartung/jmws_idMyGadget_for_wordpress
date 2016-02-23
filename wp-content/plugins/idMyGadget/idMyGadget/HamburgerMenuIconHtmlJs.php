@@ -99,7 +99,6 @@ class HamburgerMenuIconHtmlJs
 			$this->html = '<a href="#hamburger-menu-left" data-rel="dialog">';
 			if ( $this->useImage )
 			{
-				error_log( 'Using image left!' );
 				$this->html .=
 					'<img id="hamburger-icon-image-left" ' .
 						'width="' . $this->iconSize . '" ' .
@@ -109,7 +108,7 @@ class HamburgerMenuIconHtmlJs
 			else
 			{
 				$this->html .=
-					'<canvas id="hamburger-icon-left" ' .
+					'<canvas id="hamburger-icon-canvas-left" ' .
 						'width="' . $this->iconSize . '" ' .
 						'height="' . $this->iconSize . '">' .
 						'&nbsp;Menu&nbsp;' . '</canvas>';
@@ -122,7 +121,6 @@ class HamburgerMenuIconHtmlJs
 				'<a href="#hamburger-menu-right" class="pull-right" data-rel="dialog">';
 			if ( $this->useImage )
 			{
-				error_log( 'Using image right!' );
 				$this->html .=
 					'<img id="hamburger-icon-image-right"' .
 						'width="' . $this->iconSize . '" ' .
@@ -132,7 +130,7 @@ class HamburgerMenuIconHtmlJs
 			else
 			{
 				$this->html .=
-					'<canvas id="hamburger-icon-right" ' .
+					'<canvas id="hamburger-icon-canvas-right" ' .
 						'width="' . $this->iconSize . '" ' .
 						'height="' . $this->iconSize . '">' .
 						'&nbsp;Menu&nbsp;' . '</canvas>';
