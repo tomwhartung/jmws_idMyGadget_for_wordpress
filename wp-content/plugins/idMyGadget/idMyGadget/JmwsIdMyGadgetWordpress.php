@@ -123,7 +123,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-phone" alt="' . $siteName . '" />';
 				$logoTitleDescription .= $anchorTagClose;
 			}
-			$logoTitleDescription .= '<div>';
+			$logoTitleDescription .= '<div class="hamburger-icons-name-title-phone">';
 			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( get_option('idmg_show_site_name_phone') == 'yes' )
 			{
@@ -144,7 +144,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_phone') . '>';
 			}
 			$logoTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
-			$logoTitleDescription .= '</div>';
+			$logoTitleDescription .= '</div><!-- .hamburger-icons-name-title-phone -->';
 			if ( strlen($siteDescription) > 0 )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_description_element_phone') . ' class="site-description-phone">';
@@ -164,7 +164,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-tablet" alt="' . $siteName . '" />';
 				$logoTitleDescription .= $anchorTagClose;
 			}
-			$logoTitleDescription .= '<div>';
+			$logoTitleDescription .= '<div class="hamburger-icons-name-title-tablet">';
 			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( get_option('idmg_show_site_name_tablet') == 'yes' )
 			{
@@ -185,7 +185,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_tablet') . '>';
 			}
 			$logoTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
-			$logoTitleDescription .= '</div>';
+			$logoTitleDescription .= '</div><!-- .hamburger-icons-name-title-tablet-->';
 			if ( strlen($siteDescription) > 0 )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_description_element_tablet') . ' class="site-description-tablet">';
@@ -205,7 +205,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-desktop" alt="' . $siteName . '" />';
 				$logoTitleDescription .= $anchorTagClose;
 			}
-			$logoTitleDescription .= '<div>';
+			$logoTitleDescription .= '<div class="hamburger-icons-name-title-desktop">';
 			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( get_option('idmg_show_site_name_desktop') == 'yes' )
 			{
@@ -226,7 +226,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= '</' . get_option('idmg_site_title_element_desktop') . '>';
 			}
 			$logoTitleDescription .= $this->hamburgerIconRightHtml . $this->hamburgerIconRightJs;
-			$logoTitleDescription .= '</div>';
+			$logoTitleDescription .= '</div><!-- .hamburger-icons-name-title-desktop -->';
 			if ( strlen($siteDescription) > 0 )
 			{
 				$logoTitleDescription .= '<' . get_option('idmg_site_description_element_desktop') . ' class="site-description-desktop">';
