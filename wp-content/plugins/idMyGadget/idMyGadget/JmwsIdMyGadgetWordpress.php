@@ -119,9 +119,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			if ( strlen($logoFile) > 0 )
 			{
 				$anchorTagWithClass = $anchorTagPrelude . 'class="logo-file-phone">';
-			//	$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-phone" alt="' . $siteName . '" />';
-			//	$logoTitleDescription .= $anchorTagClose;
 			}
 			$logoTitleDescription .= '<div class="hamburger-icons-name-title-phone">';
 			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
@@ -160,9 +158,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			if ( strlen($logoFile) > 0 )
 			{
 				$anchorTagWithClass = $anchorTagPrelude . 'class="logo-file-tablet">';
-			//	$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-tablet" alt="' . $siteName . '" />';
-			//	$logoTitleDescription .= $anchorTagClose;
 			}
 			$logoTitleDescription .= '<div class="hamburger-icons-name-title-tablet">';
 			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
@@ -201,9 +197,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			if ( strlen($logoFile) > 0 )
 			{
 				$anchorTagWithClass = $anchorTagPrelude . 'class="logo-file-desktop">';
-			//	$logoTitleDescription .= $anchorTagWithClass;
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-desktop" alt="' . $siteName . '" />';
-			//	$logoTitleDescription .= $anchorTagClose;
 			}
 			$logoTitleDescription .= '<div class="hamburger-icons-name-title-desktop">';
 			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
