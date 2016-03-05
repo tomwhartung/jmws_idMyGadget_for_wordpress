@@ -313,9 +313,8 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		$iconSettings['color'] = get_theme_mod( 'idmg_hamburger_icon_' . $leftOrRight . '_color' );
 		$iconSettings['line_cap'] = parent::$hamburgerMenuIconLineCapChoices[$iconLineCapIndex];
 		$iconSettings['line_size'] = parent::$hamburgerMenuIconLineSizeChoices[$iconLineSizeIndex];
-	//	$debug = 'size: ' . $iconSettings['size'];
-		$debug = '$dimensions: ' . $dimensions;
-		error_log( $debug );
+	//	$debug = '$dimensions: ' . $dimensions;
+	//	error_log( $debug );
 		return $iconSettings;
 	}
 	/**
