@@ -20,6 +20,11 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	);
 
 	/**
+	 * Boolean set to TRUE if we have an active sidebar for the current device
+	 */
+	protected $includeSidebar = FALSE;
+
+	/**
 	 * *** Relevant to the twentyfifteen theme only ***
 	 * Options for where the phone nav can appear in the markup.
 	 * Page works best on phones and really you should not be using this nav on non-phones
@@ -253,6 +258,36 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		}
 
 		return $footerAttributes;
+	}
+	/**
+	 * Sets and returns $includeSidebar, based on whether there are
+	 *   widgets the admin wants displayed only on the current device
+	 */
+	public function getIncludeSidebar()
+	{
+		if ( $this->isPhone() )
+		{
+			if ( is_active_sidebar('sidebar-phones') )
+			{
+				$this->includeSidebar = TRUE;
+			}
+		}
+		else if ( $this->isTablet() )
+		{
+			if ( is_active_sidebar('sidebar-tablets') )
+			{
+				$this->includeSidebar = TRUE;
+			}
+		}
+		else
+		{
+			if ( is_active_sidebar('sidebar-desktops') )
+			{
+				$this->includeSidebar = TRUE;
+			}
+		}
+
+		return $this->includeSidebar;
 	}
 	/**
 	 * Return a boolean indicating whether we want the jQuery Mobile Phone Nav on this device
