@@ -20,9 +20,24 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	);
 
 	/**
-	 * Boolean set to TRUE if we have an active sidebar for the current device
+	 * Boolean set to TRUE if we have any widgets to display for the current device
 	 */
-	protected $includeSidebar = FALSE;
+	public $includeSidebar = FALSE;
+	/**
+	 * Boolean indicating whether we want to display the widgets wanted
+	 * for phones only on the current device
+	 */
+	public $includeSidebarPhones = FALSE;
+	/**
+	 * Boolean indicating whether we want to display the widgets wanted
+	 * for tablets only on the current device
+	 */
+	public $includeSidebarTablets = FALSE;
+	/**
+	 * Boolean indicating whether we want to display the widgets wanted
+	 * for desktops only on the current device
+	 */
+	public $includeSidebarDesktops = FALSE;
 
 	/**
 	 * *** Relevant to the twentyfifteen theme only ***
@@ -263,7 +278,7 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 	 * Sets and returns $includeSidebar, based on whether there are
 	 *   widgets the admin wants displayed only on the current device
 	 */
-	public function getIncludeSidebar()
+	public function getIncludeSidebar_OLD()
 	{
 		if ( $this->isPhone() )
 		{
@@ -284,6 +299,46 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			if ( is_active_sidebar('sidebar-desktops') )
 			{
 				$this->includeSidebar = TRUE;
+			}
+		}
+
+		return $this->includeSidebar;
+	}
+	/**
+	 * Sets all $includeSidebar* variables, based on whether there are widgets to
+	 *   display either on all devices or only on the current device or both
+	 *
+	 * @param type $sidebarAllId - optional id of sidebar to include on all devices
+	 * @return Boolean $includeSidebar - whether there are any widgets in the sidebar
+	 */
+	public function setIncludeSidebarVariables( $sidebarAllId="" )
+	{
+		if ( $sidebarAllId != '' && is_active_sidebar($sidebarAllId) )
+		{
+			$this->includeSidebar = TRUE;
+		}
+		if ( $this->isPhone() )
+		{
+			if ( is_active_sidebar('sidebar-phones') )
+			{
+				$this->includeSidebar = TRUE;
+				$this->includeSidebarPhones = TRUE;
+			}
+		}
+		else if ( $this->isTablet() )
+		{
+			if ( is_active_sidebar('sidebar-tablets') )
+			{
+				$this->includeSidebar = TRUE;
+				$this->includeSidebarTablets = TRUE;
+			}
+		}
+		else
+		{
+			if ( is_active_sidebar('sidebar-desktops') )
+			{
+				$this->includeSidebar = TRUE;
+				$this->includeSidebarDesktops = TRUE;
 			}
 		}
 
