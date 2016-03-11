@@ -96,7 +96,8 @@ class HamburgerMenuIconHtmlJs
 		$this->html .= '';
 		if ( $this->leftOrRight === self::LEFT )
 		{
-			$this->html = '<a href="#hamburger-menu-left" data-rel="dialog">';
+		//	$this->html = '<a href="#hamburger-menu-left" data-rel="dialog">';
+			$this->html = '<a href="./test_popup.html" data-rel="dialog">';
 			if ( $this->useImage )
 			{
 				$this->html .=
