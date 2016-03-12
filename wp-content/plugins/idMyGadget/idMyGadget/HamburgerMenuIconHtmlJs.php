@@ -96,8 +96,6 @@ class HamburgerMenuIconHtmlJs
 		$this->html = '';
 		if ( $this->leftOrRight === self::LEFT )
 		{
-		//	$this->html .= '<div role="main" class="ui-content">';
-		//	$this->html .= '<a href="#hamburger-menu-left" data-rel="dialog">';
 			$this->html .= '<a href="#idmg-hamburger-menu-left" data-rel="popup">';
 			if ( $this->useImage )
 			{
@@ -116,11 +114,9 @@ class HamburgerMenuIconHtmlJs
 						'&nbsp;Menu&nbsp;' . '</canvas>';
 			}
 			$this->html .= '</a>';
-		//	$this->html .= '</div>';
 		}
 		else if ( $this->leftOrRight === self::RIGHT )
 		{
-		//	$this->html .= '<div role="main" class="ui-content">';
 			$this->html .=
 				'<a href="#idmg-hamburger-menu-right" class="pull-right" data-rel="popup">';
 			if ( $this->useImage )
@@ -140,7 +136,6 @@ class HamburgerMenuIconHtmlJs
 						'&nbsp;Menu&nbsp;' . '</canvas>';
 			}
 			$this->html .= '</a>';
-		//	$this->html .= '</div>';
 		}
 		return $this->html;
 	}
