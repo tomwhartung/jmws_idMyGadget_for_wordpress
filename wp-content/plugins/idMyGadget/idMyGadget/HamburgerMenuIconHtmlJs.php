@@ -93,11 +93,12 @@ class HamburgerMenuIconHtmlJs
 	 */
 	public function getHtml()
 	{
-		$this->html .= '';
+		$this->html = '';
 		if ( $this->leftOrRight === self::LEFT )
 		{
-		//	$this->html = '<a href="#hamburger-menu-left" data-rel="dialog">';
-			$this->html = '<a href="./test_popup.html" data-rel="dialog">';
+		//	$this->html .= '<div role="main" class="ui-content">';
+		//	$this->html .= '<a href="#hamburger-menu-left" data-rel="dialog">';
+			$this->html .= '<a href="./test_popup.html" data-rel="dialog">';
 			if ( $this->useImage )
 			{
 				$this->html .=
@@ -115,11 +116,13 @@ class HamburgerMenuIconHtmlJs
 						'&nbsp;Menu&nbsp;' . '</canvas>';
 			}
 			$this->html .= '</a>';
+		//	$this->html .= '</div>';
 		}
 		else if ( $this->leftOrRight === self::RIGHT )
 		{
-			$this->html =
-				'<a href="#hamburger-menu-right" class="pull-right" data-rel="dialog">';
+		//	$this->html .= '<div role="main" class="ui-content">';
+			$this->html .=
+				'<a href="#idmg-hamburger-menu-right" class="pull-right" data-rel="popup">';
 			if ( $this->useImage )
 			{
 				$this->html .=
@@ -137,6 +140,7 @@ class HamburgerMenuIconHtmlJs
 						'&nbsp;Menu&nbsp;' . '</canvas>';
 			}
 			$this->html .= '</a>';
+		//	$this->html .= '</div>';
 		}
 		return $this->html;
 	}
