@@ -98,7 +98,7 @@ class HamburgerMenuIconHtmlJs
 		{
 		//	$this->html .= '<div role="main" class="ui-content">';
 		//	$this->html .= '<a href="#hamburger-menu-left" data-rel="dialog">';
-			$this->html .= '<a href="./test_popup.html" data-rel="dialog">';
+			$this->html .= '<a href="#idmg-hamburger-menu-left" data-rel="popup">';
 			if ( $this->useImage )
 			{
 				$this->html .=
