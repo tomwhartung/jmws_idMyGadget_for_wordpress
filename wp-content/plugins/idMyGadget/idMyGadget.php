@@ -39,18 +39,6 @@ function idMyGadget_wp()
 	$jmwsIdMyGadget = new JmwsIdMyGadgetWordpress($gadgetDetectorString);
 }
 add_action( 'wp', 'idMyGadget_wp' );
-/**
- * Set up the theme locations for the phone nav menus
- */
-function idMyGadget_init()
-{
-	global $theme_object_stylesheet;   // aka. the theme "name"
-	register_nav_menu('phone-header-nav', __( 'Phone Header Nav', $theme_object_stylesheet ));
-	register_nav_menu('phone-footer-nav', __( 'Phone Footer Nav', $theme_object_stylesheet ));
-	register_nav_menu('hamburger-icon-left-nav', __( 'Hamburger Icon Left Nav', $theme_object_stylesheet ));
-	register_nav_menu('hamburger-icon-right-nav', __( 'Hamburger Icon Right Nav', $theme_object_stylesheet ));
-}
-add_action( 'init', 'idMyGadget_init' );
 //
 // ------------------------------------------------
 // Adding options to the theme's Customization page
