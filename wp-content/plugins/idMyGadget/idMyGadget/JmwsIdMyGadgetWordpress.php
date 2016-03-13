@@ -74,6 +74,8 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 			$this->setJqmDataThemeLetter();
 		}
 		$returnValue .= '/' . $this->jqmDataThemeLetter;
+		global $theme_object_stylesheet;
+		$returnValue .= '/' . $theme_object_stylesheet;
 		$returnValue .= '/' . $extra;
 		$returnValue .= '</p>';
 		return $returnValue;
