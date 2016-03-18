@@ -277,36 +277,6 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 		return $footerAttributes;
 	}
 	/**
-	 * Sets and returns $includeSidebar, based on whether there are
-	 *   widgets the admin wants displayed only on the current device
-	 */
-	public function getIncludeSidebar_OLD()
-	{
-		if ( $this->isPhone() )
-		{
-			if ( is_active_sidebar('sidebar-phones') )
-			{
-				$this->includeSidebar = TRUE;
-			}
-		}
-		else if ( $this->isTablet() )
-		{
-			if ( is_active_sidebar('sidebar-tablets') )
-			{
-				$this->includeSidebar = TRUE;
-			}
-		}
-		else
-		{
-			if ( is_active_sidebar('sidebar-desktops') )
-			{
-				$this->includeSidebar = TRUE;
-			}
-		}
-
-		return $this->includeSidebar;
-	}
-	/**
 	 * Sets all $includeSidebar* variables, based on whether there are widgets to
 	 *   display either on all devices or only on the current device or both
 	 *
