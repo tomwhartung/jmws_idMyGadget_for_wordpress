@@ -38,7 +38,7 @@ class HamburgerMenuIconHtmlJs
 	 *    images/idMyGadget/hamburgerMenuIconRightTablet.png
 	 * @var type
 	 */
-	public $fileName = '';      // used for hack needed for phones and beez3
+	public $iconImageFileName = '';      // allows using an image instead of drawing the iconin javascript
 	/**
 	 * If the file is there, we use it, else we generate the html and js needed to draw the icon.
 	 * @var type Boolean
@@ -103,7 +103,7 @@ class HamburgerMenuIconHtmlJs
 					'<img id="hamburger-icon-image-left" ' .
 						'width="' . $this->iconSize . '" ' .
 						'height="' . $this->iconSize . '" ' .
-						'src="' . $this->fileName . '" />';
+						'src="' . $this->iconImageFileName . '" />';
 			}
 			else
 			{
@@ -125,7 +125,7 @@ class HamburgerMenuIconHtmlJs
 					'<img id="hamburger-icon-image-right"' .
 						'width="' . $this->iconSize . '" ' .
 						'height="' . $this->iconSize . '" ' .
-						' src="' . $this->fileName . '" />';
+						' src="' . $this->iconImageFileName . '" />';
 			}
 			else
 			{
@@ -176,14 +176,14 @@ class HamburgerMenuIconHtmlJs
 			ucfirst($this->leftOrRight) .
 			ucfirst($gadgetString) .
 			'.png';
-		// $this->fileName = 'wp-content/plugins/idMyGadget/' . $relativeFileName;
-		$this->fileName = $this->imageOverrideDir . '/' . $relativeFileName;
+		// $this->iconImageFileName = 'wp-content/plugins/idMyGadget/' . $relativeFileName;
+		$this->iconImageFileName = $this->imageOverrideDir . '/' . $relativeFileName;
 		$fileNameToCheck = IDMYGADGET_MODULE_DIR . '/' . $relativeFileName;
 	//	error_log( '$fileNameToCheck: ' . $fileNameToCheck );
 
 		if ( file_exists($fileNameToCheck) )
 		{
-		//	error_log( 'fileName: ' . $this->fileName );
+		//	error_log( 'iconImageFileName: ' . $this->iconImageFileName );
 			$this->useImage = TRUE;
 		}
 	}
