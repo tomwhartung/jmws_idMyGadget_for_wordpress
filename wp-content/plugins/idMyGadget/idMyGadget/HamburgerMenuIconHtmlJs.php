@@ -38,12 +38,12 @@ class HamburgerMenuIconHtmlJs
 	 *    images/idMyGadget/hamburgerMenuIconRightTablet.png
 	 * @var type
 	 */
-	public $iconImageFileName = '';      // allows using an image instead of drawing the iconin javascript
+	protected $iconImageFileName = '';      // allows using an image instead of drawing the iconin javascript
 	/**
 	 * If the file is there, we use it, else we generate the html and js needed to draw the icon.
 	 * @var type Boolean
 	 */
-	public $useImage = FALSE;
+	protected $useImage = FALSE;
 
 	/**
 	 * Either self::LEFT or self::RIGHT
