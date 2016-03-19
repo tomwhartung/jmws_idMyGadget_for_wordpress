@@ -758,33 +758,6 @@ function idMyGadget_include_site_styles()
 //	wp_enqueue_style( 'idMyGadgetStylesheet' );
 }
 /**
- * Add the SITE JavaScript files
- * Add the SITE CSS files
- * Reference:
- *   http://wordpress.stackexchange.com/questions/82490/when-should-i-use-wp-register-script-with-wp-enqueue-script-vs-just-wp-enque
- */
-function idMyGadget_wp_enqueue_scripts()
-{
-	global $jmwsIdMyGadget;
-	if ( $jmwsIdMyGadget->usingJQueryMobile )
-	{
-		// The register_style calls might be useful someday (for more complicated conditionals?)
-		// If not, please delete
-		//
-		//	wp_register_script( 'jquerymobile-js', JmwsIdMyGadget::JQUERY_MOBILE_JS_URL, array('jquery') );
-		//	wp_enqueue_script( 'jquerymobile-js' );
-		wp_enqueue_script( 'jquerymobile-js', JmwsIdMyGadget::JQUERY_MOBILE_JS_URL, array('jquery') );
-		if ( $jmwsIdMyGadget->hamburgerIconLeftOnThisDevice ||
-		     $jmwsIdMyGadget->hamburgerIconRightOnThisDevice )
-		{
-			wp_register_script( 'hamburgerMenuIcon-js',
-					 IDMYGADGET_PLUGIN_URL . DIRECTORY_SEPARATOR . 'idMyGadget/hamburgerMenuIcon.js' );
-			wp_enqueue_script( 'hamburgerMenuIcon-js' );
-		}
-	}
-}
-add_action( 'wp_enqueue_scripts', 'idMyGadget_wp_enqueue_scripts' );
-/**
  * Add the ADMIN CSS file to help make the Plugins -> IdMyGadget page look decent:
  */
 function idMyGadget_admin_print_styles()
