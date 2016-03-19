@@ -177,21 +177,16 @@ class HamburgerMenuIconHtmlJs
 			ucfirst($this->leftOrRight) .
 			ucfirst($gadgetString) .
 			'.png';
-		// $this->iconImageFileName = 'wp-content/plugins/idMyGadget/' . $relativeFileName;
-		// $fileNameToCheck = IDMYGADGET_MODULE_DIR . '/' . $relativeFileName;
 		$fileNameToCheck = $cwd . '/' .  $this->imageOverrideDir . '/' . $relativeFileName;
-		error_log( ' ' );
-		error_log( '$cwd: ' . $cwd );
-		error_log( '$this->imageOverrideDir: ' . $this->imageOverrideDir );
-		error_log( '$relativeFileName: ' . $relativeFileName );
-		error_log( '$fileNameToCheck: ' . $fileNameToCheck );
+	//	error_log( '$this->imageOverrideDir: ' . $this->imageOverrideDir );
+	//	error_log( '$relativeFileName: ' . $relativeFileName );
+	//	error_log( '$fileNameToCheck: ' . $fileNameToCheck );
 
 		if ( file_exists($fileNameToCheck) )
 		{
 			$this->useImage = TRUE;
-			//	$this->iconImageFileName = $fileNameToCheck;
 			$this->iconImageFileName = '/' . $this->imageOverrideDir . '/' . $relativeFileName;
-			error_log( 'iconImageFileName: ' . $this->iconImageFileName );
+		//	error_log( 'iconImageFileName: ' . $this->iconImageFileName );
 		}
 	}
 }
