@@ -771,11 +771,8 @@ function idMyGadget_wp_enqueue_scripts()
 		// The register_style calls might be useful someday (for more complicated conditionals?)
 		// If not, please delete
 		//
-		//	wp_register_style( 'jquerymobilecss', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
-		//	wp_enqueue_style( 'jquerymobilecss' );
 		//	wp_register_script( 'jquerymobile-js', JmwsIdMyGadget::JQUERY_MOBILE_JS_URL, array('jquery') );
 		//	wp_enqueue_script( 'jquerymobile-js' );
-		wp_enqueue_style( 'jquerymobile-css', JmwsIdMyGadget::JQUERY_MOBILE_CSS_URL );
 		wp_enqueue_script( 'jquerymobile-js', JmwsIdMyGadget::JQUERY_MOBILE_JS_URL, array('jquery') );
 		if ( $jmwsIdMyGadget->hamburgerIconLeftOnThisDevice ||
 		     $jmwsIdMyGadget->hamburgerIconRightOnThisDevice )
