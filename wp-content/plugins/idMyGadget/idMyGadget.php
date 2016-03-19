@@ -15,7 +15,6 @@
 // -------------------------------------------------------------
 //
 define( 'IDMYGADGET_PLUGIN_URL', plugin_dir_url( __FILE__ ) );   // used to load local js
-define( 'IDMYGADGET_MODULE_DIR', plugin_dir_path( __FILE__ ) );  // used by file override feature
 define( 'IDMYGADGET_PLUGIN_DIRECTORY', plugin_dir_path( __FILE__ ) . DIRECTORY_SEPARATOR . 'idMyGadget' );
 require_once( IDMYGADGET_PLUGIN_DIRECTORY . DIRECTORY_SEPARATOR . 'JmwsIdMyGadgetWordpress.php' );
 $jmwsIdMyGadget = null;
