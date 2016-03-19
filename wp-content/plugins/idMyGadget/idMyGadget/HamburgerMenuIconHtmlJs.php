@@ -172,19 +172,26 @@ class HamburgerMenuIconHtmlJs
 	 */
 	protected function setUseImage( $gadgetString )
 	{
+		$cwd = getcwd();
 		$relativeFileName = 'images/idMyGadget/hamburgerMenuIcon' .
 			ucfirst($this->leftOrRight) .
 			ucfirst($gadgetString) .
 			'.png';
 		// $this->iconImageFileName = 'wp-content/plugins/idMyGadget/' . $relativeFileName;
-		$this->iconImageFileName = $this->imageOverrideDir . '/' . $relativeFileName;
-		$fileNameToCheck = IDMYGADGET_MODULE_DIR . '/' . $relativeFileName;
-	//	error_log( '$fileNameToCheck: ' . $fileNameToCheck );
+		// $fileNameToCheck = IDMYGADGET_MODULE_DIR . '/' . $relativeFileName;
+		$fileNameToCheck = $cwd . '/' .  $this->imageOverrideDir . '/' . $relativeFileName;
+		error_log( ' ' );
+		error_log( '$cwd: ' . $cwd );
+		error_log( '$this->imageOverrideDir: ' . $this->imageOverrideDir );
+		error_log( '$relativeFileName: ' . $relativeFileName );
+		error_log( '$fileNameToCheck: ' . $fileNameToCheck );
 
 		if ( file_exists($fileNameToCheck) )
 		{
-		//	error_log( 'iconImageFileName: ' . $this->iconImageFileName );
 			$this->useImage = TRUE;
+			//	$this->iconImageFileName = $fileNameToCheck;
+			$this->iconImageFileName = '/' . $this->imageOverrideDir . '/' . $relativeFileName;
+			error_log( 'iconImageFileName: ' . $this->iconImageFileName );
 		}
 	}
 }
