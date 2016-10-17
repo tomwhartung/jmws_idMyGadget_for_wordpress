@@ -1,6 +1,6 @@
 # jmws_idMyGadget_for_wordpress
 
-A version of idMyGadget tailored for use with the WordPress CMS.
+This repository ("repo") contains a version of idMyGadget tailored for use with the WordPress CMS.
 
 This code is experimental and, although I am using it on [tomwhartung.com](http://tomwhartung.com),
 I have not reviewed it for quality and hence do not feel it is "production-ready."
@@ -18,11 +18,13 @@ Integrating idMyGadget with the minimal theme from the Becks' book was a great w
 
 ## Goals and the Key Take-Away
 
-For me, the key take-away from this work is that it is important, if not necessary, to have a specific goal or use case in mind for using device detection on a specific site.
+For me, the key take-away from this work is that it is very important to have a specific goal or ["use case"](https://www.techopedia.com/definition/25813/use-case) in mind for using device detection to serve device-specific content on a specific site.
 
-That is, just "playing around" with the idea, as I have done here, may be fun and enlightening, but it is not very practical without a specific reason.
+That is, just "playing around" with the idea, as I have done here, may be fun and enlightening, but it is not very practical.
 
-And it should go without saying that in this case, playing around, having fun, and being enlightened was indeed **my** goal for doing this. And having satisfied that goal I see no reason to spend more time working and making this code "production-ready."  Hope that makes sense!
+### My Specific Goal
+
+I want to make it clear that in this case, playing around, having fun, and being enlightened was indeed **my goal** for doing this. And having satisfied that goal, and having the code run live on a [demo site](http://tomwhartung.com), I see no reason to spend more time working and making this code "production-ready."  Hope that makes sense!
 
 ## For More Information
 
@@ -30,7 +32,7 @@ The [RESS page](https://tomwhartung.github.io/ress) on my [github.io site](https
 
 ### Demo Site
 
-This code is live on my site [tomwhartung.com](http://tomwhartung.com) .
+This code is running live on my [tomwhartung.com](http://tomwhartung.com) site.
 
 To see its effect, you will need to visit the site on more than one device type (phone, tablet, or desktop).
 
