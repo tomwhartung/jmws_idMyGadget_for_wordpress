@@ -1,20 +1,23 @@
 # jmws_idMyGadget_for_wordpress
 
-This repository ("repo") contains a version of idMyGadget tailored for use with the WordPress CMS.
+This repository ("repo") contains a version of [idMyGadget](https://github.com/tomwhartung/idMyGadget) tailored for use with the WordPress CMS.
+
+The idMyGadget PHP adapter API provides a common interface to three open source device dection packages.
 
 This code is experimental and, although I am using it on [tomwhartung.com](http://tomwhartung.com),
-I have not reviewed it for quality and hence do not feel it is "production-ready."
+I have not reviewed it for quality and hence would not call it "production-ready."
 
 ## Themes
 
 This code serves no purpose unless you use it in conjunction with a theme that knows how to use its functionality.
+
 I have created the following themes to experiment with and use this functionality:
 
 * https://github.com/tomwhartung/jmws_wp_idmygadget_twentythirteen - the most successful of these efforts
-* https://github.com/tomwhartung/jmws_wp_idmygadget_twentyfifteen - the way I chose to use device detection does not work well with this theme's responsiveness
+* https://github.com/tomwhartung/jmws_wp_idmygadget_twentyfifteen - my demo use cases do not work well with this theme's responsiveness
 * https://github.com/tomwhartung/jmws_wp_idmygadget_vqsg_ot - result of updating a minimal theme found in the book [WordPress Visual Quick Start Guide](http://www.wpvisualquickstart.com/), by Jessica Neuman Beck and Matt Beck, to use idMyGadget
 
-Integrating idMyGadget with the minimal theme from the Becks' book was a great way to get started on this project and made updating the other two much easier.
+Integrating idMyGadget with the minimal theme from the Becks' book was a great way to get started on this project, and made my work on the other two themes much easier.
 
 ## Goals and the Key Take-Away
 
@@ -22,9 +25,9 @@ For me, the key take-away from this work is that it is very important to have a 
 
 That is, just "playing around" with the idea, as I have done here, may be fun and enlightening, but it is not very practical.
 
-### My Specific Goal
+### My Goal
 
-I want to make it clear that in this case, playing around, having fun, and being enlightened was indeed **my goal** for doing this. And having satisfied that goal, and having the code run live on a [demo site](http://tomwhartung.com), I see no reason to spend more time working and making this code "production-ready."  Hope that makes sense!
+I want to make it clear that in this case, playing around, having fun, and being enlightened was indeed **my specific goal** for doing this. And having satisfied that goal, and having the code run live on a [demo site](http://tomwhartung.com), I see no reason to spend more time working and making this code "production-ready."  Hope that makes sense!
 
 ## For More Information
 
@@ -45,7 +48,6 @@ This is only one of many repos where I explore the viability of integrating Devi
 * https://github.com/tomwhartung/jmws_idMyGadget_for_drupal-d7 - repo for the Drupal 7 work
 
 Each of these repos has corresponding repos with Joomla templates and Drupal themes.
-
 You can find by these by searching the [list of my github repos](https://github.com/tomwhartung?tab=repositories).
 
 ## Notes
