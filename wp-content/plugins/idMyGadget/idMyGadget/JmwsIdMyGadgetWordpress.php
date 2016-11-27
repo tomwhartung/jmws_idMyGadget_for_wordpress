@@ -182,8 +182,6 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$anchorTagWithClass = $anchorTagPrelude . 'class="logo-file-tablet">';
 				$logoTitleDescription .= '<img src="' . $logoFile . '" class="logo-file-tablet" alt="' . $siteName . '" />';
 			}
-			$logoTitleDescription .= '<div class="hamburger-icons-name-title-tablet">';
-			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( get_option('idmg_show_site_name_tablet') == 'yes' )
 			{
 				$anchorTagWithClass = $anchorTagPrelude . 'class="site-name-tablet">';
@@ -193,6 +191,11 @@ class JmwsIdMyGadgetWordpress extends JmwsIdMyGadget
 				$logoTitleDescription .= $anchorTagClose;
 				$logoTitleDescription .= '</' . get_option('idmg_site_name_element_tablet') . '>';
 			}
+			// HACK WARNING!
+			//    Note that the "hamburger-icons-name-title-tablet" class does NOT contain the name!!
+			//
+			$logoTitleDescription .= '<div class="hamburger-icons-name-title-tablet">';
+			$logoTitleDescription .= $this->hamburgerIconLeftHtml . $this->hamburgerIconLeftJs;
 			if ( strlen($siteTitle) > 0 )
 			{
 				$anchorTagWithClass = $anchorTagPrelude . 'class="site-title-tablet">';
